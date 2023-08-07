@@ -22,7 +22,14 @@ module.exports = {
         SFPSemibold: 'SFProDisplaySemibold',
         SFPBold: 'SFProDisplayBold'
       },
+      backgroundColor: {
+        basic: '#0F0F0F',
+        darkGray: '#292929',
+        white: '#ffffff',
+        blue: '#2451CE'
+      },
       colors: {
+        link: '#6f6f6f',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

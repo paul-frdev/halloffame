@@ -1,6 +1,7 @@
+import { MainClient } from '@/components/mainClient';
 
 export default function Home() {
   return (
-    <div>Hello</div>
+    <MainClient />
   )
 }

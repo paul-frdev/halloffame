@@ -14,8 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='font-SFPRegular'>
-        <main>{children}</main>
+      <body className='font-SFPRegular bg-basic text-white'>
+        <main className='h-full'>{children}</main>
       </body>
     </html>
   )
