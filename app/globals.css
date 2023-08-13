@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+.carousel .control-dots .dot.selected {
+  width: 10px;
+  height: 10px;
+}
 
 @layer base {
   @font-face {

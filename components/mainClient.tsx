@@ -1,10 +1,12 @@
+'use client'
+
 import React from 'react'
-import { Header } from './header'
+import { Slider } from './ui/slider'
 
 export const MainClient = () => {
   return (
-    <div>
-      <Header />
-    </div>
+    <>
+      <Slider />
+    </>
   )
 }

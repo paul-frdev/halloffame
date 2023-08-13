@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='font-SFPRegular bg-basic text-white'>
+        <Header />
         <main className='h-full'>{children}</main>
       </body>
     </html>
