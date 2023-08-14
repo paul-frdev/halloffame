@@ -71,21 +71,47 @@ export const locates = [
   },
 ];
 
-
 export const mainSlider = [
   {
     id: 1,
     src: '/public/images/slider.png',
-    title: 'ЗАЛ СЛАВИ УКРАЇНСЬКОГО БОКСУ'
+    title: 'ЗАЛ СЛАВИ УКРАЇНСЬКОГО БОКСУ',
   },
   {
     id: 2,
     src: '/public/images/slider.png',
-    title: 'ЗАЛ СЛАВИ УКРАЇНСЬКОГО БОКСУ'
+    title: 'ЗАЛ СЛАВИ УКРАЇНСЬКОГО БОКСУ',
   },
   {
     id: 3,
     src: '/public/images/slider.png',
-    title: 'ЗАЛ СЛАВИ УКРАЇНСЬКОГО БОКСУ'
+    title: 'ЗАЛ СЛАВИ УКРАЇНСЬКОГО БОКСУ',
   },
-]
+];
+
+export const upcomingEvents = [
+  {
+    id: 1,
+    src: '/images/event-image.png',
+    title: 'Заголовок',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 2,
+    src: '/images/event-second.png',
+    title: 'Заголовок',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 3,
+    src: '/images/event-image.png',
+    title: 'Заголовок',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 4,
+    src: '/images/event-second.png',
+    title: 'Заголовок',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+];

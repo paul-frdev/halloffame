@@ -2,13 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .carousel .control-dots .dot.selected {
   width: 10px;
   height: 10px;
 }
 
+.swiper,
+.swiper-container {
+  padding: 30px 0 !important;
+}
+
+.custom-prev-arrow,
+.custom-next-arrow {
+  cursor: pointer;
+}
+
 @layer base {
+  .carousel-slider {
+    width: 1300px;
+    height: 480px;
+  }
   @font-face {
     font-family: 'SFProDisplayRegular';
     src: url('../fonts/SFProDisplay-Regular.ttf') format('ttf');

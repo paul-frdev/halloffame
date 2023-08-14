@@ -4,14 +4,15 @@ import { Title } from './ui/title'
 import { Typography } from './ui/typography'
 import { Button } from './ui/button'
 import { ArrowRight } from '@/icons/arrowRight'
+import { UpcomingCarousel } from './upcomingCarousel'
+import { upcomingEvents } from '@/constants'
 
 export const UpcomingEvents = () => {
   return (
-    <section className='relative h-[680px] w-full'>
-      <span className=' bg-upcoming absolute top-0 left-0 right-0 bottom-0 w-full h-[680px] object-cover bg-no-repeat' />
+    <section className='relative h-[580px] w-full max-w-[1930px]'>
       <Container className='justify-between items-start'>
         <div className='z-10 w-full max-w-[40%] py-24'>
-          <Title className='pb-6 border-b-4 border-white mb-6'>НАЙБЛИЖЧІ ПОДІЇ</Title>
+          <Title className='pb-6 border-b-4 border-white mb-20'>НАЙБЛИЖЧІ ПОДІЇ</Title>
           <Typography className='w-full max-w-[80%] text-2xl font-SFPRegular mb-12'>
             Наші заходи порадують шанувальників та фанатів боксу
           </Typography>
@@ -21,6 +22,9 @@ export const UpcomingEvents = () => {
               <ArrowRight fill='#000' />
             </span>
           </Button>
+        </div>
+        <div className='absolute top-0 right-0 w-[55%]  py-20'>
+          <UpcomingCarousel data={upcomingEvents} />
         </div>
       </Container>
     </section>

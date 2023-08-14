@@ -17,6 +17,9 @@ module.exports = {
         SFPSemibold: 'SFProDisplaySemibold',
         SFPBold: 'SFProDisplayBold',
       },
+      boxShadow: {
+        shadowBlue: '0px 7px 35px 0px #2451CE',
+      },
       backgroundColor: {
         basic: '#0F0F0F',
         darkGray: '#292929',
