@@ -7,7 +7,7 @@ import { ArrowRight } from '@/icons/arrowRight'
 
 export const History = () => {
   return (
-    <section className='relative h-full pb-[56px]'>
+    <section className='relative h-full pb-[56px] w-full max-w-[1930px]'>
       <span className='bg-bg block absolute top-0 left-0 right-0 bottom-0 w-full h-[1094px] object-cover bg-no-repeat' />
       <Container className=' justify-between items-start relative '>
         <div className='w-full max-w-[60%] py-24'>

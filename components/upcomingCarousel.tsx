@@ -2,16 +2,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import SwiperCore, { Navigation } from 'swiper';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import { UpcomingCart } from './ui/upcomingCart';
 import { Event } from '@/types';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 import { ArrowRight } from '@/icons/arrowRight';
+
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 SwiperCore.use([Navigation]);
 
