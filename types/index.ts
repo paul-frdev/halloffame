@@ -6,3 +6,9 @@ export type Event = {
   title: string;
   description: string;
 };
+
+
+export type Subscribe = {
+  name: string;
+  email: string;
+}

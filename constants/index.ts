@@ -25,6 +25,34 @@ export const secondNav = [
   },
 ];
 
+export const footerNav = [
+  {
+    id: 1,
+    src: '/',
+    title: 'ЗМІ про нас'
+  },
+  {
+    id: 2,
+    src: '/',
+    title: 'Книга відгуків'
+  },
+  {
+    id: 3,
+    src: '/',
+    title: 'Правила для відвідувачів'
+  },
+  {
+    id: 4,
+    src: '/',
+    title: 'Архіви новин'
+  },
+  {
+    id: 5,
+    src: '/',
+    title: 'Оплата та доставка'
+  },
+]
+
 export const mainNav = [
   {
     id: 1,

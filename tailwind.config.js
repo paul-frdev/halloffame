@@ -25,10 +25,15 @@ module.exports = {
         darkGray: '#292929',
         white: '#ffffff',
         blue: '#2451CE',
+        gray: '#292929;',
+      },
+      borderColor: {
+        errorInput: '#ED7272',
       },
       colors: {
         link: '#6f6f6f',
         basic: '#000000',
+        error: '#ED7272',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
