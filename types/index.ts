@@ -7,8 +7,14 @@ export type Event = {
   description: string;
 };
 
-
 export type Subscribe = {
   name: string;
   email: string;
-}
+};
+
+export type IconProps = {
+  color?: string;
+  width?: number;
+  height?: number;
+  active?: boolean;
+};

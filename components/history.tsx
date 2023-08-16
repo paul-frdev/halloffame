@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container } from './ui/container'
 import { Title } from './ui/title'
 import { Typography } from './ui/typography'
 import { Button } from './ui/button'
 import { ArrowRight } from '@/icons/arrowRight'
 
+
 export const History = () => {
+  const [hoveredButton, setHoveredButton] = useState(null);
+
+  const handleMouseEnter = (buttonIndex: any) => {
+    setHoveredButton(buttonIndex);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredButton(null);
+  };
+
+  const buttons = [
+    {
+      text: 'ДЕТАЛЬНІШЕ',
+      variant: 'outline',
+      color: hoveredButton === 0 ? '#FFFFFF' : '#000000',
+    },
+    {
+      text: 'КНИГА ВІДГУКІВ',
+      variant: 'default',
+      color: hoveredButton === 1 ? '#000000' : '#FFFFFF',
+    },
+
+  ];
   return (
     <section className='relative h-full pb-[56px] w-full max-w-[1930px]'>
       <span className='bg-bg block absolute top-0 left-0 right-0 bottom-0 w-full h-[1094px] object-cover bg-no-repeat' />
@@ -18,14 +42,19 @@ export const History = () => {
             Vestibulum pellentesque et blandit cursus pellentesque viverra iaculis. Massa a quis id leo consectetur aliquet nec in at. Nulla nec ipsum at suspendisse nunc. Adipiscing aenean fermentum vitae id et dolor eu. Pretim mattis ipsum, malesuada cursus risus, at.
           </Typography>
           <div className='w-[70%] flex justify-between items-center'>
-            <Button className='flex justify-center items-center gap-x-4 text-2xl leading-[33.6px]' variant='outline' size='lg' >
-              <span> ДЕТАЛЬНІШЕ</span>
-              <ArrowRight fill='#000' />
-            </Button>
-            <Button className='flex justify-center items-center gap-x-4 text-2xl leading-[33.6px]' variant='default' size='lg'>
-              <span> КНИГА ВІДГУКІВ</span>
-                <ArrowRight fill='#fff' />
-            </Button>
+            {buttons.map((button, index) => (
+              <Button
+                key={index}
+                className='flex justify-center items-center gap-x-4 text-2xl leading-[33.6px]'
+                variant={button.variant as any}
+                size='lg'
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <span>{button.text}</span>
+                <ArrowRight active color={button.color} />
+              </Button>
+            ))}
           </div>
         </div>
         <span className=' z-10 bg-person absolute right-[276px] bottom-[-56px] h-[635px] w-[526px] bg-no-repeat object-cover' />

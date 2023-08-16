@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Container } from './ui/container'
 import Link from 'next/link'
@@ -5,6 +7,7 @@ import { Logo } from '@/icons/logo'
 import { footerNav } from '@/constants'
 import { Title } from './ui/title'
 import { Typography } from './ui/typography'
+import { Map } from './map'
 
 export const Footer = () => {
   return (
@@ -16,7 +19,9 @@ export const Footer = () => {
           </Link>
         </div>
         <div className='pt-3'>
-          <Title className='text-[24px] leading-[33.6px] font-SFPRegular text-start mb-8 underline'>Про Нас</Title>
+          <Title className='text-[24px] leading-[33.6px] font-SFPRegular text-start mb-8 '>
+            <span className='pb-1 border-b-[2px] border-white'>Про Нас</span>
+          </Title>
           <ul className='flex flex-col justify-center items-start'>
             {footerNav.map((link) => (
               <li className='text-lg leading-normal font-SFPRegular mb-3' key={link.id}>
@@ -28,7 +33,9 @@ export const Footer = () => {
           </ul>
         </div>
         <div className='pt-3'>
-          <Title className='text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8 underline'>Наші контакти:</Title>
+          <Title className='text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8'>
+            <span className='pb-1 border-b-[2px] border-white'>Наші контакти:</span>
+          </Title>
           <Typography className='text-lg leading-normal font-SFPRegular'>
             <span className='mb-3 inline-block'>Адреса: м. Київ, вул. Михайлівська, 13</span><br />
             <span className='mb-3 inline-block'>Тел: +380 (97) 390-39-49</span><br />
@@ -38,7 +45,12 @@ export const Footer = () => {
           </Typography>
         </div>
         <div className='pt-3'>
-          <Title className='text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8'>Як дістатися до нас?</Title>
+          <Title className='text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8'>
+            <span className='pb-1 border-b-[2px] border-white'>
+              Як дістатися до нас?
+            </span>
+          </Title>
+          <Map />
         </div>
       </Container>
     </footer>

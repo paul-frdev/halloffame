@@ -50,16 +50,16 @@ export const Header = () => {
   return (
     <header className='w-full mb-10'>
       <Container className='flex justify-between w-full items-start pt-[50px]'>
-        <Link href='/'>
+        <Link href='/' className='mr-[103px]'>
           <Logo />
         </Link>
-        <div className='flex flex-col justify-end items-start gap-y-[20px]'>
-          <div className='flex justify-between items-start'>
+        <div className='flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto'>
+          <div className='flex justify-between items-start w-full'>
             <LanguageSwitcher />
-            <ul className=' relative flex justify-between items-start px-[40px]'>
+            <ul className=' relative flex justify-between items-center gap-x-[60px]'>
               <span className='absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link' />
               {secondNav.map((item) => (
-                <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link hover:text-white transition-all duration-300 whitespace-nowrap mr-[41px]`,
+                <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link hover:text-white transition-all duration-300 whitespace-nowrap`,
 
                 )}>
                   <Link href='/'>{item.title}</Link>
@@ -75,15 +75,15 @@ export const Header = () => {
                 </li>
               ))}
             </ul>
-            <div className='flex justify-start items-start gap-x-[17px]'>
-              <Typography className=' inline-block'>Кошик</Typography>
-              <span>
-                <Basket />
-              </span>
-            </div>
+            <Link href='/' className='flex justify-start items-start gap-x-[17px]'>
+                <Typography className=' inline-block'>Кошик</Typography>
+                <span>
+                  <Basket />
+                </span>
+            </Link>
           </div>
-          <div className='flex justify-between w-full items-center'>
-            <ul className='flex justify-between items-start gap-x-[80px]'>
+          <div className='flex justify-between w-full items-center ml-auto'>
+            <ul className='flex justify-between items-start gap-x-[92px]'>
               {mainNav.map((item) => (
                 <li className='text-[27px] font-SFPRegular leading-normal' key={item.id}>
                   <Link className={cn(`pb-2`)} href={item.src}>{item.title}</Link>

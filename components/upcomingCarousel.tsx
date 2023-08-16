@@ -75,7 +75,7 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
       </Swiper>
       <CustomNextArrow
         className=' hover:bg-transparent bg-transparent absolute top-[40%] left-[50%] z-20  w-[150px] h-[150px] border-[2px] border-white rounded-full'
-        icon={<ArrowRight fill='#2451CE' width={50} height={50} />}
+        icon={<ArrowRight color='#2451CE' width={50} height={50} />}
         onClick={handleNextClick}
       />
     </div>
