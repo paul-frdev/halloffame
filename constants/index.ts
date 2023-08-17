@@ -62,7 +62,7 @@ export const mainNav = [
   {
     id: 2,
     title: 'Події',
-    src: '/',
+    src: '/events',
   },
   {
     id: 3,

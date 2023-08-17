@@ -17,6 +17,26 @@
   cursor: pointer;
 }
 
+.main-tool-bar {
+  height: 200px;
+  background: black;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  transition: ease 0.4s;
+  z-index: 9999;
+}
+
+.main-tool-bar--scrolled {
+  height: 130px;
+}
+
+body {
+  height:  100%;
+}
+
 @layer base {
   .carousel-slider {
     width: 1300px;
