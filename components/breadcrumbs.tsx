@@ -19,7 +19,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className
       {breadcrumbs.map((breadcrumb, index) => (
         <span key={breadcrumb.url} className='flex justify-between items-center'>
           {index > 0 && <PageRight />}
-          <Link href={breadcrumb.url} className='pb-1 border-b-2 border-white mx-3'>
+          <Link href={breadcrumb.url} className='pb-1 border-b-2 border-black mx-3 text-2xl'>
             {`${breadcrumb.label}`}
           </Link>
         </span>

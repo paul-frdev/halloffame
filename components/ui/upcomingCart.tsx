@@ -29,7 +29,7 @@ export const UpcomingCart: React.FC<UpcomingCartProps> = ({ event }) => {
               <Button variant='outline' className='flex text-[24px] font-oswaldBold pl-0 mb-7 justify-center gap-x-2 hover:bg-transparent bg-transparent text-white hover:text-white'>
                 <span>{event.title}</span>
                 <span>
-                  <ArrowRight fill='#fff' />
+                  <ArrowRight color='#fff' />
                 </span>
               </Button>
               <Typography className='pr-2'>{event.description}</Typography>

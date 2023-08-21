@@ -18,3 +18,7 @@ export type IconProps = {
   height?: number;
   active?: boolean;
 };
+
+export interface UpcomingEvent extends Event {
+  date: Date;
+}

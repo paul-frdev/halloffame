@@ -29,29 +29,29 @@ export const footerNav = [
   {
     id: 1,
     src: '/',
-    title: 'ЗМІ про нас'
+    title: 'ЗМІ про нас',
   },
   {
     id: 2,
     src: '/',
-    title: 'Книга відгуків'
+    title: 'Книга відгуків',
   },
   {
     id: 3,
     src: '/',
-    title: 'Правила для відвідувачів'
+    title: 'Правила для відвідувачів',
   },
   {
     id: 4,
     src: '/',
-    title: 'Архіви новин'
+    title: 'Архіви новин',
   },
   {
     id: 5,
     src: '/',
-    title: 'Оплата та доставка'
+    title: 'Оплата та доставка',
   },
-]
+];
 
 export const mainNav = [
   {
@@ -140,6 +140,51 @@ export const upcomingEvents = [
     id: 4,
     src: '/images/event-second.png',
     title: 'Заголовок',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+];
+
+export const eventsList = [
+  {
+    id: 1,
+    src: '/images/event.png',
+    title: 'Заголовок',
+    date: new Date(),
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 2,
+    src: '/images/event.png',
+    title: 'Заголовок',
+    date: new Date(),
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 3,
+    src: '/images/event.png',
+    title: 'Заголовок',
+    date: new Date(),
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 4,
+    src: '/images/event.png',
+    title: 'Заголовок',
+    date: new Date(),
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 5,
+    src: '/images/event.png',
+    title: 'Заголовок',
+    date: new Date(),
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+  {
+    id: 6,
+    src: '/images/event.png',
+    title: 'Заголовок',
+    date: new Date(),
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];

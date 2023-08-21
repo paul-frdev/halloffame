@@ -50,12 +50,10 @@ export const Header = () => {
 
   const params = useParams()
 
-  gsap.registerPlugin(ScrollTrigger);
-
 
   useEffect(() => {
     const scrollBody = () => {
-      if (window.scrollY > 80) {
+      if (window.scrollY > 40) {
         setHeader(true);
       } else {
         setHeader(false);
@@ -66,83 +64,72 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', scrollBody);
   }, [header]);
 
-  useEffect(() => {
-    gsap.to('.header', {
-      height: '130px', 
-      ease: 'Power4.easeInOut',
-      duration: 0.2,
-      scrollTrigger: {
-        trigger: '.header',
-        start: 'top top',
-        end: 'top+=30',
-        scrub: 1,
-      },
-    });
-  }, []);
+
 
   useEffect(() => {
     gsap.to('.logo-container svg', {
       width: header ? 90 : 150,
       height: header ? 90 : 150,
-      duration: header ? 0.1 : 0.2,
+      duration: header ? 0.1 : 0.1,
       ease: 'Power4.easeInOut',
     });
   }, [header]);
 
   return (
-    <header className={cn(`header z-50 fixed top-0 left-0 right-0 bg-black h-auto`)}>
-      <Container className={cn(`flex justify-between w-full items-start`, header ? ' items-center pt-[25px]' : 'pt-[35px]')}>
-        <Link href='/' className={cn(`mr-[103px]`, header ? 'mt-0' : '-mt-[12px]')}>
-          <div className="logo-container">
-            <Logo width={150} height={150} />
-          </div>
-        </Link>
-        <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, header ? 'gap-y-0' : 'gap-y-[30px]')}>
-          <div
-            className={cn(`w-full transition duration-75`, header ? 'opacity-0' : 'flex justify-between items-start')}
-            style={{ visibility: !header ? 'visible' : 'hidden', height: header ? '0' : 'auto' }}
-          >
-            <LanguageSwitcher />
-            <ul className=' relative flex justify-between items-center gap-x-[60px]'>
-              <span className='absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link' />
-              {secondNav.map((item) => (
-                <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link hover:text-white transition-all duration-300 whitespace-nowrap`,)}>
-                  <Link href='/'>{item.title}</Link>
-                </li>
-              )
-              )}
-              <span className='absolute top-0 right-0 w-[1px] h-[59px] border-l-1 border-link' />
-            </ul>
-            <ul className='flex justify-between items-center gap-x-[20px] w-full max-w-[328px] px-[50px]'>
-              {socialMediaData.map((item) => (
-                <li key={item.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-                  <Link href={item.link}>{item.social}</Link>
-                </li>
-              ))}
-            </ul>
-            <Link href='/' className='flex justify-start items-start gap-x-[17px]'>
-              <Typography className=' inline-block'>Кошик</Typography>
-              <span>
-                <Basket />
-              </span>
-            </Link>
-          </div>
-          <div className={cn(`flex  w-full items-center ml-auto`, header ? 'justify-end' : 'justify-between')}>
-            <ul className='flex justify-between items-start gap-x-[92px]'>
-              {mainNav.map((item) => (
-                <li className='text-[27px] font-SFPRegular leading-normal' key={item.id}>
-                  <Link className={cn(`pb-2`)} href={item.src}>{item.title}</Link>
-                </li>
-              ))}
-            </ul>
-            <div className='w-full ml-auto flex justify-end'>
-              <Button variant='outline' className='text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]'>Замовити квиток</Button>
+    <>
+      <div className='relative h-[44px] z-10 max-w-[1632px] px-4 m-auto w-full'>
+        <div
+          className={cn(`w-full transition duration-75  ml-auto max-w-[1360px] h-[98px] flex justify-between items-center`)}
+        >
+          <LanguageSwitcher />
+          <ul className=' relative flex justify-between items-end  gap-x-[60px]'>
+            <span className='absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link' />
+            {secondNav.map((item) => (
+              <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link hover:text-white transition-all duration-300 whitespace-nowrap`,)}>
+                <Link href='/'>{item.title}</Link>
+              </li>
+            )
+            )}
+            <span className='absolute top-0 right-0 w-[1px] h-[59px] border-l-1 border-link' />
+          </ul>
+          <ul className='flex justify-between items-center gap-x-[20px] w-full max-w-[328px] px-[50px]'>
+            {socialMediaData.map((item) => (
+              <li key={item.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+                <Link href={item.link}>{item.social}</Link>
+              </li>
+            ))}
+          </ul>
+          <Link href='/' className='flex justify-start items-start gap-x-[17px]'>
+            <Typography className=' inline-block'>Кошик</Typography>
+            <span>
+              <Basket />
+            </span>
+          </Link>
+        </div>
+      </div>
+      <header className={cn(`header z-20 h-auto`, header ? ' fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
+        <Container className={cn(`flex justify-between w-full items-end`, header ? 'pb-4' : 'pb-9')}>
+          <Link href='/' className={cn(`mr-[103px]`, header ? 'mt-0' : '-mt-[12px]')}>
+            <div className="logo-container">
+              <Logo width={150} height={150} />
+            </div>
+          </Link>
+          <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, header ? 'gap-y-0' : 'gap-y-[30px]')}>
+            <div className={cn(`flex  w-full items-center ml-auto`, header ? 'justify-end' : 'justify-between')}>
+              <ul className='flex justify-between items-start gap-x-[92px]'>
+                {mainNav.map((item) => (
+                  <li className='text-[27px] font-SFPRegular leading-normal' key={item.id}>
+                    <Link className={cn(`pb-2`)} href={item.src}>{item.title}</Link>
+                  </li>
+                ))}
+              </ul>
+              <div className='w-full ml-auto flex justify-end'>
+                <Button variant='outline' className='text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]'>Замовити квиток</Button>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-        </div>
-      </Container>
-    </header>
+        </Container>
+      </header>
+    </>
   )
 }
