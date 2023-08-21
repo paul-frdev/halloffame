@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className='font-SFPRegular bg-basic text-white overflow-y-scroll'>
         <Header />
-        <main className='h-full'>{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

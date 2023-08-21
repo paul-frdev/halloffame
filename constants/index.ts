@@ -67,17 +67,17 @@ export const mainNav = [
   {
     id: 3,
     title: 'Новини',
-    src: '/',
+    src: '/news',
   },
   {
     id: 4,
     title: 'Магазин',
-    src: '/',
+    src: '/shop',
   },
   {
     id: 5,
     title: 'Контакти',
-    src: '/',
+    src: '/contacts',
   },
 ];
 
@@ -188,3 +188,5 @@ export const eventsList = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];
+
+export const monthNames = ['Січ', 'Лют', 'Бер', 'Кві', 'Тра', 'Чер', 'Лип', 'Сер', 'Вер', 'Жов', 'Лис', 'Гру'];

@@ -6,8 +6,13 @@ import { Container } from './ui/container'
 import { Title } from './ui/title'
 import { CalendarForm } from './forms/calendarForm'
 import { EventsList } from './eventsList'
+import { UpcomingEvent } from '@/types'
 
-export const EventsClient = () => {
+
+interface EventsClientProps {
+  events: UpcomingEvent[]
+}
+export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
 
 
   const breadcrumbs = [
@@ -16,7 +21,7 @@ export const EventsClient = () => {
   ];
 
   return (
-    <section className='relative h-[90vh] bg-white'>
+    <section className='relative bg-white pb-8'>
       <Container className='flex-col justify-start items-start'>
         <Breadcrumbs breadcrumbs={breadcrumbs} className=' mt-8 text-black' />
         <div className='flex justify-between items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]'>
@@ -27,7 +32,7 @@ export const EventsClient = () => {
             <CalendarForm />
           </div>
         </div>
-        <EventsList />
+        <EventsList eventsList={events} />
       </Container>
     </section >
   )

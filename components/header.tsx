@@ -15,8 +15,7 @@ import { Typography } from './ui/typography'
 import { Basket } from '@/icons/basket'
 import { Button } from './ui/button'
 import { cn } from '@/lib/utils'
-import { useParams } from 'next/navigation'
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { usePathname } from 'next/navigation'
 
 const socialMediaData = [
   {
@@ -48,7 +47,7 @@ export const Header = () => {
   const [header, setHeader] = useState(false);
 
 
-  const params = useParams()
+  const pathname = usePathname()
 
 
   useEffect(() => {
@@ -117,11 +116,14 @@ export const Header = () => {
           <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, header ? 'gap-y-0' : 'gap-y-[30px]')}>
             <div className={cn(`flex  w-full items-center ml-auto`, header ? 'justify-end' : 'justify-between')}>
               <ul className='flex justify-between items-start gap-x-[92px]'>
-                {mainNav.map((item) => (
-                  <li className='text-[27px] font-SFPRegular leading-normal' key={item.id}>
-                    <Link className={cn(`pb-2`)} href={item.src}>{item.title}</Link>
-                  </li>
-                ))}
+                {mainNav.map((item) => {
+                  const isActive = pathname === item.src
+                  return (
+                    <li className={cn(`text-[27px] font-SFPRegular leading-normal transition-all duration-200`, isActive ? 'border-b border-white' : 'border-b border-transparent')} key={item.id}>
+                      <Link className={cn(`pb-2`)} href={item.src}>{item.title}</Link>
+                    </li>
+                  )
+                })}
               </ul>
               <div className='w-full ml-auto flex justify-end'>
                 <Button variant='outline' className='text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]'>Замовити квиток</Button>

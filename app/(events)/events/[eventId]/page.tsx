@@ -1,8 +1,22 @@
 import React from 'react'
+import eventList from "@/app/events.json";
 
-const EventPage = () => {
+
+
+export async function generateStaticParams() {
+  return eventList.map((ev) => ({
+    eventId: ev.id.toString(),
+  }))
+}
+
+
+const EventPage = ({ params: { eventId } }: { params: { eventId: string } }) => {
+  const event = eventList.find((elem) => elem.id.toString() === eventId)
+  if (!event) {
+    return 'No id'
+  }
   return (
-    <div>EventPage</div>
+    <div>EventPage {event?.title}</div>
   )
 }
 
