@@ -117,6 +117,24 @@ export const mainSlider = [
   },
 ];
 
+export const shopSlides = [
+  {
+    id: 1,
+    src: '/public/images/shop.png',
+    title: 'ОФІЦІЙНИЙ ІНТЕРНЕТ-МАГАЗИН ЗАЛИ СЛАВИ УКРАЇНСЬКОГО БОКСУ'
+  },
+  {
+    id: 2,
+    src: '/public/images/shop.png',
+    title: 'ОФІЦІЙНИЙ ІНТЕРНЕТ-МАГАЗИН ЗАЛИ СЛАВИ УКРАЇНСЬКОГО БОКСУ'
+  },
+  {
+    id: 3,
+    src: '/public/images/shop.png',
+    title: 'ОФІЦІЙНИЙ ІНТЕРНЕТ-МАГАЗИН ЗАЛИ СЛАВИ УКРАЇНСЬКОГО БОКСУ'
+  },
+]
+
 export const upcomingEvents = [
   {
     id: 1,
