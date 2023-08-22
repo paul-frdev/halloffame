@@ -6,10 +6,12 @@ import { Button } from './ui/button'
 import { ArrowRight } from '@/icons/arrowRight'
 import { UpcomingCarousel } from './upcomingCarousel'
 import { upcomingEvents } from '@/constants'
+import { useRouter } from 'next/navigation'
 
 export const UpcomingEvents = () => {
 
   const [isHovered, setIsHovered] = useState(false);
+  const route = useRouter()
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -33,6 +35,7 @@ export const UpcomingEvents = () => {
             size='lg'
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={() => route.push('/events')}
           >
             <span>Дивитись усі події</span>
             <span className='pt-1'>

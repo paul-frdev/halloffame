@@ -16,6 +16,7 @@ import { Basket } from '@/icons/basket'
 import { Button } from './ui/button'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
+import debounce from 'lodash.debounce';
 
 const socialMediaData = [
   {
@@ -51,13 +52,14 @@ export const Header = () => {
 
 
   useEffect(() => {
-    const scrollBody = () => {
-      if (window.scrollY > 40) {
+    const scrollBody = debounce(() => {
+      if (window.scrollY > 30) {
         setHeader(true);
       } else {
         setHeader(false);
       }
-    };
+    }, 0);
+
     window.addEventListener('scroll', scrollBody);
 
     return () => window.removeEventListener('scroll', scrollBody);
@@ -69,22 +71,22 @@ export const Header = () => {
     gsap.to('.logo-container svg', {
       width: header ? 90 : 150,
       height: header ? 90 : 150,
-      duration: header ? 0.1 : 0.1,
+      duration: header ? 0.3 : 0.3,
       ease: 'Power4.easeInOut',
     });
   }, [header]);
 
   return (
     <>
-      <div className='relative h-[44px] z-10 max-w-[1632px] px-4 m-auto w-full'>
+      <div className='relative h-[44px] z-10 max-w-[1632px] px-4 m-auto w-full transition-all duration-300'>
         <div
-          className={cn(`w-full transition duration-75  ml-auto max-w-[1360px] h-[98px] flex justify-between items-center`)}
+          className={cn(`w-full ml-auto max-w-[1360px] h-[98px] flex justify-between items-center`)}
         >
           <LanguageSwitcher />
           <ul className=' relative flex justify-between items-end  gap-x-[60px]'>
             <span className='absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link' />
             {secondNav.map((item) => (
-              <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link hover:text-white transition-all duration-300 whitespace-nowrap`,)}>
+              <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link transition-all duration-300 hover:text-white whitespace-nowrap`,)}>
                 <Link href='/'>{item.title}</Link>
               </li>
             )
@@ -93,8 +95,8 @@ export const Header = () => {
           </ul>
           <ul className='flex justify-between items-center gap-x-[20px] w-full max-w-[328px] px-[50px]'>
             {socialMediaData.map((item) => (
-              <li key={item.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-                <Link href={item.link}>{item.social}</Link>
+              <li className='transition-all duration-300' key={item.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+                <Link href={item.link} style={{fill: '#000'}}>{item.social}</Link>
               </li>
             ))}
           </ul>
@@ -106,7 +108,7 @@ export const Header = () => {
           </Link>
         </div>
       </div>
-      <header className={cn(`header z-20 h-auto`, header ? ' fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
+      <header className={cn(`header z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, header ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
         <Container className={cn(`flex justify-between w-full items-end`, header ? 'pb-4' : 'pb-9')}>
           <Link href='/' className={cn(`mr-[103px]`, header ? 'mt-0' : '-mt-[12px]')}>
             <div className="logo-container">
@@ -119,7 +121,7 @@ export const Header = () => {
                 {mainNav.map((item) => {
                   const isActive = pathname === item.src
                   return (
-                    <li className={cn(`text-[27px] font-SFPRegular leading-normal transition-all duration-200`, isActive ? 'border-b border-white' : 'border-b border-transparent')} key={item.id}>
+                    <li className={cn(`text-[27px] font-SFPRegular leading-normal`, isActive ? 'border-b border-white' : 'border-b border-transparent')} key={item.id}>
                       <Link className={cn(`pb-2`)} href={item.src}>{item.title}</Link>
                     </li>
                   )
