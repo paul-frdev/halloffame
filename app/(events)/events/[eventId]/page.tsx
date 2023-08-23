@@ -1,6 +1,6 @@
 import React from 'react'
 import eventList from "@/app/events.json";
-
+import { EventCart } from '@/components/eventCart';
 
 
 export async function generateStaticParams() {
@@ -11,12 +11,22 @@ export async function generateStaticParams() {
 
 
 const EventPage = ({ params: { eventId } }: { params: { eventId: string } }) => {
-  const event = eventList.find((elem) => elem.id.toString() === eventId)
-  if (!event) {
+  const formattedEvents = eventList.map((event) => ({
+    id: event.id,
+    title: event.title,
+    description: event.description,
+    src: event.src,
+    price: event.price,
+    time: event.time,
+    location: event.location,
+    date: new Date()
+  }))
+  const formattedEvent = formattedEvents.find((elem) => elem.id.toString() === eventId)
+  if (!formattedEvent) {
     return 'No id'
   }
   return (
-    <div>EventPage {event?.title}</div>
+    <EventCart event={formattedEvent} />
   )
 }
 

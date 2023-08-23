@@ -1,7 +1,10 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link';
 import { PageRight } from '@/icons/pageRight';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 interface Breadcrumb {
   label: string;
@@ -11,19 +14,26 @@ interface Breadcrumb {
 interface BreadcrumbsProps {
   breadcrumbs: Breadcrumb[];
   className?: string;
+  id?: number;
 }
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className }) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className, id }) => {
+  const pathname = usePathname();
+
+
   return (
     <div className={cn(`flex justify-start items-center w-full max-w-[400px]`, className)}>
-      {breadcrumbs.map((breadcrumb, index) => (
-        <span key={breadcrumb.url} className='flex justify-between items-center'>
-          {index > 0 && <PageRight />}
-          <Link href={breadcrumb.url} className='pb-1 border-b-2 border-black mx-3 text-2xl'>
-            {`${breadcrumb.label}`}
-          </Link>
-        </span>
-      ))}
+      {breadcrumbs.map((breadcrumb, index) => {
+        const isActive = pathname === breadcrumb.url || pathname === `${id}`;
+        return (
+          <span key={breadcrumb.url} className='flex justify-between items-center'>
+            {index > 0 && <PageRight />}
+            <Link href={breadcrumb.url} className={cn(`pb-1 border-b-2 mx-3 text-2xl`, isActive ? 'border-black text-black' : 'text-[#808080] border-[#808080]')}>
+              {`${breadcrumb.label}`}
+            </Link>
+          </span>
+        )
+      })}
     </div>
   );
 };

@@ -4,55 +4,119 @@
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   },
   {
     "id": 2,
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   },
   {
     "id": 3,
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   },
   {
     "id": 4,
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   },
   {
     "id": 5,
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   },
   {
     "id": 6,
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   },
   {
     "id": 7,
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   },
   {
     "id": 8,
     "title": "Заголовок",
     "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
-    "date": "23-08-22"
+    "date": "23-08-22",
+    "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],
+    "price": "100",
+    "location": [
+      {
+        "id": 1,
+        "street": "м. Київ вул. Михайлівська, 13"
+      }
+    ]
   }
 ]

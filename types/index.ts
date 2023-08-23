@@ -19,8 +19,16 @@ export type IconProps = {
   active?: boolean;
 };
 
+export type Location = {
+  id: number;
+  street: string;
+};
+
 export interface UpcomingEvent extends Event {
   date: Date;
+  time: string[];
+  price: string;
+  location: Location[];
 }
 
 export type ImageProduct = {
@@ -39,7 +47,7 @@ export type Slider = {
   id: number;
   src: string;
   title: string;
-}
+};
 
 export type Product = {
   id: number;

@@ -71,8 +71,8 @@ export const Header = () => {
     gsap.to('.logo-container svg', {
       width: header ? 90 : 150,
       height: header ? 90 : 150,
-      duration: header ? 0.3 : 0.3,
-      ease: 'Power4.easeInOut',
+      duration: header ? 0.2 : 0.2,
+      ease: 'Power4.ease',
     });
   }, [header]);
 
@@ -110,13 +110,13 @@ export const Header = () => {
       </div>
       <header className={cn(`header z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, header ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
         <Container className={cn(`flex justify-between w-full items-end`, header ? 'pb-4' : 'pb-9')}>
-          <Link href='/' className={cn(`mr-[103px]`, header ? 'mt-0' : '-mt-[12px]')}>
+          <Link href='/' className={cn(`mr-[90px]`, header ? 'mt-0' : '-mt-[12px]')}>
             <div className="logo-container">
               <Logo width={150} height={150} />
             </div>
           </Link>
           <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, header ? 'gap-y-0' : 'gap-y-[30px]')}>
-            <div className={cn(`flex  w-full items-center ml-auto`, header ? 'justify-end' : 'justify-between')}>
+            <div className={cn(`flex  w-full items-center ml-auto max-w-[1360px]`, header ? 'justify-end' : 'justify-between')}>
               <ul className='flex justify-between items-start gap-x-[92px]'>
                 {mainNav.map((item) => {
                   const isActive = pathname === item.src
