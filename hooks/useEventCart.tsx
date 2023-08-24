@@ -10,7 +10,7 @@ interface CartStore {
   removeAll: () => void;
 }
 
-const useCart = create(
+const useEventCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
@@ -23,7 +23,7 @@ const useCart = create(
         }
 
         set({ items: [...get().items, data] });
-        toast.success('Item added to cart');
+        toast.success('Event added to cart');
       },
       removeItem: (id: string) => {
         set({ items: [...get().items.filter((item) => item.id.toString() !== id)] });
@@ -32,10 +32,10 @@ const useCart = create(
       removeAll: () => set({ items: [] }),
     }),
     {
-      name: 'cart-storage',
+      name: 'event-cart-storage',
       storage: createJSONStorage(() => localStorage),
     }
   )
 );
 
-export default useCart;
+export default useEventCart;

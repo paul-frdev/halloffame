@@ -51,6 +51,8 @@ export const Header = () => {
   const pathname = usePathname()
   const route = useRouter()
 
+  console.log('pathname', pathname);
+
   const match = pathname.match(/^\/events\/(\d+)$/);
   const eventId = match ? match[1] : null;
 
@@ -105,12 +107,14 @@ export const Header = () => {
               </li>
             ))}
           </ul>
-          {!eventId ? (
+          {eventId || pathname === '/cart' ? (
+            null
+          ) : (
             <Link href='/cart' className='flex justify-start items-start gap-x-[17px]'>
               <Typography className=' inline-block'>Кошик</Typography>
               <CartWidget className='relative' widthNumber={17} heightNumber={17} />
             </Link>
-          ) : null}
+          )}
         </div>
       </div>
       <header className={cn(`z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, header ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
@@ -133,7 +137,11 @@ export const Header = () => {
                 })}
               </ul>
               <div className='w-full ml-auto flex justify-end items-end'>
-                {!eventId ? <Button onClick={() => route.push('/events')} variant='outline' className='text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]'>Замовити квиток</Button> : <Link href='/cart' className='relative'><CartWidget width={35} height={35} className='mr-8 pr-1' /></Link>}
+                {eventId || pathname === '/cart' ? (
+                  <Link href='/cart' className='relative'><CartWidget width={35} height={35} className='mr-8 pr-1' /></Link>
+                ) : (
+                  <Button onClick={() => route.push('/events')} variant='outline' className='text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]'>Замовити квиток</Button>
+                )}
               </div>
             </div>
           </div>

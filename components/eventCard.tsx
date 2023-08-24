@@ -10,11 +10,10 @@ import { SelectForm } from './forms/selectForm'
 import { Button } from './ui/button'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { ArrowRight } from '@/icons/arrowRight'
-import { ArrowLeft } from '@/icons/arrowLeft'
-import { Arrow } from '@/icons/arrow'
 import { ButtonLeft } from './ui/buttonLeft'
 import { ButtonRight } from './ui/buttonRight'
+import useEventCart from '@/hooks/useEventCart'
+import { toast } from 'react-hot-toast';
 
 interface EventCardProps {
   event: UpcomingEvent
@@ -26,6 +25,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const [onSelectedValue, setOnSelectedValue] = useState('')
   const [selectFormTrigger, setSelectFormTrigger] = useState<any>(null);
   const route = useRouter()
+  const { addItem } = useEventCart()
 
   const breadcrumbs = [
     { label: 'Головна', url: '/' },
@@ -38,10 +38,19 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
   const handleOrderTickets = async () => {
     if (selectFormTrigger) {
-      const isValid = await selectFormTrigger('time'); 
+      const isValid = await selectFormTrigger('time');
 
       if (isValid) {
-        console.log('Proceed with adding to cart');
+        const formattedEvent = {
+          ...event,
+          selectedTime: onSelectedValue,
+          forAdults: quantityForAdults,
+          forChildren: quantityForChildren
+        }
+        console.log('formattedEvent', formattedEvent);
+
+        addItem(formattedEvent)
+        route.push('/cart')
       }
     }
   };

@@ -29,6 +29,9 @@ export interface UpcomingEvent extends Event {
   time: string[];
   price: string[];
   location: Location[];
+  selectedTime?: string;
+  forAdults?: number;
+  forChildren?: number;
 }
 
 export type ImageProduct = {
