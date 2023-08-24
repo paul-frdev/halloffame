@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { UpcomingEvent } from '@/types'
-import { useState } from 'react'
+import { useEffect } from 'react'
 
 const FormSchema = z.object({
   time: z
@@ -31,17 +31,32 @@ const FormSchema = z.object({
 
 interface SelectFormProps {
   event: UpcomingEvent;
+  selectedValue?: string;
+  onSelectedValue?: (data: string) => void;
+  setTrigger?: (data: any) => void;
 }
-export function SelectForm({ event }: SelectFormProps) {
+export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger }: SelectFormProps) {
 
-  const [selectedItem, setSelectedItem] = useState('')
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    setSelectedItem(data.time)
+  const { trigger, setValue } = form;
+
+
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    onSelectedValue?.(data.time)
   }
+
+  const handleValueChange = async (selected: string) => {
+    setValue('time', selected); 
+    await trigger('time');
+    onSubmit({ time: selected });
+  };
+
+  useEffect(() => {
+    setTrigger?.(() => trigger);
+  }, [trigger, setTrigger]);
 
   return (
     <Form {...form}>
@@ -52,13 +67,13 @@ export function SelectForm({ event }: SelectFormProps) {
           render={({ field }) => (
             <FormItem className=' w-[310px] border-none'>
               <FormLabel className='text-2xl font-oswaldBold mb-1'>Виберіть зручний час:</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value} >
+              <Select onValueChange={handleValueChange} defaultValue={selectedValue} >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder={selectedItem} />
+                    <SelectValue placeholder={selectedValue} />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent className='border-none'>
+                <SelectContent className='border-none focus:ring-0'>
                   {event?.time.map((item) => (
                     <SelectItem key={item} value={item}>{item}</SelectItem>
                   ))}

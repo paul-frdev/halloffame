@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation'
 import { ArrowRight } from '@/icons/arrowRight'
 import { ArrowLeft } from '@/icons/arrowLeft'
 import { Arrow } from '@/icons/arrow'
+import { ButtonLeft } from './ui/buttonLeft'
+import { ButtonRight } from './ui/buttonRight'
 
 interface EventCardProps {
   event: UpcomingEvent
@@ -21,8 +23,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
   const [quantityForAdults, setQuantityForAdults] = useState(0)
   const [quantityForChildren, setQuantityForChildren] = useState(0)
+  const [onSelectedValue, setOnSelectedValue] = useState('')
+  const [selectFormTrigger, setSelectFormTrigger] = useState<any>(null);
   const route = useRouter()
-
 
   const breadcrumbs = [
     { label: 'Головна', url: '/' },
@@ -33,9 +36,15 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const currentLocation = event.location.map(item => item.street)
 
 
-  const addToCartHandle = () => {
+  const handleOrderTickets = async () => {
+    if (selectFormTrigger) {
+      const isValid = await selectFormTrigger('time'); 
 
-  }
+      if (isValid) {
+        console.log('Proceed with adding to cart');
+      }
+    }
+  };
   return (
     <section className='bg-white py-12'>
       <Container className='flex-col justify-start items-start'>
@@ -49,7 +58,12 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
               <Typography className='text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black'>{`${event.date.getMonth()}.${event.date.getDate()}.${event.date.getFullYear()}`}</Typography>
             </div>
             <div className='mb-12'>
-              <SelectForm event={event} />
+              <SelectForm
+                event={event}
+                setTrigger={setSelectFormTrigger}
+                onSelectedValue={setOnSelectedValue}
+                selectedValue={onSelectedValue}
+              />
             </div>
             <div className='mb-12'>
               <Typography className='text-2xl font-oswaldBold mb-4'>Локація / Адреса:</Typography>
@@ -60,7 +74,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
               <Typography className='text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black'>{event.price[0]} ₴</Typography>
             </div>
             <div className='w-[310px] flex justify-center items-center'>
-              <Button onClick={() => { }} className='w-[303px] h-[60px] text-2xl leading-[33.6px] text-white bg-black border border-transparent hover:border-black transition-colors duration-300'>Замовити квитки</Button>
+              <Button onClick={handleOrderTickets} className='w-[303px] h-[60px] text-2xl leading-[33.6px] text-white bg-black border border-transparent hover:border-black transition-colors duration-300'>Замовити квитки</Button>
             </div>
           </div>
           {/* description */}
@@ -85,25 +99,17 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
               <div className='flex justify-between items-center w-[250px] mr-8'>
                 <Title className='text-2xl font-SFPBold'>Для взрослых:</Title>
                 <div className='flex justify-center items-baseline'>
-                  <Button disabled={quantityForAdults === 0} onClick={() => setQuantityForAdults((prev) => prev - 1)} variant='outline' className='hover:bg-transparent border-none px-2'>
-                    <ArrowLeft fill={quantityForAdults === 0 ? '#999999' : '#000'} />
-                  </Button>
+                  <ButtonLeft quantity={quantityForAdults} setQuantity={setQuantityForAdults} />
                   <span className='text-lg font-oswaldBold'>{quantityForAdults}</span>
-                  <Button disabled={quantityForAdults === 5} onClick={() => setQuantityForAdults((prev) => prev + 1)} variant='outline' className='hover:bg-transparent border-none px-2'>
-                    <Arrow fill={quantityForAdults === 5 ? '#999999' : '#000'} />
-                  </Button>
+                  <ButtonRight quantity={quantityForAdults} setQuantity={setQuantityForAdults} />
                 </div>
               </div>
               <div className='flex justify-between items-center w-[250px]'>
                 <Title className='text-2xl font-SFPBold'>Для дітей:</Title>
                 <div className='flex justify-center items-baseline'>
-                  <Button disabled={quantityForChildren === 0} onClick={() => setQuantityForChildren((prev) => prev - 1)} variant='outline' className='hover:bg-transparent border-none px-2'>
-                    <ArrowLeft fill={quantityForChildren === 0 ? '#999999' : '#000'} />
-                  </Button>
+                  <ButtonLeft quantity={quantityForChildren} setQuantity={setQuantityForChildren} />
                   <span className='text-lg font-oswaldBold'>{quantityForChildren}</span>
-                  <Button disabled={quantityForChildren === 5} onClick={() => setQuantityForChildren((prev) => prev + 1)} variant='outline' className='hover:bg-transparent border-none px-2'>
-                    <Arrow fill={quantityForChildren === 5 ? '#999999' : '#000'} />
-                  </Button>
+                  <ButtonRight quantity={quantityForChildren} setQuantity={setQuantityForChildren} />
                 </div>
               </div>
             </div>
