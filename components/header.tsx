@@ -1,7 +1,7 @@
 'use client'
 
 import { Logo } from '@/icons/logo'
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { gsap } from 'gsap';
 import { Container } from './ui/container'
 import { LanguageSwitcher } from './ui/languageSwitcher'
@@ -12,11 +12,11 @@ import { Instagram } from '@/icons/instagram'
 import { Twitter } from '@/icons/twitter'
 import { Youtube } from '@/icons/youtube'
 import { Typography } from './ui/typography'
-import { Basket } from '@/icons/basket'
 import { Button } from './ui/button'
 import { cn } from '@/lib/utils'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import debounce from 'lodash.debounce';
+import { CartWidget } from './ui/cartWidget';
 
 const socialMediaData = [
   {
@@ -49,7 +49,12 @@ export const Header = () => {
 
 
   const pathname = usePathname()
+  const route = useRouter()
 
+  const match = pathname.match(/^\/events\/(\d+)$/);
+  const eventId = match ? match[1] : null;
+
+  console.log('eventId', eventId);
 
   useEffect(() => {
     const scrollBody = debounce(() => {
@@ -96,24 +101,24 @@ export const Header = () => {
           <ul className='flex justify-between items-center gap-x-[20px] w-full max-w-[328px] px-[50px]'>
             {socialMediaData.map((item) => (
               <li className='transition-all duration-300' key={item.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-                <Link href={item.link} style={{fill: '#000'}}>{item.social}</Link>
+                <Link href={item.link} style={{ fill: '#000' }}>{item.social}</Link>
               </li>
             ))}
           </ul>
-          <Link href='/' className='flex justify-start items-start gap-x-[17px]'>
-            <Typography className=' inline-block'>Кошик</Typography>
-            <span>
-              <Basket />
-            </span>
-          </Link>
+          {!eventId ? (
+            <Link href='/cart' className='flex justify-start items-start gap-x-[17px]'>
+              <Typography className=' inline-block'>Кошик</Typography>
+              <CartWidget className='relative' widthNumber={17} heightNumber={17} />
+            </Link>
+          ) : null}
         </div>
       </div>
-      <header className={cn(`header z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, header ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
+      <header className={cn(`z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, header ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
         <Container className={cn(`flex justify-between w-full items-end`, header ? 'pb-4' : 'pb-9')}>
           <Link href='/' className={cn(`mr-[90px]`, header ? 'mt-0' : '-mt-[12px]')}>
-            <div className="logo-container">
+            <span className="logo-container">
               <Logo width={150} height={150} />
-            </div>
+            </span>
           </Link>
           <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, header ? 'gap-y-0' : 'gap-y-[30px]')}>
             <div className={cn(`flex  w-full items-center ml-auto max-w-[1360px]`, header ? 'justify-end' : 'justify-between')}>
@@ -127,8 +132,8 @@ export const Header = () => {
                   )
                 })}
               </ul>
-              <div className='w-full ml-auto flex justify-end'>
-                <Button variant='outline' className='text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]'>Замовити квиток</Button>
+              <div className='w-full ml-auto flex justify-end items-end'>
+                {!eventId ? <Button onClick={() => route.push('/events')} variant='outline' className='text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]'>Замовити квиток</Button> : <Link href='/cart' className='relative'><CartWidget width={35} height={35} className='mr-8 pr-1' /></Link>}
               </div>
             </div>
           </div>

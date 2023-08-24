@@ -27,7 +27,7 @@ export type Location = {
 export interface UpcomingEvent extends Event {
   date: Date;
   time: string[];
-  price: string;
+  price: string[];
   location: Location[];
 }
 
