@@ -8,6 +8,7 @@ import { Title } from './ui/title'
 import { Typography } from './ui/typography'
 import { Button } from './ui/button'
 import { Close } from '@/icons/close'
+import { calculateTicketCost } from '@/lib/utils'
 
 
 export const CartClient = () => {
@@ -19,27 +20,37 @@ export const CartClient = () => {
         <div className='flex flex-col justify-start items-start w-full gap-y-12'>
           {items?.map((event: UpcomingEvent) => {
             const currentLocation = event.location.map((location) => location.street)
+            const totalPrice = calculateTicketCost(event.forAdults, event.forChildren, event.price)
             return (
-              <div key={event.id} className='w-[80%] h-full flex justify-start items-start mr-auto gap-x-12'>
-                <div className=''>
+              <div key={event.id} className='w-full h-full flex justify-start items-start mr-auto'>
+                <div className='mr-16'>
                   <Image src={event.src} alt='image' width={200} height={200} />
                 </div>
-                <div className='flex flex-col justify-center'>
+                <div className='flex flex-col justify-center mr-16'>
                   <Title className='text-2xl text-black font-oswaldBold uppercase'>Назва події</Title>
                   <Typography className='text-lg text-black font-SFPSemibold'>{event.title}</Typography>
                 </div>
-                <div className='w-[200px] flex flex-col justify-center'>
+                <div className='w-[200px] flex flex-col justify-center mr-16'>
                   <Title className='text-2xl text-black font-oswaldBold uppercase'>Місце</Title>
                   <Typography className='text-lg text-black font-SFPSemibold'>{currentLocation}</Typography>
                 </div>
-                <div>
+                <div className='mr-16'>
+                  <Title className='text-2xl text-black font-oswaldBold uppercase'>Ціна</Title>
+                  <Typography className='text-lg text-black font-SFPSemibold'>Для дорослих : {event.price[0]}</Typography>
+                  <Typography className='text-lg text-black font-SFPSemibold'>Для дітей : {event.price[1]}</Typography>
+                </div>
+                <div className='mr-16'>
                   <Title className='text-2xl text-black font-oswaldBold uppercase'>кількість</Title>
                   <Typography className='text-lg text-black font-SFPSemibold'>Для дорослих : {event.forAdults ? event.forAdults : '-'}</Typography>
                   <Typography className='text-lg text-black font-SFPSemibold'>Для дітей : {event.forChildren ? event.forChildren : '-'}</Typography>
                 </div>
-                <div className='w-[200px]'>
+                <div className='mr-16'>
                   <Title className='text-2xl text-black font-oswaldBold uppercase'>Час</Title>
                   <Typography className='text-lg text-black font-SFPSemibold'>{event.selectedTime}</Typography>
+                </div>
+                <div className='mr-16'>
+                  <Title className='text-2xl text-black font-oswaldBold uppercase'>Сума</Title>
+                  <Typography className='text-lg text-black font-SFPSemibold'>{totalPrice} Грн</Typography>
                 </div>
                 <div className='flex justify-center items-center h-full'>
                   <Button

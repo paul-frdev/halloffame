@@ -62,3 +62,7 @@ export type Product = {
   images: ImageProduct[];
   characteristics: ProductCharacteristic[];
 };
+
+export interface News extends Event {
+  date: string;
+}
