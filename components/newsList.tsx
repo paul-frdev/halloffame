@@ -6,6 +6,7 @@ import { Breadcrumbs } from './breadcrumbs'
 import { Title } from './ui/title'
 import { Search } from './search'
 import { NewsPreviewItem } from './newsPreviewItem'
+import { SubscribeForm } from './forms/subscribeForm'
 
 
 interface NewsListProps {
@@ -15,10 +16,10 @@ export const NewsList: React.FC<NewsListProps> = ({ news }) => {
 
   const breadcrumbs = [
     { label: 'Головна', url: '/' },
-    { label: 'Новини', url: '/news' },
+    { label: 'Новини', url: '/blog/news' },
   ];
   return (
-    <section className='relative bg-white py-12'>
+    <section className='relative bg-white pt-12'>
       <Container className='flex-col justify-start items-start'>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <div className='flex justify-between items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]'>
@@ -29,12 +30,13 @@ export const NewsList: React.FC<NewsListProps> = ({ news }) => {
             <Search />
           </div>
         </div>
-        <div className='w-full flex justify-center flex-col text-black items-center gap-y-6'>
+        <div className='w-full flex justify-center flex-col text-black items-center gap-y-6 last-of-type:mb-12'>
           {news?.map((item) => (
             <NewsPreviewItem key={item.id} newsItem={item} />
           ))}
         </div>
       </Container>
+      <SubscribeForm />
     </section>
   )
 }

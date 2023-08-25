@@ -20,9 +20,8 @@ interface BreadcrumbsProps {
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className, id }) => {
   const pathname = usePathname();
 
-
   return (
-    <div className={cn(`flex justify-start items-center w-full max-w-[400px]`, className)}>
+    <div className={cn(`flex justify-start items-center w-full max-w-[800px]`, className)}>
       {breadcrumbs.map((breadcrumb, index) => {
         const isActive = pathname === breadcrumb.url || pathname === `${id}`;
         return (

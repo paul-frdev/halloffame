@@ -1,7 +1,7 @@
 'use client'
 
 import { UpcomingEvent } from '@/types'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from './ui/container'
 import { Breadcrumbs } from './breadcrumbs'
 import { Title } from './ui/title'
@@ -14,6 +14,7 @@ import { ButtonLeft } from './ui/buttonLeft'
 import { ButtonRight } from './ui/buttonRight'
 import useEventCart from '@/hooks/useEventCart'
 import { toast } from 'react-hot-toast';
+import { calculateTicketCost, cn } from '@/lib/utils'
 
 interface EventCardProps {
   event: UpcomingEvent
@@ -24,16 +25,24 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const [quantityForChildren, setQuantityForChildren] = useState(0)
   const [onSelectedValue, setOnSelectedValue] = useState('')
   const [selectFormTrigger, setSelectFormTrigger] = useState<any>(null);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+
   const route = useRouter()
   const { addItem } = useEventCart()
 
   const breadcrumbs = [
     { label: 'Головна', url: '/' },
     { label: 'Події', url: '/events' },
-    { label: 'Сторінка Події', url: `/events/${event.id}` }
+    { label: `${event?.title!.length > 20 ? event?.title!.slice(0, 20) + '...' : event?.title!}`, url: `/events/${event.id}` }
   ];
 
   const currentLocation = event.location.map(item => item.street)
+
+
+  useEffect(() => {
+    setTotalPrice(calculateTicketCost(quantityForAdults, quantityForChildren, event.price))
+  }, [quantityForAdults, quantityForChildren])
 
 
   const handleOrderTickets = async () => {
@@ -41,16 +50,20 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
       const isValid = await selectFormTrigger('time');
 
       if (isValid) {
-        const formattedEvent = {
-          ...event,
-          selectedTime: onSelectedValue,
-          forAdults: quantityForAdults,
-          forChildren: quantityForChildren
+        if (totalPrice !== 0) {
+          const formattedEvent = {
+            ...event,
+            selectedTime: onSelectedValue,
+            forAdults: quantityForAdults,
+            forChildren: quantityForChildren
+          }
+          addItem(formattedEvent)
+          route.push('/cart')
+        } else {
+          toast.error('Add tickets')
         }
-        console.log('formattedEvent', formattedEvent);
-
-        addItem(formattedEvent)
-        route.push('/cart')
+      } else {
+        toast.error('Please, pick out available time')
       }
     }
   };
@@ -78,9 +91,13 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
               <Typography className='text-2xl font-oswaldBold mb-4'>Локація / Адреса:</Typography>
               <p className='text-2xl font-SFPRegular mb-4 pb-4 border-b w-[310px] border-black'>{currentLocation}</p>
             </div>
-            <div className='mb-12'>
+            <div className='mb-4'>
               <Typography className='text-2xl font-oswaldBold mb-4'>Ціна:</Typography>
               <Typography className='text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black'>{event.price[0]} ₴</Typography>
+            </div>
+            <div className={cn(`border-b mb-8 pb-8 border-black flex flex-col justify-start w-full items-start gap-y-4 transition-all duration-300`, totalPrice > 0 ? 'flex' : 'hidden')}>
+              <Typography className='text-2xl font-SFPBold uppercase'>Загальна вартість :</Typography>
+              <Typography className='font-SFPRegular text-black text-2xl'>{totalPrice} грн</Typography>
             </div>
             <div className='w-[310px] flex justify-center items-center'>
               <Button onClick={handleOrderTickets} className='w-[303px] h-[60px] text-2xl leading-[33.6px] text-white bg-black border border-transparent hover:border-black transition-colors duration-300'>Замовити квитки</Button>
@@ -125,7 +142,6 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
           </div>
         </div>
       </Container>
-
     </section>
   )
 }

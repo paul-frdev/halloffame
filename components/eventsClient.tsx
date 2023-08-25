@@ -7,6 +7,7 @@ import { Title } from './ui/title'
 import { CalendarForm } from './forms/calendarForm'
 import { EventsList } from './eventsList'
 import { UpcomingEvent } from '@/types'
+import { SubscribeForm } from './forms/subscribeForm'
 
 
 interface EventsClientProps {
@@ -21,8 +22,8 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
   ];
 
   return (
-    <section className='relative bg-white pb-8'>
-      <Container className='flex-col justify-start items-start'>
+    <section className='relative bg-white'>
+      <Container className='flex-col justify-start items-start mb-12'>
         <Breadcrumbs breadcrumbs={breadcrumbs} className=' mt-8 text-black' />
         <div className='flex justify-between items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]'>
           <div>
@@ -34,6 +35,7 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
         </div>
         <EventsList eventsList={events} />
       </Container>
+      <SubscribeForm />
     </section >
   )
 }

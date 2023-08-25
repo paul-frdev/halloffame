@@ -40,10 +40,10 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
     console.log(data);
   };
   return (
-    <section className='h-[294px] w-full'>
+    <section className='h-[294px] w-full bg-black text-white'>
       <Container className=' justify-between items-center h-full gap-x-24'>
         <div className='w-[320px]'>
-          <Title className='w-full text-2xl font-SFPRegular leading-[33.6px] text-left' >Підпишіться, щоб залишатися<br /> в курсі подій:</Title>
+          <Title className='w-full text-2xl font-SFPRegular leading-[33.6px] text-left' >Залишайтеся в курсі подій:</Title>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex justify-between items-center">
