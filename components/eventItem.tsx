@@ -16,10 +16,10 @@ import useEventCart from '@/hooks/useEventCart'
 import { toast } from 'react-hot-toast';
 import { calculateTicketCost, cn } from '@/lib/utils'
 
-interface EventCardProps {
+interface EventItemProps {
   event: UpcomingEvent
 }
-export const EventCard: React.FC<EventCardProps> = ({ event }) => {
+export const EventItem: React.FC<EventItemProps> = ({ event }) => {
 
   const [quantityForAdults, setQuantityForAdults] = useState(0)
   const [quantityForChildren, setQuantityForChildren] = useState(0)
@@ -77,7 +77,9 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
             <Title className='mb-12'>Про подію</Title>
             <div className='mb-12'>
               <Typography className='text-2xl font-oswaldBold mb-4'>Дата:</Typography>
-              <Typography className='text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black'>{`${event.date.getMonth()}.${event.date.getDate()}.${event.date.getFullYear()}`}</Typography>
+              <Typography className='text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black'>
+                {`${event.date.getMonth()}.${event.date.getDate()}.${event.date.getFullYear()}`}
+              </Typography>
             </div>
             <div className='mb-12'>
               <SelectForm

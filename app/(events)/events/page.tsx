@@ -9,7 +9,10 @@ const EventsPage = () => {
     title: event.title,
     description: event.description,
     src: event.src,
-    date: new Date()
+    date: new Date(),
+    time: event.time,
+    location: event.location,
+    price: event.price
   }))
   return (
     <EventsClient events={formattedEvents} />

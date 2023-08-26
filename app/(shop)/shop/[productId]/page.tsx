@@ -1,8 +1,19 @@
 import React from 'react'
+import productList from '@/app/products.json'
+import { ProductItem } from '@/components/productItem'
 
-const ProductPage = () => {
+
+export async function generateStaticParams() {
+  return productList.map((product) => ({
+    productId: product.id.toString(),
+  }))
+}
+
+const ProductPage = ({ params: { productId } }: { params: { productId: string } }) => {
+
+  const formattedProduct = productList.find((item) => item.id.toString() === productId)
   return (
-    <div>ProductPage</div>
+    <ProductItem product={formattedProduct} />
   )
 }
 

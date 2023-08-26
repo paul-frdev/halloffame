@@ -57,12 +57,20 @@ export type Product = {
   title: string;
   description: string;
   price: string;
-  discount?: string;
   category: string;
+  previewImage: string;
   images: ImageProduct[];
   characteristics: ProductCharacteristic[];
+  discount?: string;
+  isDiscount?: boolean;
 };
 
 export interface News extends Event {
   date: string;
+}
+
+
+export interface Image {
+  id: number;
+  src: string;
 }

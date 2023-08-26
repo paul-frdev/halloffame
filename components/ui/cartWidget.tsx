@@ -16,12 +16,14 @@ export const CartWidget: React.FC<CartWidgetProps> = ({ width = 17, height = 17,
   const { items } = useEventCart()
   return (
     <span className={cn(`w-full`, className)}>
-      <span
-        style={{ width: widthNumber, height: heightNumber, display: "flex", justifyContent: "center", alignItems: "center" }}
-        className={cn(`absolute -top-[7px] -right-[2px] bg-white rounded-full text-black flex justify-center items-center`)}
-      >
-        {items.length ? items.length : 0}
-      </span>
+      {items.length > 0 ? (
+        <span
+          style={{ width: widthNumber, height: heightNumber, display: "flex", justifyContent: "center", alignItems: "center" }}
+          className={cn(`absolute -top-[7px] -right-[2px] bg-white rounded-full text-black flex justify-center items-center`)}
+        >
+          {items.length}
+        </span>
+      ) : null}
       <Basket width={width} height={height} />
     </span>
   )

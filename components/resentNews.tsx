@@ -5,16 +5,19 @@ import Image from 'next/image'
 import { Typography } from './ui/typography'
 import { DateRageIcon } from '@/icons/dateRageIcon'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 
 interface ResentNewsProps {
   news?: News[]
 }
 export const ResentNews: React.FC<ResentNewsProps> = ({ news }) => {
+  const route = useRouter();
+
   return (
     <div className=' w-full flex flex-col justify-start items-start'>
       {newsList.map((item) => (
-        <Link key={item.id} href='/' className='w-full opacity-50 transition-all duration-300  hover:opacity-100 py-12 border-b border-[#d6d6d6]'>
+        <Link key={item.id} href={`/blog/news/${item.id}`} className='w-full opacity-50 transition-all duration-300  hover:opacity-100 py-12 border-b border-[#d6d6d6]'>
           <div>
             <div className='flex justify-start items-start'>
               <Image src={item.src} alt='image' width={435} height={253} className='mr-5' />

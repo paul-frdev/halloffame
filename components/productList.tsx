@@ -8,12 +8,15 @@ import { Search } from './search'
 import { Filters } from './filters'
 import { Slider } from './ui/slider'
 import { shopSlides } from '@/constants'
+import { ProductPreviewItem } from './productPreviewItem'
+import { Title } from './ui/title'
 
 
 interface ProductListProps {
-  products: Product[]
+  products: Product[];
+  title?: string;
 }
-export const ProductList: React.FC<ProductListProps> = ({ products }) => {
+export const ProductList: React.FC<ProductListProps> = ({ products, title }) => {
 
   const breadcrumbs = [
     { label: 'Головна', url: '/' },
@@ -27,8 +30,17 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <Search />
         </div>
-        <div>
+        <div className='my-12'>
           <Filters />
+        </div>
+        <div className='grid grid-cols-4 gap-6 m-auto mb-12'>
+          {products?.map((product) => (
+            <ProductPreviewItem key={product.id} product={product} />
+          ))}
+        </div>
+        <div>
+          <Title className='text-3xl'>Вам може бути цікаво :</Title>
+          {/* suggested products based on the search params and categoryId */}
         </div>
       </Container>
     </>

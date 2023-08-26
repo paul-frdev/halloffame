@@ -1,31 +1,25 @@
 [
   {
     "id": 1,
-    "title": "Залоголов",
+    "title": "Боксерські рукавички",
     "description": " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "price": "100",
     "discount": "5",
+    "isDiscount": true,
     "category": "boxing gloves",
+    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 2,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 3,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 4,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 5,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       }
     ],
     "characteristics": [
@@ -39,31 +33,25 @@
   },
   {
     "id": 2,
-    "title": "Залоголов",
+    "title": "Боксерські рукавички",
     "description": " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "price": "100",
     "discount": "5",
+    "isDiscount": true,
     "category": "boxing gloves",
+    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 2,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 3,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 4,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 5,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       }
     ],
     "characteristics": [
@@ -77,31 +65,25 @@
   },
   {
     "id": 3,
-    "title": "Залоголов",
+    "title": "Боксерські рукавички",
     "description": " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "price": "100",
     "discount": "5",
+    "isDiscount": false,
     "category": "boxing gloves",
+    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 2,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 3,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 4,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 5,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       }
     ],
     "characteristics": [
@@ -115,31 +97,25 @@
   },
   {
     "id": 4,
-    "title": "Залоголов",
+    "title": "Боксерські рукавички",
     "description": " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "price": "100",
     "discount": "5",
+    "isDiscount": true,
     "category": "boxing gloves",
+    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 2,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 3,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 4,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 5,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       }
     ],
     "characteristics": [
@@ -153,31 +129,25 @@
   },
   {
     "id": 5,
-    "title": "Залоголов",
+    "title": "Боксерські рукавички",
     "description": " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "price": "100",
     "discount": "5",
+    "isDiscount": false,
     "category": "boxing gloves",
+    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 2,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 3,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 4,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 5,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       }
     ],
     "characteristics": [
@@ -191,31 +161,25 @@
   },
   {
     "id": 6,
-    "title": "Залоголов",
+    "title": "Боксерські рукавички",
     "description": " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "price": "100",
     "discount": "5",
+    "isDiscount": true,
     "category": "boxing gloves",
+    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 2,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 3,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 4,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 5,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       }
     ],
     "characteristics": [
@@ -229,31 +193,25 @@
   },
   {
     "id": 7,
-    "title": "Залоголов",
+    "title": "Боксерські рукавички",
     "description": " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "price": "100",
     "discount": "5",
-    "category": "boxing gloves",
+    "isDiscount": true,
+    "category": "Boxing gloves",
+    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 2,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       },
       {
         "id": 3,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 4,
-        "src": "images/leone.jpeg"
-      },
-      {
-        "id": 5,
-        "src": "images/leone.jpeg"
+        "src": "/images/leone.jpeg"
       }
     ],
     "characteristics": [

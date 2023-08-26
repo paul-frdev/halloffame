@@ -1,6 +1,6 @@
 import React from 'react'
 import eventList from "@/app/events.json";
-import { EventCard } from '@/components/eventCard';
+import { EventItem } from '@/components/eventItem';
 
 
 export async function generateStaticParams() {
@@ -26,7 +26,7 @@ const EventPage = ({ params: { eventId } }: { params: { eventId: string } }) => 
     return 'No id'
   }
   return (
-    <EventCard event={formattedEvent} />
+    <EventItem event={formattedEvent} />
   )
 }
 

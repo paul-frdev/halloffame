@@ -10,3 +10,13 @@ export const calculateTicketCost = (adultsTickets?: number, childrenTickets?: nu
   const priceForChildren = price?.[1];
   return adultsTickets! * Number(priceForAdults) + childrenTickets! * Number(priceForChildren);
 };
+
+export const formattedPrice = Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
+export const calculateDiscountedPrice = (price: number, discount: number): number => {
+  const discountAmount = (price - discount) / 100;
+  return price - discountAmount;
+};
