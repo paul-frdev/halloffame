@@ -43,6 +43,10 @@ body {
   flex-direction: column;
 }
 
+.fixed-header {
+  padding-top:174px;
+}
+
 main {
   flex: 1;
 }

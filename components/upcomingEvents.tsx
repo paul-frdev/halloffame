@@ -22,7 +22,7 @@ export const UpcomingEvents = () => {
   };
 
   return (
-    <section className='relative h-[580px] w-full max-w-[1930px]'>
+    <section className='relative h-[580px] w-full max-w-[1930px] mb-20'>
       <Container className='justify-between items-start'>
         <div className='z-10 w-full max-w-[40%] py-24'>
           <Title className='pb-6 border-b-4 border-white mb-20'>НАЙБЛИЖЧІ ПОДІЇ</Title>

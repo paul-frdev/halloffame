@@ -20,7 +20,7 @@ export const PreviewEventCart: React.FC<EventCartProps> = ({ event }) => {
           <Image src={event?.src as any} alt='image-event' width={585} className='h-[238px] object-cover object-top' height={238} />
         </div>
         <div className='p-9 flex h-[52%] justify-between items-center'>
-          <div className='flex flex-col justify-center items-center h-full w-[20%] border-r border-[#e8edf0] p-4'>
+          <div className='flex flex-col justify-center items-center h-full w-[20%] border-r border-[#e8edf0] p-4 pr-4'>
             <div className='relative h-[50%] flex justify-center items-center'>
               <span className='absolute -top-[7px] -left-[25px] text-2xl font-oswaldBold font-extrabold text-[#007ac7]'>{monthNames[monthIndex]}</span>
               <span className='text-[4.5625rem] font-SFPSemibold'>{event?.date.getDay()}</span>

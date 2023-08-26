@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select"
 import { UpcomingEvent } from '@/types'
 import { useEffect } from 'react'
+import { cn } from '@/lib/utils'
 
 const FormSchema = z.object({
   time: z
@@ -49,7 +50,7 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger }
   }
 
   const handleValueChange = async (selected: string) => {
-    setValue('time', selected); 
+    setValue('time', selected);
     await trigger('time');
     onSubmit({ time: selected });
   };
@@ -67,13 +68,13 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger }
           render={({ field }) => (
             <FormItem className=' w-[310px] border-none'>
               <FormLabel className='text-2xl font-oswaldBold mb-1'>Виберіть зручний час:</FormLabel>
-              <Select onValueChange={handleValueChange} defaultValue={selectedValue} >
-                <FormControl>
+              <Select onValueChange={handleValueChange} defaultValue={selectedValue}  >
+                <FormControl className={form.formState.errors.time && 'border-b-2 border-error'}>
                   <SelectTrigger>
                     <SelectValue placeholder={selectedValue} />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent className='border-none focus:ring-0'>
+                <SelectContent className={cn(`border-none focus:ring-0`)}>
                   {event?.time.map((item) => (
                     <SelectItem key={item} value={item}>{item}</SelectItem>
                   ))}

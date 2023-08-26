@@ -61,8 +61,15 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = debounce(() => {
-      setIsFixed(window.scrollY > 30);
-    }, 5); // Adjust the debounce delay as needed
+      if (window.scrollY > 30) {
+        setIsFixed(true);
+        document.body.classList.add('fixed-header');
+      } else {
+        setIsFixed(false)
+        document.body.classList.remove('fixed-header');
+      }
+
+    }, 0);
 
     window.addEventListener('scroll', handleScroll);
 
@@ -84,7 +91,7 @@ export const Header = () => {
 
   return (
     <>
-      <div className='relative h-[44px] z-10 max-w-[1632px] px-4 m-auto w-full transition-all duration-300'>
+      <div className={cn(`relative h-[44px] z-[14] max-w-[1632px] px-4 m-auto w-full transition-all duration-300`, isFixed ? ' hidden' : 'visible')}>
         <div
           className={cn(`w-full ml-auto max-w-[1360px] h-[98px] flex justify-between items-center`)}
         >
@@ -116,7 +123,7 @@ export const Header = () => {
           )}
         </div>
       </div>
-      <header className={cn(`z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, isFixed ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
+      <header className={cn(`h-[174px] transition-all duration-300 bg-basic z-[12]`, isFixed ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
         <Container className={cn(`flex justify-between w-full items-end`, isFixed ? 'pb-4' : 'pb-9')}>
           <Link href='/' className={cn(`mr-[90px]`, isFixed ? 'mt-0' : '-mt-[12px]')}>
             <span className="logo-container">
@@ -146,11 +153,6 @@ export const Header = () => {
           </div>
         </Container>
       </header>
-      <div className={cn(`hidden -z-[1] opacity-0 overflow-hidden pointer-events-none relative`, isFixed ? 'h-[122px]' : 'h-[174px]')}>
-        <Container>
-          <div></div>
-        </Container>
-      </div>
     </>
   )
 }

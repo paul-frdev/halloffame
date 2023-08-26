@@ -34,7 +34,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
   const breadcrumbs = [
     { label: 'Головна', url: '/' },
     { label: 'Події', url: '/events' },
-    { label: `${event?.title!.length > 20 ? event?.title!.slice(0, 20) + '...' : event?.title!}`, url: `/events/${event.id}` }
+    { label: `${event?.title!.length > 20 ? event?.title!.slice(20) + '...' : event?.title!}`, url: `/events/${event.id}` }
   ];
 
   const currentLocation = event.location.map(item => item.street)

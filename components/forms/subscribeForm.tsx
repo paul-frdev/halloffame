@@ -56,16 +56,19 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
                     <FormLabel>
                       <label
                         className={cn(
-                          `text-[16px] font-sansBold leading-[24px] tracking-[0.1px] mb-[4px]`,
+                          `text-[16px] font-sansBold leading-[24px] tracking-[0.1px] mb-[4px] relative`,
                           form.formState.errors.name ? "text-error" : ""
                         )}
                       >
                         Імя
+                        <span className={cn(` absolute -top-[4px] -right-[13px] text-error text-[22px]`)}>
+                          *
+                        </span>
                       </label>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className={cn(` bg-transparent focus:outline-none focus:border-none !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`, form.formState.errors.name && "border-b-errorInput focus:border-b-errorInput")}
+                        className={cn(` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`, form.formState.errors.name && "border-b-errorInput focus:border-b-errorInput ")}
                         disabled={loading}
                         {...field}
                       />
@@ -84,16 +87,19 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
                     <FormLabel>
                       <label
                         className={cn(
-                          `text-[16px] font-sansBold leading-[24px] tracking-[0.1px] mb-[4px]`,
+                          `text-[16px] font-sansBold leading-[24px] tracking-[0.1px] mb-[4px] relative`,
                           form.formState.errors.email ? "text-error" : ""
                         )}
                       >
                         Пошта
+                        <span className={cn(` absolute -top-[4px] -right-[13px] text-error text-[22px]`)}>
+                          *
+                        </span>
                       </label>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className={cn(` bg-transparent focus:outline-none focus:border-none !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`, form.formState.errors.email && "border-b-errorInput focus:border-b-errorInput")}
+                        className={cn(` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`, form.formState.errors.email && "border-b-errorInput focus:border-b-errorInput focus-visible:border-b-errorInput")}
                         disabled={loading}
                         {...field}
                       />

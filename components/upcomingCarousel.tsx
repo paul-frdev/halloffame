@@ -63,6 +63,7 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
         slidesPerView={2}
         spaceBetween={150}
         slidesOffsetBefore={60}
+        speed={500}
         grabCursor={true}
         onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
         loop={true}
