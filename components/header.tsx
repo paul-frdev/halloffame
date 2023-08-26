@@ -46,6 +46,7 @@ export const Header = () => {
 
   const [isHover, setIsHover] = useState(false)
   const [header, setHeader] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
 
 
   const pathname = usePathname()
@@ -59,29 +60,27 @@ export const Header = () => {
   console.log('eventId', eventId);
 
   useEffect(() => {
-    const scrollBody = debounce(() => {
-      if (window.scrollY > 30) {
-        setHeader(true);
-      } else {
-        setHeader(false);
-      }
-    }, 0);
+    const handleScroll = debounce(() => {
+      setIsFixed(window.scrollY > 30);
+    }, 5); // Adjust the debounce delay as needed
 
-    window.addEventListener('scroll', scrollBody);
+    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener('scroll', scrollBody);
-  }, [header]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
 
 
   useEffect(() => {
     gsap.to('.logo-container svg', {
-      width: header ? 90 : 150,
-      height: header ? 90 : 150,
-      duration: header ? 0.2 : 0.2,
+      width: isFixed ? 90 : 150,
+      height: isFixed ? 90 : 150,
+      duration: isFixed ? 0.2 : 0.2,
       ease: 'Power4.ease',
     });
-  }, [header]);
+  }, [isFixed]);
 
   return (
     <>
@@ -117,15 +116,15 @@ export const Header = () => {
           )}
         </div>
       </div>
-      <header className={cn(`z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, header ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
-        <Container className={cn(`flex justify-between w-full items-end`, header ? 'pb-4' : 'pb-9')}>
-          <Link href='/' className={cn(`mr-[90px]`, header ? 'mt-0' : '-mt-[12px]')}>
+      <header className={cn(`z-20 h-[174px] transition-all duration-300 bg-basic z-[9]`, isFixed ? 'h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4' : '')}>
+        <Container className={cn(`flex justify-between w-full items-end`, isFixed ? 'pb-4' : 'pb-9')}>
+          <Link href='/' className={cn(`mr-[90px]`, isFixed ? 'mt-0' : '-mt-[12px]')}>
             <span className="logo-container">
               <Logo width={150} height={150} />
             </span>
           </Link>
-          <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, header ? 'gap-y-0' : 'gap-y-[30px]')}>
-            <div className={cn(`flex  w-full items-center ml-auto max-w-[1360px]`, header ? 'justify-end' : 'justify-between')}>
+          <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, isFixed ? 'gap-y-0' : 'gap-y-[30px]')}>
+            <div className={cn(`flex  w-full items-center ml-auto max-w-[1360px]`, isFixed ? 'justify-end' : 'justify-between')}>
               <ul className='flex justify-between items-start gap-x-[92px]'>
                 {mainNav.map((item) => {
                   const isActive = pathname === item.src
@@ -147,6 +146,11 @@ export const Header = () => {
           </div>
         </Container>
       </header>
+      <div className={cn(`hidden -z-[1] opacity-0 overflow-hidden pointer-events-none relative`, isFixed ? 'h-[122px]' : 'h-[174px]')}>
+        <Container>
+          <div></div>
+        </Container>
+      </div>
     </>
   )
 }

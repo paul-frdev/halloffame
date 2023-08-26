@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className='font-SFPRegular bg-basic text-white overflow-y-scroll'>
         <ToastProvider />
         <Header />
-        <main>{children}</main>
+        {children}
         <Footer />
       </body>
     </html>
