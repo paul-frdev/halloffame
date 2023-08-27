@@ -98,11 +98,14 @@ export const Header = () => {
           <LanguageSwitcher />
           <ul className=' relative flex justify-between items-end  gap-x-[60px]'>
             <span className='absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link' />
-            {secondNav.map((item) => (
-              <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link transition-all duration-300 hover:text-white whitespace-nowrap`,)}>
-                <Link href='/'>{item.title}</Link>
-              </li>
-            )
+            {secondNav.map((item) => {
+              const isActive = item.src === pathname;
+              return (
+                <li key={item.id} className={cn(`text-lg leading-[20px] font-SFPRegular text-link transition-all duration-300 hover:text-white whitespace-nowrap py-1 `, isActive ? 'border-b border-[#ffffff] text-white' : 'border-b border-transparent')}>
+                  <Link href={item.src}>{item.title}</Link>
+                </li>
+              )
+            }
             )}
             <span className='absolute top-0 right-0 w-[1px] h-[59px] border-l-1 border-link' />
           </ul>

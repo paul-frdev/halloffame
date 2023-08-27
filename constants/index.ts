@@ -6,22 +6,22 @@ export const secondNav = [
   {
     id: 1,
     title: 'Про нас',
-    src: '/',
+    src: '/about',
   },
   {
     id: 2,
     title: 'ЗМІ про нас',
-    src: '/',
+    src: '/media',
   },
   {
     id: 3,
     title: 'Книга відгуків',
-    src: '/',
+    src: '/testimonials',
   },
   {
     id: 4,
     title: 'Оплата та доставка',
-    src: '/',
+    src: '/payment',
   },
 ];
 

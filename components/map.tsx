@@ -7,9 +7,10 @@ import L from 'leaflet';
 interface MapProps {
   center?: [number, number];
   zoom?: number;
+  isContact?: boolean;
 }
 
-export const Map: React.FC<MapProps> = ({ center, zoom }) => {
+export const Map: React.FC<MapProps> = ({ center, zoom, isContact = false }) => {
   const mapCenter: [number, number] = [50.453287353, 30.521614601];
   const mapZoom: number = 25;
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
@@ -41,5 +42,5 @@ export const Map: React.FC<MapProps> = ({ center, zoom }) => {
     };
   }, [mapCenter, mapZoom]);
 
-  return <div ref={mapContainerRef} style={{ width: '400px', height: '180px' }} />;
+  return <div ref={mapContainerRef} style={{ width: !isContact ? '400px' : '557px', height: !isContact ? '180px' : '357px' }} />;
 };

@@ -15,9 +15,10 @@ interface BreadcrumbsProps {
   breadcrumbs: Breadcrumb[];
   className?: string;
   id?: number;
+  isWhite?: boolean;
 }
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className, id }) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className, id, isWhite = false }) => {
   const pathname = usePathname();
 
   return (
