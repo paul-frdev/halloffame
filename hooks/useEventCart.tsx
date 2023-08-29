@@ -4,7 +4,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface CartStore {
-  items: UpcomingEvent[];
+  events: UpcomingEvent[];
   addItem: (data: UpcomingEvent) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
@@ -13,23 +13,23 @@ interface CartStore {
 const useEventCart = create(
   persist<CartStore>(
     (set, get) => ({
-      items: [],
+      events: [],
       addItem: (data: UpcomingEvent) => {
-        const currentItems = get().items;
+        const currentItems = get().events;
         const existingItem = currentItems.find(item => item.id === data.id);
 
         if (existingItem) {
           return toast("Item is already in cart");
         }
 
-        set({ items: [...get().items, data] });
+        set({ events: [...get().events, data] });
         toast.success("Event added to cart");
       },
       removeItem: (id: string) => {
-        set({ items: [...get().items.filter(item => item.id.toString() !== id)] });
+        set({ events: [...get().events.filter(item => item.id.toString() !== id)] });
         toast.success("Item removed");
       },
-      removeAll: () => set({ items: [] }),
+      removeAll: () => set({ events: [] }),
     }),
     {
       name: "event-cart-storage",

@@ -1,5 +1,6 @@
 "use client";
 
+import useProductCart from '@/hooks/useProductCart';
 import { Breadcrumbs } from "./breadcrumbs";
 import { SubscribeForm } from "./forms/subscribeForm";
 import { Gallery } from "./gallery/gallery";
@@ -11,11 +12,20 @@ import { Typography } from "./ui/typography";
 import { Product } from "@/types";
 import Link from "next/link";
 import React from "react";
+import { Minus } from '@/icons/minus';
+import { Plus } from '@/icons/plus';
 
 interface ProductItemProps {
   product: Product | undefined;
 }
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
+
+  const { addProduct, products } = useProductCart();
+
+  const productInCart = products.find((item) => item.id === product?.id);
+
+  console.log('productInCart', productInCart);
+
   const breadcrumbs = [
     { label: "Головна", url: "/" },
     { label: "Магазин", url: "/shop" },
@@ -46,9 +56,22 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             </div>
             <Typography className="text-2xl tracking-wide leading-snug mb-20">{product?.description}</Typography>
             <div className="mb-12">
-              <Button variant="outline" className=" bg-black hover:bg-blue text-white text-[20px] uppercase hover:text-white w-[285px] h-[60px]">
-                Додати до кошику
-              </Button>
+              {!productInCart ? (
+                <Button onClick={() => addProduct(product!)} variant="outline" className=" bg-black hover:bg-blue text-white text-[20px] uppercase hover:text-white w-[285px] h-[60px]">
+                  Додати до кошику
+                </Button>
+              ) : (
+                <div className='flex justify-start items-center'>
+                  <Button variant="outline" className=" bg-whiter hover:bg-blue text-black text-[20px] uppercase hover:text-white hover:border-transparent w-[50px] h-[40px] border border-black rounded-tl-md rounded-bl-md rounded-br-none rounded-tr-none">
+                    <Minus />
+                  </Button>
+                  <span className='h-[40px] flex justify-center items-center text-[20px] w-[50px] border border-black'>{productInCart.quantity}</span>
+                  <Button variant="outline" className=" bg-whiter rounded-r-md rounded-br-md hover:bg-blue text-black text-[20px] uppercase hover:border-transparent hover:text-white w-[50px] h-[40px] border border-black rounded-tl-none rounded-bl-none">
+                    <Plus />
+                  </Button>
+                </div>
+              )}
+
             </div>
             <div>
               <Title className="text-[48px] font-SFPRegular">Характеристики товару</Title>

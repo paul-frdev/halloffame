@@ -63,6 +63,7 @@ export type Product = {
   characteristics: ProductCharacteristic[];
   discount?: string;
   isDiscount?: boolean;
+  quantity?: number;
 };
 
 export interface News extends Event {

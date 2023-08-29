@@ -13,15 +13,15 @@ interface CartWidgetProps {
   heightNumber?: number;
 }
 export const CartWidget: React.FC<CartWidgetProps> = ({ width = 17, height = 17, className, widthNumber = 24, heightNumber = 24 }) => {
-  const { items } = useEventCart();
+  const { events } = useEventCart();
   return (
     <span className={cn(`w-full`, className)}>
-      {items.length > 0 ? (
+      {events.length > 0 ? (
         <span
           style={{ width: widthNumber, height: heightNumber, display: "flex", justifyContent: "center", alignItems: "center" }}
           className={cn(`absolute -top-[7px] -right-[2px] bg-white rounded-full text-black flex justify-center items-center`)}
         >
-          {items.length}
+          {events.length}
         </span>
       ) : null}
       <Basket width={width} height={height} />
