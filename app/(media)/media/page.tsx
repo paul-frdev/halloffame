@@ -1,12 +1,9 @@
-import React from 'react'
 import mediaList from "@/app/media.json";
-import { MediaList } from '@/components/mediaList';
-
+import { MediaList } from "@/components/mediaList";
+import React from "react";
 
 const MediaPage = () => {
-  return (
-    <MediaList mediaList={mediaList} />
-  )
-}
+  return <MediaList mediaList={mediaList} />;
+};
 
-export default MediaPage
+export default MediaPage;

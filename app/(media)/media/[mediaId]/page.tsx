@@ -1,21 +1,16 @@
-import React from 'react'
 import mediaList from "@/app/media.json";
-import { MediaItem } from '@/components/mediaItem';
-
+import { MediaItem } from "@/components/mediaItem";
+import React from "react";
 
 export async function generateStaticParams() {
-  return mediaList.map((media) => ({
+  return mediaList.map(media => ({
     mediaId: media.id.toString(),
-  }))
+  }));
 }
-
 
 const MediaItemPage = ({ params: { mediaId } }: { params: { mediaId: string } }) => {
+  const foundedMediaWithId = mediaList.find(elem => elem.id.toString() === mediaId);
+  return <MediaItem media={foundedMediaWithId} />;
+};
 
-  const foundedMediaWithId = mediaList.find((elem) => elem.id.toString() === mediaId)
-  return (
-    <MediaItem media={foundedMediaWithId} />
-  )
-}
-
-export default MediaItemPage
+export default MediaItemPage;

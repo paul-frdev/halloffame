@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import useEventCart from '@/hooks/useEventCart';
-import { Basket } from '@/icons/basket'
-import { cn } from '@/lib/utils';
-import React from 'react'
+import useEventCart from "@/hooks/useEventCart";
+import { Basket } from "@/icons/basket";
+import { cn } from "@/lib/utils";
+import React from "react";
 
 interface CartWidgetProps {
   width?: number;
@@ -13,7 +13,7 @@ interface CartWidgetProps {
   heightNumber?: number;
 }
 export const CartWidget: React.FC<CartWidgetProps> = ({ width = 17, height = 17, className, widthNumber = 24, heightNumber = 24 }) => {
-  const { items } = useEventCart()
+  const { items } = useEventCart();
   return (
     <span className={cn(`w-full`, className)}>
       {items.length > 0 ? (
@@ -26,5 +26,5 @@ export const CartWidget: React.FC<CartWidgetProps> = ({ width = 17, height = 17,
       ) : null}
       <Basket width={width} height={height} />
     </span>
-  )
-}
+  );
+};

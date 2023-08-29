@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Filters = () => {
-  return (
-    <div>Filters</div>
-  )
-}
+  return <div>Filters</div>;
+};

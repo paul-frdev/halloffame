@@ -1,10 +1,8 @@
-import { PaymentBackClient } from '@/components/paymentBackClient'
-import React from 'react'
+import { PaymentBackClient } from "@/components/paymentBackClient";
+import React from "react";
 
 const PaymentBackPage = () => {
-  return (
-    <PaymentBackClient />
-  )
-}
+  return <PaymentBackClient />;
+};
 
-export default PaymentBackPage
+export default PaymentBackPage;

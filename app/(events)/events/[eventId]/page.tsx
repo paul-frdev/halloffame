@@ -1,17 +1,15 @@
-import React from 'react'
-import { EventItem } from '@/components/eventItem';
 import eventList from "@/app/events.json";
-
+import { EventItem } from "@/components/eventItem";
+import React from "react";
 
 export async function generateStaticParams() {
-  return eventList.map((ev) => ({
+  return eventList.map(ev => ({
     eventId: ev.id.toString(),
-  }))
+  }));
 }
 
-
 const EventPage = ({ params: { eventId } }: { params: { eventId: string } }) => {
-  const formattedEvents = eventList.map((event) => ({
+  const formattedEvents = eventList.map(event => ({
     id: event.id,
     title: event.title,
     description: event.description,
@@ -19,15 +17,13 @@ const EventPage = ({ params: { eventId } }: { params: { eventId: string } }) => 
     price: event.price,
     time: event.time,
     location: event.location,
-    date: new Date()
-  }))
-  const formattedEvent = formattedEvents.find((elem) => elem.id.toString() === eventId)
+    date: new Date(),
+  }));
+  const formattedEvent = formattedEvents.find(elem => elem.id.toString() === eventId);
   if (!formattedEvent) {
-    return 'No id'
+    return "No id";
   }
-  return (
-    <EventItem event={formattedEvent} />
-  )
-}
+  return <EventItem event={formattedEvent} />;
+};
 
-export default EventPage
+export default EventPage;

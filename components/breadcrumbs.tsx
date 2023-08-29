@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import React from 'react'
-import Link from 'next/link';
-import { PageRight } from '@/icons/pageRight';
-import { cn } from '@/lib/utils';
-import { usePathname } from 'next/navigation';
+import { PageRight } from "@/icons/pageRight";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 
 interface Breadcrumb {
   label: string;
@@ -26,13 +26,16 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className
       {breadcrumbs.map((breadcrumb, index) => {
         const isActive = pathname === breadcrumb.url || pathname === `${id}`;
         return (
-          <span key={breadcrumb.url} className='flex justify-between items-center'>
+          <span key={breadcrumb.url} className="flex justify-between items-center">
             {index > 0 && <PageRight />}
-            <Link href={breadcrumb.url} className={cn(`pb-1 border-b-2 mx-3 text-2xl`, isActive ? 'border-black text-black' : 'text-[#808080] border-[#808080]')}>
+            <Link
+              href={breadcrumb.url}
+              className={cn(`pb-1 border-b-2 mx-3 text-2xl`, isActive ? "border-black text-black" : "text-[#808080] border-[#808080]")}
+            >
               {`${breadcrumb.label}`}
             </Link>
           </span>
-        )
+        );
       })}
     </div>
   );

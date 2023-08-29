@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { Slider } from './ui/slider'
-import { History } from './history'
-import { UpcomingEvents } from './upcomingEvents'
-import { SubscribeForm } from './forms/subscribeForm'
-import { mainSlider } from '@/constants'
+import { SubscribeForm } from "./forms/subscribeForm";
+import { History } from "./history";
+import { Slider } from "./ui/slider";
+import { UpcomingEvents } from "./upcomingEvents";
+import { mainSlider } from "@/constants";
+import React from "react";
 
 export const MainClient = () => {
   return (
@@ -15,5 +15,5 @@ export const MainClient = () => {
       <UpcomingEvents />
       <SubscribeForm />
     </>
-  )
-}
+  );
+};

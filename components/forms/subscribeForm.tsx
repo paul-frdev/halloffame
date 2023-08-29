@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { Title } from '../ui/title'
-import { Container } from '../ui/container'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
-import { Input } from '../ui/input'
-import { Button } from '../ui/button'
-import { Subscribe } from '@/types'
-import * as z from "zod";
-import { useForm } from 'react-hook-form'
+import { Button } from "../ui/button";
+import { Container } from "../ui/container";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { Input } from "../ui/input";
+import { Title } from "../ui/title";
+import { cn } from "@/lib/utils";
+import { Subscribe } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { cn } from '@/lib/utils'
-
-
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 type SubscribeFormValues = z.infer<typeof formSchema>;
 
@@ -24,26 +22,24 @@ const formSchema = z.object({
 });
 
 export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => {
-
   const [loading, setLoading] = useState(false);
 
   const form = useForm<SubscribeFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       email: "",
-      name: '',
+      name: "",
     },
   });
-
 
   const onSubmit = (data: SubscribeFormValues) => {
     console.log(data);
   };
   return (
-    <section className='h-[294px] w-full bg-black text-white'>
-      <Container className=' justify-between items-center h-full gap-x-24'>
-        <div className='w-[320px]'>
-          <Title className='w-full text-2xl font-SFPRegular leading-[33.6px] text-left' >Залишайтеся в курсі подій:</Title>
+    <section className="h-[294px] w-full bg-black text-white">
+      <Container className=" justify-between items-center h-full gap-x-24">
+        <div className="w-[320px]">
+          <Title className="w-full text-2xl font-SFPRegular leading-[33.6px] text-left">Залишайтеся в курсі подій:</Title>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex justify-between items-center">
@@ -61,14 +57,15 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
                         )}
                       >
                         Імя
-                        <span className={cn(` absolute -top-[4px] -right-[13px] text-error text-[22px]`)}>
-                          *
-                        </span>
+                        <span className={cn(` absolute -top-[4px] -right-[13px] text-error text-[22px]`)}>*</span>
                       </label>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className={cn(` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`, form.formState.errors.name && "border-b-errorInput focus:border-b-errorInput ")}
+                        className={cn(
+                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`,
+                          form.formState.errors.name && "border-b-errorInput focus:border-b-errorInput "
+                        )}
                         disabled={loading}
                         {...field}
                       />
@@ -92,14 +89,15 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
                         )}
                       >
                         Пошта
-                        <span className={cn(` absolute -top-[4px] -right-[13px] text-error text-[22px]`)}>
-                          *
-                        </span>
+                        <span className={cn(` absolute -top-[4px] -right-[13px] text-error text-[22px]`)}>*</span>
                       </label>
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className={cn(` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`, form.formState.errors.email && "border-b-errorInput focus:border-b-errorInput focus-visible:border-b-errorInput")}
+                        className={cn(
+                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[400px] h-[50px]`,
+                          form.formState.errors.email && "border-b-errorInput focus:border-b-errorInput focus-visible:border-b-errorInput"
+                        )}
                         disabled={loading}
                         {...field}
                       />
@@ -110,13 +108,17 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
               />
             </div>
             <div className="w-full flex justify-end items-center ml-auto">
-              <Button disabled={loading} className={cn(`w-full max-w-[283px] h-[90px] text-[24px] uppercase font-SFPRegular leading-[33.6px]`)} type="submit">
+              <Button
+                disabled={loading}
+                className={cn(`w-full max-w-[283px] h-[90px] text-[24px] uppercase font-SFPRegular leading-[33.6px]`)}
+                type="submit"
+              >
                 Підписатися
               </Button>
             </div>
           </form>
         </Form>
       </Container>
-    </section >
-  )
-}
+    </section>
+  );
+};

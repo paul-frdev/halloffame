@@ -1,7 +1,5 @@
-import { MainClient } from '@/components/mainClient';
+import { MainClient } from "@/components/mainClient";
 
 export default function Home() {
-  return (
-    <MainClient />
-  )
+  return <MainClient />;
 }

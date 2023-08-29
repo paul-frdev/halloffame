@@ -1,33 +1,30 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import { Breadcrumbs } from './breadcrumbs'
-import { Container } from './ui/container'
-import { Title } from './ui/title'
-import { CalendarForm } from './forms/calendarForm'
-import { EventsList } from './eventsList'
-import { UpcomingEvent } from '@/types'
-import { SubscribeForm } from './forms/subscribeForm'
-
+import { Breadcrumbs } from "./breadcrumbs";
+import { EventsList } from "./eventsList";
+import { CalendarForm } from "./forms/calendarForm";
+import { SubscribeForm } from "./forms/subscribeForm";
+import { Container } from "./ui/container";
+import { Title } from "./ui/title";
+import { UpcomingEvent } from "@/types";
+import React, { useState } from "react";
 
 interface EventsClientProps {
-  events: UpcomingEvent[]
+  events: UpcomingEvent[];
 }
 export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
-
-
   const breadcrumbs = [
-    { label: 'Головна', url: '/' },
-    { label: 'Події', url: '/events' },
+    { label: "Головна", url: "/" },
+    { label: "Події", url: "/events" },
   ];
 
   return (
-    <section className='relative bg-white'>
-      <Container className='flex-col justify-start items-start mb-12'>
-        <Breadcrumbs breadcrumbs={breadcrumbs} className=' mt-8 text-black' />
-        <div className='flex justify-between items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]'>
+    <section className="relative bg-white">
+      <Container className="flex-col justify-start items-start mb-12">
+        <Breadcrumbs breadcrumbs={breadcrumbs} className=" mt-8 text-black" />
+        <div className="flex justify-between items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]">
           <div>
-            <Title className='text-[48px] text-black font-oswaldBold uppercase'>Майбутні події</Title>
+            <Title className="text-[48px] text-black font-oswaldBold uppercase">Майбутні події</Title>
           </div>
           <div>
             <CalendarForm />
@@ -36,6 +33,6 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
         <EventsList eventsList={events} />
       </Container>
       <SubscribeForm />
-    </section >
-  )
-}
+    </section>
+  );
+};

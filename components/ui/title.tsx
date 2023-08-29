@@ -1,15 +1,17 @@
-import { cn } from '@/lib/utils';
-import { Variants, motion } from 'framer-motion';
-import React from 'react'
+import { cn } from "@/lib/utils";
+import { Variants, motion } from "framer-motion";
+import React from "react";
 
 interface TitleProps {
   children: React.ReactNode;
   className?: string;
   variants?: Variants;
-  animate?: any
+  animate?: any;
 }
 export const Title: React.FC<TitleProps> = ({ children, className, variants, animate }) => {
   return (
-    <motion.h2 variants={variants} animate={animate} className={cn(`text-6xl font-oswaldBold leading-normal`, className)}>{children}</motion.h2>
-  )
-}
+    <motion.h2 variants={variants} animate={animate} className={cn(`text-6xl font-oswaldBold leading-normal`, className)}>
+      {children}
+    </motion.h2>
+  );
+};
