@@ -6,7 +6,6 @@ import { Map } from "./map";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
-import Link from "next/link";
 import React from "react";
 
 export const ContactClient = () => {
