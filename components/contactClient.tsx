@@ -18,7 +18,7 @@ export const ContactClient = () => {
   ];
 
   return (
-    <section className='relative w-full h-[824px] text-white pt-12'>
+    <section className='relative w-full h-[824px] text-white pt-12 mb-12'>
       <span className='absolute -z-[1] bg-contactBg top-0 left-0 w-full h-[824px] left-0 bottom-0 right-0 bg-no-repeat object-cover object-center' />
       <Container className=' justify-start items-start flex-col'>
         <Breadcrumbs isWhite={true} breadcrumbs={breadcrumbs} />

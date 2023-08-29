@@ -21,34 +21,34 @@ export const secondNav = [
   {
     id: 4,
     title: 'Оплата та доставка',
-    src: '/payment',
+    src: '/payment-back',
   },
 ];
 
 export const footerNav = [
   {
     id: 1,
-    src: '/',
+    src: '/media',
     title: 'ЗМІ про нас',
   },
   {
     id: 2,
-    src: '/',
+    src: '/testimonials',
     title: 'Книга відгуків',
   },
   {
     id: 3,
-    src: '/',
+    src: '/faq',
     title: 'Правила для відвідувачів',
   },
   {
     id: 4,
-    src: '/',
+    src: '/archive-media',
     title: 'Архіви новин',
   },
   {
     id: 5,
-    src: '/',
+    src: '/payment-back',
     title: 'Оплата та доставка',
   },
 ];

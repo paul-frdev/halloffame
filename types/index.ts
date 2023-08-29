@@ -83,3 +83,12 @@ export type Media = {
   date: string;
   src: string;
 }
+
+
+export type Testimonial = {
+  id: number;
+  src: string;
+  description: string;
+  author: string;
+  dignity: string;
+}
