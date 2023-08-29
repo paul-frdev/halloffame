@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='font-SFPRegular bg-basic text-white overflow-y-scroll'>
+      <body className='font-SFPRegular bg-basic text-white'>
         <ToastProvider />
         <Header />
         {children}

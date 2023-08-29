@@ -15,7 +15,7 @@ export const UpcomingCart: React.FC<UpcomingCartProps> = ({ event }) => {
   const route = useRouter();
 
   return (
-    <div className='w-[475px] h-[475px] rounded-bl-[60px] bg-blue hover:shadow-shadowBlue transition-all duration-300'>
+    <div className='w-[475px] h-[475px] rounded-bl-[60px] bg-[#0F0F0F] hover:bg-blue hover:shadow-shadowBlue transition-all duration-300'>
       <Link href={`/events/${event.id}`}>
         <div className='w-full h-[239px] mb-5'>
           <Image src={event.src} alt='event-image' width={475} height={239} className='h-[239px]' />

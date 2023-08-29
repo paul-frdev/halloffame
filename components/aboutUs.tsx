@@ -14,7 +14,7 @@ export const AboutUs = () => {
   ];
 
   return (
-    <section className='bg-white text-black flex flex-col justify-start'>
+    <section className='bg-white text-black flex flex-col justify-start pb-24'>
       <div className='w-full'>
         <Image src='/images/about.png' alt='iamge' width={1920} height={660} />
       </div>

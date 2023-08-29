@@ -45,19 +45,14 @@ const socialMediaData = [
 export const Header = () => {
 
   const [isHover, setIsHover] = useState(false)
-  const [header, setHeader] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
 
 
   const pathname = usePathname()
   const route = useRouter()
 
-  console.log('pathname', pathname);
-
   const match = pathname.match(/^\/events\/(\d+)$/);
   const eventId = match ? match[1] : null;
-
-  console.log('eventId', eventId);
 
   useEffect(() => {
     const handleScroll = debounce(() => {

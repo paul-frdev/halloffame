@@ -18,8 +18,6 @@ interface NewsItemProps {
 
 export const NewsItem: React.FC<NewsItemProps> = ({ newsItem }) => {
 
-  console.log('newsItem', newsItem);
-
   const breadcrumbs = [
     { label: 'Головна', url: '/' },
     { label: 'Новини', url: '/blog/news' },

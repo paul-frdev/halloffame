@@ -74,3 +74,12 @@ export interface Image {
   id: number;
   src: string;
 }
+
+
+export type Media = {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  src: string;
+}

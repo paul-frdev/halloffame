@@ -1,6 +1,6 @@
 import React from 'react'
-import eventList from "@/app/events.json";
 import { EventItem } from '@/components/eventItem';
+import eventList from "@/app/events.json";
 
 
 export async function generateStaticParams() {

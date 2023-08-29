@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Заголовок",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque, quod? Molestiae aut excepturi doloremque soluta suscipit. Omnis, quod modi nihil, aliquam culpa minima fugiat at voluptatum illo ab quaerat iure.Ipsum consectetur minus, ipsa velit itaque quidem sed corporis qui deserunt enim aspernatur quo ut quasi nulla rem doloremque saepe ratione illum, soluta neque. Architecto harum minus autem aliquam repellendus!",
+    "src": "/images/mediaImg.png",
+    "date": "30-11-23"
+  },
+  {
+    "id": 2,
+    "title": "Заголовок",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque, quod? Molestiae aut excepturi doloremque soluta suscipit. Omnis, quod modi nihil, aliquam culpa minima fugiat at voluptatum illo ab quaerat iure.Ipsum consectetur minus, ipsa velit itaque quidem sed corporis qui deserunt enim aspernatur quo ut quasi nulla rem doloremque saepe ratione illum, soluta neque. Architecto harum minus autem aliquam repellendus!",
+    "src": "/images/mediaImg.png",
+    "date": "30-11-23"
+  },
+  {
+    "id": 3,
+    "title": "Заголовок",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque, quod? Molestiae aut excepturi doloremque soluta suscipit. Omnis, quod modi nihil, aliquam culpa minima fugiat at voluptatum illo ab quaerat iure.Ipsum consectetur minus, ipsa velit itaque quidem sed corporis qui deserunt enim aspernatur quo ut quasi nulla rem doloremque saepe ratione illum, soluta neque. Architecto harum minus autem aliquam repellendus!",
+    "src": "/images/mediaImg.png",
+    "date": "30-11-23"
+  },
+  {
+    "id": 4,
+    "title": "Заголовок",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque, quod? Molestiae aut excepturi doloremque soluta suscipit. Omnis, quod modi nihil, aliquam culpa minima fugiat at voluptatum illo ab quaerat iure.Ipsum consectetur minus, ipsa velit itaque quidem sed corporis qui deserunt enim aspernatur quo ut quasi nulla rem doloremque saepe ratione illum, soluta neque. Architecto harum minus autem aliquam repellendus!",
+    "src": "/images/mediaImg.png",
+    "date": "30-11-23"
+  }
+]
