@@ -53,10 +53,10 @@ export type Slider = {
 };
 
 export type Product = {
-  id: number;
+  id?: number;
   title: string;
   description: string;
-  price: string;
+  price: number;
   category: string;
   previewImage: string;
   images: ImageProduct[];
@@ -64,6 +64,8 @@ export type Product = {
   discount?: string;
   isDiscount?: boolean;
   quantity?: number;
+  color?: string;
+  size?: string;
 };
 
 export interface News extends Event {

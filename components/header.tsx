@@ -50,6 +50,8 @@ export const Header = () => {
 
   const match = pathname.match(/^\/events\/(\d+)$/);
   const eventId = match ? match[1] : null;
+  const matchProductId = pathname.match(/^\/shop\/(\d+)$/);
+  const productId = matchProductId ? matchProductId[1] : null;
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -145,7 +147,7 @@ export const Header = () => {
                 })}
               </ul>
               <div className="w-full ml-auto flex justify-end items-end">
-                {eventId || pathname === "/cart" ? (
+                {eventId || productId || pathname === "/cart" ? (
                   <Link href="/cart" className="relative">
                     <CartWidget width={35} height={35} className="mr-8 pr-1" />
                   </Link>

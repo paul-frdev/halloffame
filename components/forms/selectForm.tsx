@@ -16,12 +16,20 @@ const FormSchema = z.object({
 });
 
 interface SelectFormProps {
-  event: UpcomingEvent;
+  event?: UpcomingEvent;
+  productColors?: string[] | undefined;
+  productSizes?: string[] | undefined;
+  color?: string;
+  size?: string;
   selectedValue?: string;
-  onSelectedValue?: (data: string) => void;
+  onSelectedValue?: (data?: string, color?: string, size?: string) => void;
   setTrigger?: (data: any) => void;
+  setColor?: (color: string) => void;
+  setSize?: (size: string) => void;
 }
-export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger }: SelectFormProps) {
+export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger, productColors, productSizes, color, size, setColor, setSize }: SelectFormProps) {
+
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -36,11 +44,15 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger }
     setValue("time", selected);
     await trigger("time");
     onSubmit({ time: selected });
+    setColor?.(selected);
+    setSize?.(selected);
   };
 
   useEffect(() => {
     setTrigger?.(() => trigger);
   }, [trigger, setTrigger]);
+
+  const label = event ? `Виберіть зручний час:` : productColors ? `Колір` : productSizes ? 'Розмір' : '';
 
   return (
     <Form {...form}>
@@ -49,22 +61,54 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger }
           control={form.control}
           name="time"
           render={({ field }) => (
-            <FormItem className=" w-[310px] border-none">
-              <FormLabel className="text-2xl font-oswaldBold mb-1">Виберіть зручний час:</FormLabel>
-              <Select onValueChange={handleValueChange} defaultValue={selectedValue}>
-                <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={selectedValue} />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent className={cn(`border-none focus:ring-0`)}>
-                  {event?.time.map(item => (
-                    <SelectItem key={item} value={item}>
-                      {item}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <FormItem className={cn(`border-none`, event ? 'w-[310px]' : 'w-[600px]')}>
+              <FormLabel className={cn(`text-2xl font-oswaldBold inline-block `, event ? 'mb-1' : 'mb-4 text-[#acacac] uppercase')}>{label}</FormLabel>
+              {event ? (
+                <Select onValueChange={handleValueChange}>
+                  <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
+                    <SelectTrigger>
+                      <SelectValue placeholder={selectedValue} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent className={cn(`border-none focus:ring-0`)}>
+                    {event?.time.map(item => (
+                      <SelectItem key={item} value={item}>
+                        {item}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              ) : productColors ? (
+                <Select onValueChange={handleValueChange} defaultValue={color || ''}>
+                  <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
+                    <SelectTrigger>
+                      <SelectValue placeholder={selectedValue} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent className={cn(`border-none focus:ring-0`)}>
+                    {productColors?.map(item => (
+                      <SelectItem key={item} value={item}>
+                        {item}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              ) : (
+                <Select onValueChange={handleValueChange} defaultValue={size || ''}>
+                  <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
+                    <SelectTrigger>
+                      <SelectValue placeholder={selectedValue} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent className={cn(`border-none focus:ring-0`)}>
+                    {productSizes?.map(item => (
+                      <SelectItem key={item} value={item}>
+                        {item}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
               <FormMessage />
             </FormItem>
           )}

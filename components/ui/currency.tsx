@@ -4,14 +4,14 @@ import { calculateDiscountedPrice, cn, formattedPrice } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
 interface CurrencyProps {
-  price: string;
+  price: number;
   discount?: string;
   isDiscount?: boolean;
 }
 export const Currency: React.FC<CurrencyProps> = ({ price, discount, isDiscount }) => {
   const [productWithDiscount, setProductWithDiscount] = useState<number | null>(null);
 
-  const priceToNumber = parseFloat(price);
+  const priceToNumber = price;
   const discountToNumber = parseFloat(discount as string);
 
   useEffect(() => {

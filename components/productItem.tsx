@@ -1,30 +1,45 @@
 "use client";
 
-import useProductCart from '@/hooks/useProductCart';
 import { Breadcrumbs } from "./breadcrumbs";
+import { SelectForm } from './forms/selectForm';
 import { SubscribeForm } from "./forms/subscribeForm";
 import { Gallery } from "./gallery/gallery";
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
+import { CountButtons } from "./ui/countButtons";
 import { Currency } from "./ui/currency";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
-import { Product } from "@/types";
+import useProductCart from "@/hooks/useProductCart";
+import { Product, ProductCharacteristic } from "@/types";
 import Link from "next/link";
-import React from "react";
-import { Minus } from '@/icons/minus';
-import { Plus } from '@/icons/plus';
+import React, { useState } from "react";
+import { Select } from './ui/select';
 
 interface ProductItemProps {
   product: Product | undefined;
 }
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
 
-  const { addProduct, products } = useProductCart();
+  const [color, setColor] = useState<string | undefined>(product?.characteristics[0]?.color[0])
+  const [size, setSize] = useState<string | undefined>(product?.characteristics[0]?.size[0])
 
-  const productInCart = products.find((item) => item.id === product?.id);
 
-  console.log('productInCart', productInCart);
+  const { addProduct, products, addProductQuantity, subtractProductQuantity } = useProductCart();
+
+  const productInCart = products.find(item => item.id === product?.id);
+
+  const onHandleProduct = () => {
+    if (product && product.id && color && size) {
+      const formattedProduct = {
+        ...product,
+        id: product.id,
+        color,
+        size
+      };
+      addProduct(formattedProduct)
+    };
+  }
 
   const breadcrumbs = [
     { label: "Головна", url: "/" },
@@ -44,7 +59,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             <div className="mb-24">
               <Link
                 href="/"
-                className=" cursor-pointer hover:text-[#999999] transition-all duration-300 text-[36px] text-black whitespace-nowrap flex flex-col justify-start items-start gap-y-1"
+                className=" cursor-pointer hover:text-[#999999] transition-all duration-300 text-[26px] text-black whitespace-nowrap flex flex-col justify-start items-start gap-y-1"
               >
                 <span className="text-sm text-[#999999] ">Категорія</span>
                 {product?.category}
@@ -57,24 +72,32 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             <Typography className="text-2xl tracking-wide leading-snug mb-20">{product?.description}</Typography>
             <div className="mb-12">
               {!productInCart ? (
-                <Button onClick={() => addProduct(product!)} variant="outline" className=" bg-black hover:bg-blue text-white text-[20px] uppercase hover:text-white w-[285px] h-[60px]">
+                <Button
+                  onClick={onHandleProduct}
+                  variant="outline"
+                  className=" bg-black hover:bg-blue text-white text-[20px] uppercase hover:text-white w-[285px] h-[60px]"
+                >
                   Додати до кошику
                 </Button>
               ) : (
-                <div className='flex justify-start items-center'>
-                  <Button variant="outline" className=" bg-whiter hover:bg-blue text-black text-[20px] uppercase hover:text-white hover:border-transparent w-[50px] h-[40px] border border-black rounded-tl-md rounded-bl-md rounded-br-none rounded-tr-none">
-                    <Minus />
-                  </Button>
-                  <span className='h-[40px] flex justify-center items-center text-[20px] w-[50px] border border-black'>{productInCart.quantity}</span>
-                  <Button variant="outline" className=" bg-whiter rounded-r-md rounded-br-md hover:bg-blue text-black text-[20px] uppercase hover:border-transparent hover:text-white w-[50px] h-[40px] border border-black rounded-tl-none rounded-bl-none">
-                    <Plus />
-                  </Button>
-                </div>
+                <CountButtons
+                  quantity={productInCart.quantity}
+                  product={productInCart}
+                  addQuantity={addProductQuantity}
+                  subtractQuantity={subtractProductQuantity}
+                />
               )}
-
             </div>
             <div>
-              <Title className="text-[48px] font-SFPRegular">Характеристики товару</Title>
+              <Title className="text-[48px] font-SFPRegular mb-8">Характеристики товару</Title>
+              <div>
+                <div className='w-full max-w-[600px] mb-8'>
+                  <SelectForm productColors={product?.characteristics[0]?.color} setColor={setColor} color={color} />
+                </div>
+                <div className='w-full max-w-[600px]'>
+                  <SelectForm productSizes={product?.characteristics[0]?.size} setSize={setSize} size={size} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
