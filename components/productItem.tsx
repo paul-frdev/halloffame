@@ -1,7 +1,7 @@
 "use client";
 
 import { Breadcrumbs } from "./breadcrumbs";
-import { SelectForm } from './forms/selectForm';
+import { SelectForm } from "./forms/selectForm";
 import { SubscribeForm } from "./forms/subscribeForm";
 import { Gallery } from "./gallery/gallery";
 import { Button } from "./ui/button";
@@ -11,19 +11,16 @@ import { Currency } from "./ui/currency";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
 import useProductCart from "@/hooks/useProductCart";
-import { Product, ProductCharacteristic } from "@/types";
+import { Product } from "@/types";
 import Link from "next/link";
 import React, { useState } from "react";
-import { Select } from './ui/select';
 
 interface ProductItemProps {
   product: Product | undefined;
 }
 export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
-
-  const [color, setColor] = useState<string | undefined>(product?.characteristics[0]?.color[0])
-  const [size, setSize] = useState<string | undefined>(product?.characteristics[0]?.size[0])
-
+  const [color, setColor] = useState<string | undefined>(product?.characteristics[0]?.color[0]);
+  const [size, setSize] = useState<string | undefined>(product?.characteristics[0]?.size[0]);
 
   const { addProduct, products, addProductQuantity, subtractProductQuantity } = useProductCart();
 
@@ -35,11 +32,11 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
         ...product,
         id: product.id,
         color,
-        size
+        size,
       };
-      addProduct(formattedProduct)
-    };
-  }
+      addProduct(formattedProduct);
+    }
+  };
 
   const breadcrumbs = [
     { label: "Головна", url: "/" },
@@ -91,10 +88,10 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
             <div>
               <Title className="text-[48px] font-SFPRegular mb-8">Характеристики товару</Title>
               <div>
-                <div className='w-full max-w-[600px] mb-8'>
+                <div className="w-full max-w-[600px] mb-8">
                   <SelectForm productColors={product?.characteristics[0]?.color} setColor={setColor} color={color} />
                 </div>
-                <div className='w-full max-w-[600px]'>
+                <div className="w-full max-w-[600px]">
                   <SelectForm productSizes={product?.characteristics[0]?.size} setSize={setSize} size={size} />
                 </div>
               </div>

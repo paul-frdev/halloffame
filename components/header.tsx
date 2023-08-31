@@ -112,7 +112,7 @@ export const Header = () => {
               </li>
             ))}
           </ul>
-          {eventId || pathname === "/cart" ? null : (
+          {eventId || productId || pathname === "/cart" ? null : (
             <Link href="/cart" className="flex justify-start items-start gap-x-[17px]">
               <Typography className=" inline-block">Кошик</Typography>
               <CartWidget className="relative" widthNumber={17} heightNumber={17} />

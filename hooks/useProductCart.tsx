@@ -52,20 +52,20 @@ const useProductCart = create(
         toast.success("Product quantity increased");
       },
       subtractProductQuantity: (data: Product) => {
-        const subtractProduct = get().products.find((item) => item.id === data.id);
+        const subtractProduct = get().products.find(item => item.id === data.id);
 
         if (!subtractProduct) {
           return;
         }
 
         if (subtractProduct.quantity === 1) {
-          const updatedProducts = get().products.filter((item) => item.id !== subtractProduct.id);
+          const updatedProducts = get().products.filter(item => item.id !== subtractProduct.id);
           const updatedTotalQuantity = get().totalQuantity! - 1;
           const updatedTotalCost = get().totalCost! - Number(subtractProduct.price);
 
           set({ products: updatedProducts, totalQuantity: updatedTotalQuantity, totalCost: updatedTotalCost });
         } else {
-          const updatedProducts = get().products.map((item) => {
+          const updatedProducts = get().products.map(item => {
             if (item.id === data.id) {
               return { ...item, quantity: item?.quantity! - 1 };
             }
@@ -81,19 +81,19 @@ const useProductCart = create(
 
       removeProduct: (id: string) => {
         const productToRemove = get().products.find(item => item?.id?.toString() === id);
-      
+
         if (productToRemove) {
           const updatedTotalQuantity = get().totalQuantity! - productToRemove.quantity!;
-          const updatedTotalCost = get().totalCost! - (productToRemove.quantity! * productToRemove.price);
-      
+          const updatedTotalCost = get().totalCost! - productToRemove.quantity! * productToRemove.price;
+
           const updatedProducts = get().products.filter(item => item?.id?.toString() !== id);
-      
+
           set({
             products: updatedProducts,
             totalQuantity: updatedTotalQuantity,
-            totalCost: updatedTotalCost
+            totalCost: updatedTotalCost,
           });
-      
+
           toast.success("Product removed");
         }
       },

@@ -6,12 +6,29 @@ import { Search } from "./search";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Media } from "@/types";
-import React from "react";
+import React, { useState } from "react";
 
 interface MediaListProps {
   mediaList: Media[];
 }
 export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<Media[]>([]);
+
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setSearchQuery(value);
+    updateSearchResults(value);
+  };
+
+  const updateSearchResults = (query: string) => {
+    const filteredResults = mediaList.filter(
+      media => media.title.toLowerCase().includes(query.toLowerCase()) || media.description.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setSearchResults(filteredResults);
+  };
+
   const breadcrumbs = [
     { label: "Головна", url: "/" },
     { label: "ЗМІ про нас", url: "/media" },
@@ -26,11 +43,11 @@ export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
             <Title className="text-[48px] text-black font-oswaldBold uppercase">Новини</Title>
           </div>
           <div>
-            <Search />
+            <Search searchQuery={searchQuery} handleSearchInputChange={handleSearchInputChange} />
           </div>
         </div>
         <div className="w-full flex justify-center flex-col text-black items-center gap-y-6 last-of-type:mb-12">
-          {mediaList.map(media => (
+          {(searchQuery ? searchResults : mediaList).map(media => (
             <MediaPreviewItem key={media.id} mediaItem={media} />
           ))}
         </div>

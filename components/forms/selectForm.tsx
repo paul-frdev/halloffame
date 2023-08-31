@@ -27,9 +27,18 @@ interface SelectFormProps {
   setColor?: (color: string) => void;
   setSize?: (size: string) => void;
 }
-export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger, productColors, productSizes, color, size, setColor, setSize }: SelectFormProps) {
-
-
+export function SelectForm({
+  event,
+  onSelectedValue,
+  selectedValue,
+  setTrigger,
+  productColors,
+  productSizes,
+  color,
+  size,
+  setColor,
+  setSize,
+}: SelectFormProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -52,7 +61,7 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger, 
     setTrigger?.(() => trigger);
   }, [trigger, setTrigger]);
 
-  const label = event ? `Виберіть зручний час:` : productColors ? `Колір` : productSizes ? 'Розмір' : '';
+  const label = event ? `Виберіть зручний час:` : productColors ? `Колір` : productSizes ? "Розмір" : "";
 
   return (
     <Form {...form}>
@@ -61,8 +70,10 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger, 
           control={form.control}
           name="time"
           render={({ field }) => (
-            <FormItem className={cn(`border-none`, event ? 'w-[310px]' : 'w-[600px]')}>
-              <FormLabel className={cn(`text-2xl font-oswaldBold inline-block `, event ? 'mb-1' : 'mb-4 text-[#acacac] uppercase')}>{label}</FormLabel>
+            <FormItem className={cn(`border-none`, event ? "w-[310px]" : "w-[600px]")}>
+              <FormLabel className={cn(`text-2xl font-oswaldBold inline-block `, event ? "mb-1" : "mb-4 text-[#acacac] uppercase")}>
+                {label}
+              </FormLabel>
               {event ? (
                 <Select onValueChange={handleValueChange}>
                   <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
@@ -79,7 +90,7 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger, 
                   </SelectContent>
                 </Select>
               ) : productColors ? (
-                <Select onValueChange={handleValueChange} defaultValue={color || ''}>
+                <Select onValueChange={handleValueChange} defaultValue={color || ""}>
                   <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
                     <SelectTrigger>
                       <SelectValue placeholder={selectedValue} />
@@ -94,7 +105,7 @@ export function SelectForm({ event, onSelectedValue, selectedValue, setTrigger, 
                   </SelectContent>
                 </Select>
               ) : (
-                <Select onValueChange={handleValueChange} defaultValue={size || ''}>
+                <Select onValueChange={handleValueChange} defaultValue={size || ""}>
                   <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
                     <SelectTrigger>
                       <SelectValue placeholder={selectedValue} />
