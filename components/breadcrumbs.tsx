@@ -30,7 +30,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className
             {index > 0 && <PageRight />}
             <Link
               href={breadcrumb.url}
-              className={cn(`pb-1 border-b-2 mx-3 text-2xl`, isActive ? "border-black text-black" : "text-[#808080] border-[#808080]")}
+              className={cn(`pb-1 border-b-2 mx-6 text-2xl`, isActive ? "border-black text-black" : "text-[#808080] border-[#808080]")}
             >
               {`${breadcrumb.label}`}
             </Link>

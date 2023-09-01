@@ -2,11 +2,12 @@ import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 
-export const formattedPrice = Intl.NumberFormat('en-US', {
+export const formattedPriceInHryvnia = new Intl.NumberFormat('uk-UA', {
   style: 'currency',
-  currency: 'USD',
+  currency: 'UAH',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
 });
-
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

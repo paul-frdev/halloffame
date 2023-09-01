@@ -1,6 +1,6 @@
 "use client";
 
-import { calculateDiscountedPrice, cn, formattedPrice } from "@/lib/utils";
+import { calculateDiscountedPrice, cn, formattedPriceInHryvnia } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
 interface CurrencyProps {
@@ -25,9 +25,9 @@ export const Currency: React.FC<CurrencyProps> = ({ price, discount, isDiscount 
 
   return (
     <div className="flex justify-between items-center">
-      <p className={cn(`text-lg font-semibold text-black mr-2`, isDiscount && "line-through")}>{formattedPrice.format(priceToNumber)}</p>
+      <p className={cn(`text-lg font-semibold text-black mr-2`, isDiscount && "line-through")}>{formattedPriceInHryvnia.format(priceToNumber)}</p>
       {isDiscount && productWithDiscount !== null && (
-        <p className="text-3xl font-bold text-gray-600 pb-2">{formattedPrice.format(productWithDiscount)}</p>
+        <p className="text-3xl font-bold text-gray-600 pb-2">{formattedPriceInHryvnia.format(productWithDiscount)}</p>
       )}
     </div>
   );

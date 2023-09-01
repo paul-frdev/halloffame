@@ -22,7 +22,7 @@ interface EventItemProps {
 export const EventItem: React.FC<EventItemProps> = ({ event }) => {
   const [quantityForAdults, setQuantityForAdults] = useState(0);
   const [quantityForChildren, setQuantityForChildren] = useState(0);
-  const [onSelectedValue, setOnSelectedValue] = useState("");
+  const [onSelectedValue, setOnSelectedValue] = useState<string | undefined>("");
   const [selectFormTrigger, setSelectFormTrigger] = useState<any>(null);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -95,7 +95,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
               )}
             >
               <Typography className="text-2xl font-SFPBold uppercase">Загальна вартість :</Typography>
-              <Typography className="font-SFPRegular text-black text-2xl">{totalPrice} грн</Typography>
+              <Typography className="font-SFPRegular text-black text-2xl">{totalPrice.toFixed(0)} грн</Typography>
             </div>
             <div className="w-[310px] flex justify-center items-center">
               <Button

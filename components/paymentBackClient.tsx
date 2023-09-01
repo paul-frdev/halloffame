@@ -1,7 +1,6 @@
 "use client";
 
 import { Breadcrumbs } from "./breadcrumbs";
-import { Search } from "./search";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
@@ -19,7 +18,6 @@ export const PaymentBackClient = () => {
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <div className="w-full flex justify-between items-center mt-8 pb-12 border-b border-[#999999]">
           <Title className="uppercase text-[48px] text-black font-oswaldBold">Оплата, доставка та повернення</Title>
-          <Search />
         </div>
         <div className="mb-4">
           <Title className="uppercase text-[48px] text-black font-oswaldBold my-12">ОПЛАТА КВИТКІВ</Title>

@@ -3,6 +3,7 @@
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { CountButtons } from "./ui/countButtons";
+import { NoResults } from "./ui/noResults";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
 import useEventCart from "@/hooks/useEventCart";
@@ -18,8 +19,8 @@ export const CartClient = () => {
   const { products, removeProduct, totalQuantity, totalCost, addProductQuantity, subtractProductQuantity } = useProductCart();
 
   return (
-    <section className="bg-white py-12 px-8 text-black">
-      <Container className=" justify-start flex-col items-start gap-y-8">
+    <section className="bg-white py-12 px-8 text-black h-[80vh]">
+      <Container className="justify-start flex-col items-start gap-y-8">
         {events.length > 0 ? (
           <div className="flex flex-col justify-start items-start w-full gap-y-12">
             {events?.map((event: UpcomingEvent) => {
@@ -126,12 +127,12 @@ export const CartClient = () => {
             </div>
           </>
         ) : (
-          <div>Not found Events or Products</div>
+          <NoResults />
         )}
         {events.length > 0 || products.length > 0 ? (
           <div className="my-6 text-2xl font-SFPBold">
             <p className="mb-4 pt-6">Загальна кількість : {totalQuantity}</p>
-            <p>Загальна вартість : {totalCost?.toFixed(2)}</p>
+            <p>Загальна вартість : {totalCost?.toFixed(0)} грн.</p>
           </div>
         ) : null}
       </Container>

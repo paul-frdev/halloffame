@@ -42,9 +42,7 @@ export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
           <div>
             <Title className="text-[48px] text-black font-oswaldBold uppercase">Новини</Title>
           </div>
-          <div>
-            <Search searchQuery={searchQuery} handleSearchInputChange={handleSearchInputChange} />
-          </div>
+          <Search searchQuery={searchQuery} handleSearchInputChange={handleSearchInputChange} />
         </div>
         <div className="w-full flex justify-center flex-col text-black items-center gap-y-6 last-of-type:mb-12">
           {(searchQuery ? searchResults : mediaList).map(media => (

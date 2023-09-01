@@ -48,7 +48,7 @@ export const ProductList: React.FC<ProductListProps> = ({ products, title }) => 
         <div className="my-12">
           <Filters />
         </div>
-        <div className="grid grid-cols-4 gap-6 m-auto mb-12">
+        <div className="grid grid-cols-4 gap-y-10 gap-x-6 m-auto mb-12">
           {(searchQuery ? searchResults : products).map(product => (
             <ProductPreviewItem key={product.id} product={product} />
           ))}
