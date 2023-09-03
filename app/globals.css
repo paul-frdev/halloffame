@@ -37,6 +37,9 @@ html {
   height: 130px;
 }
 
+html {
+  height: 100%;
+}
 body {
   min-height: 100vh;
   display: flex;
@@ -57,26 +60,26 @@ main {
     height: 480px;
   }
   @font-face {
-    font-family: "SFProDisplayRegular";
-    src: url("../fonts/SFProDisplay-Regular.ttf") format("ttf");
+    font-family: 'SFProDisplayRegular';
+    src: url('../fonts/SFProDisplay-Regular.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
-    font-family: "SFProDisplaySemibold";
-    src: url("../fonts/SFProDisplay-Semibold.ttf") format("ttf");
+    font-family: 'SFProDisplaySemibold';
+    src: url('../fonts/SFProDisplay-Semibold.ttf') format('ttf');
     font-weight: 500;
     font-style: normal;
   }
   @font-face {
-    font-family: "SFProDisplayBold";
-    src: url("../fonts/SFProDisplay-Bold.ttf") format("ttf");
+    font-family: 'SFProDisplayBold';
+    src: url('../fonts/SFProDisplay-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
   }
   @font-face {
-    font-family: "OswaldBold";
-    src: url("../fonts/Oswald-Bold.ttf") format("ttf");
+    font-family: 'OswaldBold';
+    src: url('../fonts/Oswald-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
   }

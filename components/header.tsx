@@ -12,6 +12,8 @@ import { Logo } from "@/icons/logo";
 import { Twitter } from "@/icons/twitter";
 import { Youtube } from "@/icons/youtube";
 import { cn } from "@/lib/utils";
+import { useAnimation, motion } from 'framer-motion';
+import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import debounce from "lodash.debounce";
 import Link from "next/link";
@@ -47,6 +49,9 @@ export const Header = () => {
 
   const pathname = usePathname();
   const route = useRouter();
+  const { ref, inView } = useInView({ threshold: 0.1 });
+  const animation = useAnimation();
+
 
   const match = pathname.match(/^\/events\/(\d+)$/);
   const eventId = match ? match[1] : null;
@@ -75,14 +80,30 @@ export const Header = () => {
     gsap.to(".logo-container svg", {
       width: isFixed ? 90 : 150,
       height: isFixed ? 90 : 150,
-      duration: isFixed ? 0.2 : 0.2,
+      duration: isFixed ? 0.5 : 0.5,
       ease: "Power4.ease",
     });
   }, [isFixed]);
 
+
+  useEffect(() => {
+    if (isFixed) {
+      animation.start({
+        opacity: 0,
+        transition: {
+          type: "fade",
+          duration: 0.5,
+        },
+      });
+    }
+    if (!isFixed) {
+      animation.start({ opacity: 1, x: "0" });
+    }
+  }, [isFixed]);
+
   return (
     <>
-      <div className={cn(`relative h-[44px] z-[14] max-w-[1632px] px-4 m-auto w-full transition-all duration-300`, isFixed ? " hidden" : "visible")}>
+      <motion.div animate={animation} className={cn(`relative z-[14] max-w-[1632px] px-4 m-auto w-full`, isFixed ? " h-auto transition-all duration-500 hidden" : " duration-500 visible transition-all h-[44px]")}>
         <div className={cn(`w-full ml-auto max-w-[1360px] h-[98px] flex justify-between items-center`)}>
           <LanguageSwitcher />
           <ul className=" relative flex justify-between items-end  gap-x-[60px]">
@@ -119,9 +140,9 @@ export const Header = () => {
             </Link>
           )}
         </div>
-      </div>
+      </motion.div>
       <header
-        className={cn(`h-[174px] transition-all duration-300 bg-basic z-[12]`, isFixed ? "h-[122px] fixed top-0 left-0 right-0 bg-basic pt-4" : "")}
+        className={cn(`h-[174px] transition-[height] sticky top-0 left-0 right-0 duration-500 bg-basic z-[12]`, isFixed ? ' fixed top-0 right-0 left-0 pt-4 h-[122px]  transition-[height] duration-500' : '')}
       >
         <Container className={cn(`flex justify-between w-full items-end`, isFixed ? "pb-4" : "pb-9")}>
           <Link href="/" className={cn(`mr-[90px]`, isFixed ? "mt-0" : "-mt-[12px]")}>
