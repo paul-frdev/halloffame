@@ -81,7 +81,7 @@ export const mainNav = [
   },
 ];
 
-export const locates = [
+export const locales = [
   {
     id: 1,
     locate: 'ua',
@@ -94,7 +94,7 @@ export const locates = [
   },
   {
     id: 3,
-    locate: 'sp',
+    locate: 'es',
     src: SpImage,
   },
 ];
