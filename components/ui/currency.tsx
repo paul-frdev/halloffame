@@ -24,8 +24,8 @@ export const Currency: React.FC<CurrencyProps> = ({ price, discount, isDiscount 
   }, [discountToNumber, priceToNumber]);
 
   return (
-    <div className="flex justify-between items-center">
-      <p className={cn(`text-lg font-semibold text-black mr-2`, isDiscount && "line-through")}>{formattedPriceInHryvnia.format(priceToNumber)}</p>
+    <div className="flex justify-center items-center">
+      <p className={cn(`text-lg font-semibold text-black`, isDiscount && "line-through mr-4")}>{formattedPriceInHryvnia.format(priceToNumber)}</p>
       {isDiscount && productWithDiscount !== null && (
         <p className="text-3xl font-bold text-gray-600 pb-2">{formattedPriceInHryvnia.format(productWithDiscount)}</p>
       )}

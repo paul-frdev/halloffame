@@ -17,7 +17,7 @@ import { gsap } from "gsap";
 import debounce from "lodash.debounce";
 import { useTranslations } from 'next-intl';
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const socialMediaData = [
@@ -48,6 +48,7 @@ export const Header = () => {
   const [isFixed, setIsFixed] = useState(false);
 
   const pathname = usePathname();
+  const params = useParams()
   const route = useRouter();
   const animation = useAnimation();
   const tr = useTranslations('header')
@@ -81,7 +82,7 @@ export const Header = () => {
     gsap.to(".logo-container svg", {
       width: isFixed ? 90 : 150,
       height: isFixed ? 90 : 150,
-      duration: isFixed ? 0.5 : 0.5,
+      duration: isFixed ? 0.3 : 0.3,
       ease: "Power4.ease",
     });
   }, [isFixed]);
@@ -93,7 +94,7 @@ export const Header = () => {
         opacity: 0,
         transition: {
           type: "fade",
-          duration: 0.5,
+          duration: 0.3,
         },
       });
     }
@@ -104,13 +105,14 @@ export const Header = () => {
 
   return (
     <>
-      <motion.div animate={animation} className={cn(`relative z-[14] max-w-[1632px] px-4 m-auto w-full`, isFixed ? " h-auto transition-all duration-500 hidden" : " duration-500 visible transition-all h-[44px]")}>
+      <motion.div animate={animation} className={cn(`relative z-[14] max-w-[1632px] px-4 m-auto w-full`, isFixed ? " h-auto transition-all duration-300 hidden" : " duration-300 visible transition-all h-[24px]")}>
         <div className={cn(`w-full ml-auto max-w-[1360px] h-[98px] flex justify-between items-center`)}>
           <LanguageSwitcher />
           <ul className=" relative flex justify-between items-end  gap-x-[60px]">
             <span className="absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link" />
             {secondNav.map(item => {
-              const isActive = item.src === pathname;
+              const isActive = `/${params.locale}${item.src}` === pathname || `/${params.locale}${item.src}/${params.mediaId}` === pathname;
+
               return (
                 <li
                   key={item.id}
@@ -143,7 +145,7 @@ export const Header = () => {
         </div>
       </motion.div>
       <header
-        className={cn(`h-[174px] transition-[height] sticky top-0 left-0 right-0 duration-500 bg-basic z-[12]`, isFixed ? ' fixed top-0 right-0 left-0 pt-4 h-[122px]  transition-[height] duration-500' : '')}
+        className={cn(`h-[174px] transition-[height] sticky top-0 left-0 right-0 duration-300 bg-basic z-[12] pt-4`, isFixed ? ' fixed top-0 right-0 left-0 h-[122px]  transition-[height] duration-300' : '')}
       >
         <Container className={cn(`flex justify-between w-full items-end`, isFixed ? "pb-4" : "pb-9")}>
           <Link href="/" className={cn(`mr-[90px]`, isFixed ? "mt-0" : "-mt-[12px]")}>
@@ -155,7 +157,7 @@ export const Header = () => {
             <div className={cn(`flex  w-full items-center ml-auto max-w-[1360px]`, isFixed ? "justify-end" : "justify-between")}>
               <ul className="flex justify-between items-start gap-x-[92px]">
                 {mainNav.map(item => {
-                  const isActive = pathname === item.src;
+                  const isActive = `/${params.locale}${item.src}` === pathname || `/${params.locale}${item.src}/${params.eventId}` === pathname || `/${params.locale}${item.src}/${params.productId}` === pathname || `/${params.locale}${item.src}/${params.newsId}` === pathname;
                   return (
                     <li
                       className={cn(`text-[27px] font-SFPRegular leading-normal`, isActive ? "border-b border-white" : "border-b border-transparent")}

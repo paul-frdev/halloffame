@@ -14,6 +14,8 @@ export const UpcomingEvents = () => {
   const route = useRouter();
   const pathname = usePathname();
 
+  const isMain = pathname === '/' || pathname === '/en' || pathname === '/es'
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -23,7 +25,7 @@ export const UpcomingEvents = () => {
   };
 
   return (
-    <div className={cn(`relative h-[580px] w-full max-w-[1930px]`, pathname === "/" ? "mb-20" : "mb-0")}>
+    <div className={cn(`relative h-[580px] bg-black w-full max-w-[1930px]`, isMain ? "pb-20" : "mb-0")}>
       <Container className="justify-between items-start">
         <div className="z-10 w-full max-w-[40%] py-24">
           <Title className="pb-6 border-b-4 border-white mb-20">НАЙБЛИЖЧІ ПОДІЇ</Title>

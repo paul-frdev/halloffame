@@ -3,7 +3,7 @@
 import { PageRight } from "@/icons/pageRight";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import React from "react";
 
 interface Breadcrumb {
@@ -20,11 +20,12 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className, id, isWhite = false }) => {
   const pathname = usePathname();
+  const params = useParams()
 
   return (
     <div className={cn(`flex justify-start items-center w-full max-w-[800px]`, className)}>
       {breadcrumbs.map((breadcrumb, index) => {
-        const isActive = pathname === breadcrumb.url || pathname === `${id}`;
+        const isActive = pathname === `${breadcrumb.url}`;
         return (
           <span key={breadcrumb.url} className="flex justify-between items-center">
             {index > 0 && <PageRight />}

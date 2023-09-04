@@ -20,6 +20,7 @@ export const calculateTicketCost = (adultsTickets?: number, childrenTickets?: nu
 };
 
 export const calculateDiscountedPrice = (price: number, discount: number): number => {
-  const discountAmount = (price - discount) / 100;
-  return price - discountAmount;
+  const discountNumbers = price * discount;
+  const discountAmount = price - discountNumbers;
+  return discountAmount;
 };

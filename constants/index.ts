@@ -85,16 +85,19 @@ export const locales = [
   {
     id: 1,
     locate: 'ua',
+    href: '/',
     src: UaImage,
   },
   {
     id: 2,
     locate: 'en',
+    href: '/',
     src: EnImage,
   },
   {
     id: 3,
     locate: 'es',
+    href: '/',
     src: SpImage,
   },
 ];

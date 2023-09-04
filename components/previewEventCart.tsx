@@ -13,7 +13,7 @@ interface EventCartProps {
 export const PreviewEventCart: React.FC<EventCartProps> = ({ event }) => {
   const monthIndex = event?.date.getMonth() as any;
   return (
-    <div className="w-[585px] h-[502px] shadow rounded-md hover:shadow-lg transition-all duration-200 cursor-pointer text-black">
+    <div className="w-[585px] h-[502px] container-card  shadow rounded-md hover:shadow-lg transition-all duration-200 cursor-pointer text-black">
       <Link href={`/events/${event?.id}`}>
         <div className="w-[585px] h-[238px]">
           <Image src={event?.src as any} alt="image-event" width={585} className="h-[238px] object-cover object-top" height={238} />
@@ -30,9 +30,9 @@ export const PreviewEventCart: React.FC<EventCartProps> = ({ event }) => {
           <div className="flex flex-col justify-start items-start h-full pl-8">
             <div className="inline-flex items-center justify-start w-full text-3xl font-SFPBold mb-8 mt-4">
               <span> {event?.title}</span>
-              <span className="pl-4 inline">
+              <div className="pl-4 inline arrow-icon">
                 <ArrowRight color="#ef090d" width={24} height={24} />
-              </span>
+              </div>
             </div>
             <p className="text-2xl font-SFPSemibold">
               {event?.description!.length! > 100 ? event?.description.slice(100) + "..." : event?.description}

@@ -14,14 +14,14 @@ export const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({ product 
       href={`/shop/${product.id}`}
       className="relative w-[350px] h-[552] bg-[#F4F4F4] rounded-md flex flex-col justify-start items-center cursor-pointer hover:shadow-lg transition-all duration-300 shadow-md rounded-sm"
     >
-      <span className="absolute top-0 right-0 text-4xl font-bold text-[#ef090d]">
-        {product.isDiscount && product.discount}
-        {product.isDiscount && "%"}
-      </span>
-      <div className="flex flex-col justify-start items-center py-10 py-8">
-        <Image width={200} height={200} src={product.previewImage} alt="preview image" className="mb-8" />
-        <Title className="text-lg font-SFPRegular mb-4">{product.title}</Title>
-        <Currency price={product.price} discount={product.discount} isDiscount={product.isDiscount} />
+      <div className="flex flex-col justify-between h-full items-center py-10 py-8">
+        <div className='w-full h-full mb-4'>
+          <Image src={product.previewImage} width={200} height={200} alt="preview image" className="w-full" />
+        </div>
+        <div>
+          <Title className="text-lg font-SFPRegular mb-4">{product.title}</Title>
+          <Currency price={product.price} discount={product.discount} isDiscount={product.isDiscount} />
+        </div>
       </div>
     </Link>
   );
