@@ -13,9 +13,9 @@ import { Twitter } from "@/icons/twitter";
 import { Youtube } from "@/icons/youtube";
 import { cn } from "@/lib/utils";
 import { useAnimation, motion } from 'framer-motion';
-import { useInView } from "react-intersection-observer";
 import { gsap } from "gsap";
 import debounce from "lodash.debounce";
+import { useTranslations } from 'next-intl';
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -49,8 +49,9 @@ export const Header = () => {
 
   const pathname = usePathname();
   const route = useRouter();
-  const { ref, inView } = useInView({ threshold: 0.1 });
   const animation = useAnimation();
+  const tr = useTranslations('header')
+
 
 
   const match = pathname.match(/^\/events\/(\d+)$/);
@@ -118,7 +119,7 @@ export const Header = () => {
                     isActive ? "border-b border-[#ffffff] text-white" : "border-b border-transparent"
                   )}
                 >
-                  <Link href={item.src}>{item.title}</Link>
+                  <Link href={item.src}>{tr(item.title)}</Link>
                 </li>
               );
             })}
@@ -135,7 +136,7 @@ export const Header = () => {
           </ul>
           {eventId || productId || pathname === "/cart" ? null : (
             <Link href="/cart" className="flex justify-start items-start gap-x-[17px]">
-              <Typography className=" inline-block">Кошик</Typography>
+              <Typography className=" inline-block">{tr('Кошик')}</Typography>
               <CartWidget className="relative" widthNumber={17} heightNumber={17} />
             </Link>
           )}
@@ -161,7 +162,7 @@ export const Header = () => {
                       key={item.id}
                     >
                       <Link className={cn(`pb-2`)} href={item.src}>
-                        {item.title}
+                        {tr(item.title)}
                       </Link>
                     </li>
                   );
@@ -178,7 +179,7 @@ export const Header = () => {
                     variant="outline"
                     className="text-2xl uppercase font-oswaldBold h-[69px] w-full max-w-[305px]"
                   >
-                    Замовити квиток
+                    {tr('Замовити квиток')}
                   </Button>
                 )}
               </div>

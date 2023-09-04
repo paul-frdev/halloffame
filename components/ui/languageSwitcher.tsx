@@ -1,14 +1,14 @@
-import { locates } from "@/constants";
+import { locales } from "@/constants";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next-intl/link";
 import React from "react";
 
 export const LanguageSwitcher = () => {
   return (
     <div className="flex justify-between w-full gap-x-[31px] max-w-[122px] mr-[60px] items-center">
-      {locates.map(locate => (
-        <Link key={locate.id} href={locate.locate}>
-          <Image src={locate.src} alt="image" />
+      {locales.map(locale => (
+        <Link key={locale.id} href={locale.locate} locale={locale.locate} className=' hover:scale-150 transition-all duration-300'>
+          <Image src={locale.src} alt="image" />
         </Link>
       ))}
     </div>

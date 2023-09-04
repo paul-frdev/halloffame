@@ -1,2 +1,5 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import { getRequestConfig } from "next-intl/server";
+
+export default getRequestConfig(async ({ locale }) => ({
+  messages: (await import(`./messages/${locale}.json`)).default,
+}));
