@@ -14,8 +14,8 @@ export const AboutUs = () => {
 
   return (
     <section className="bg-white text-black flex flex-col justify-start pb-24">
-      <div className="w-full">
-        <Image src="/images/about.png" alt="iamge" width={1920} height={660} />
+      <div className="w-full h-[660px]" >
+        <Image src="/images/about.png" alt="image" width={2100} height={660}/>
       </div>
       <Container className=" justify-start items-start flex-col pt-12">
         <Breadcrumbs breadcrumbs={breadcrumbs} />

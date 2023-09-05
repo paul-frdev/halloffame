@@ -25,13 +25,13 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className
   return (
     <div className={cn(`flex justify-start items-center w-full max-w-[800px]`, className)}>
       {breadcrumbs.map((breadcrumb, index) => {
-        const isActive = pathname === `${breadcrumb.url}`;
+        const isActive = pathname === `/${params.locale}${breadcrumb.url}`;
         return (
           <span key={breadcrumb.url} className="flex justify-between items-center">
             {index > 0 && <PageRight />}
             <Link
               href={breadcrumb.url}
-              className={cn(`pb-1 border-b-2 mx-6 text-2xl`, isActive ? "border-black text-black" : "text-[#808080] border-[#808080]")}
+              className={cn(`pb-1 border-b-2 mx-6 text-2xl text-[#808080] border-[#808080]`, isActive ? "border-black text-black" : "")}
             >
               {`${breadcrumb.label}`}
             </Link>

@@ -19,7 +19,7 @@ const useEventCart = create(
         const existingItem = currentItems.find(item => item.id === data.id);
 
         if (existingItem) {
-          return toast("Item is already in cart");
+          return toast("Event is already in cart");
         }
 
         set({ events: [...get().events, data] });
@@ -27,7 +27,7 @@ const useEventCart = create(
       },
       removeItem: (id: string) => {
         set({ events: [...get().events.filter(item => item.id.toString() !== id)] });
-        toast.success("Item removed");
+        toast.success("Event removed");
       },
       removeAll: () => set({ events: [] }),
     }),

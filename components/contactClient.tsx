@@ -1,6 +1,5 @@
 "use client";
 
-import { Breadcrumbs } from "./breadcrumbs";
 import { ContactForm } from "./forms/contactForm";
 import { Map } from "./map";
 import { Container } from "./ui/container";
@@ -9,16 +8,10 @@ import { Typography } from "./ui/typography";
 import React from "react";
 
 export const ContactClient = () => {
-  const breadcrumbs = [
-    { label: "Головна", url: "/" },
-    { label: "Контакти", url: "/contacts" },
-  ];
-
   return (
-    <section className="relative w-full h-[824px] text-white pt-12 mb-12">
+    <section className="relative w-full h-[824px] text-white pt-12">
       <span className="absolute -z-[1] bg-contactBg top-0 left-0 w-full h-[824px] bottom-0 right-0 bg-no-repeat object-cover object-center" />
       <Container className=" justify-start items-start flex-col">
-        <Breadcrumbs isWhite={true} breadcrumbs={breadcrumbs} />
         <div className="mt-12 flex justify-between items-start w-full">
           <div>
             <Title className="text-[48px] mb-12">Наші контакти</Title>

@@ -38,7 +38,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
   return (
     <section className="bg-white">
       <div className="w-full">
-        <Image src="/images/ring.png" alt="image" width={1920} height={660} />
+        <Image src="/images/ring.png" alt="image" width={2000} height={660} />
       </div>
       <Container className="flex-col justify-start items-start text-black py-8">
         <div className="flex w-full justify-between items-center mb-12">

@@ -10,7 +10,7 @@ interface TestimonialItemProps {
 }
 export const TestimonialItem: React.FC<TestimonialItemProps> = ({ testimonial }) => {
   return (
-    <div className="flex justify-start items-start gap-x-8 mb-10 h-full">
+    <div className="flex justify-start items-start gap-x-8 mb-12 h-full">
       <div className="w-full">
         <Image src={testimonial?.src as any} alt="image" width={438} height={349} style={{ width: 438 }} />
       </div>

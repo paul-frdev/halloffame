@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from 'next/navigation';
 import { Breadcrumbs } from "./breadcrumbs";
 import { EventsList } from "./eventsList";
 import { CalendarForm } from "./forms/calendarForm";
@@ -8,16 +7,15 @@ import { SubscribeForm } from "./forms/subscribeForm";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { UpcomingEvent } from "@/types";
-import React, { useState } from "react";
+import React from "react";
 
 interface EventsClientProps {
   events: UpcomingEvent[];
 }
 export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
-  const params = useParams();
   const breadcrumbs = [
     { label: "Головна", url: "/" },
-    { label: "Події", url: `${params.locale}/events` },
+    { label: "Події", url: `/events` },
   ];
 
   return (

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
@@ -9,6 +10,8 @@ import { useInView } from "react-intersection-observer";
 
 export const History = () => {
   const [hoveredButton, setHoveredButton] = useState(null);
+
+  const route = useRouter()
 
   const { ref, inView } = useInView({ threshold: 0.1 });
   const animationLR = useAnimation();
@@ -81,11 +84,13 @@ export const History = () => {
     {
       text: "ДЕТАЛЬНІШЕ",
       variant: "outline",
+      route: '/about',
       color: hoveredButton === 0 ? "#FFFFFF" : "#000000",
     },
     {
       text: "КНИГА ВІДГУКІВ",
       variant: "default",
+      route: '/testimonials',
       color: hoveredButton === 1 ? "#000000" : "#FFFFFF",
     },
   ];
@@ -113,6 +118,7 @@ export const History = () => {
             {buttons.map((button, index) => (
               <Button
                 key={index}
+                onClick={() => route.push(button.route)}
                 className="flex justify-center items-center gap-x-4 text-2xl leading-[33.6px]"
                 variant={button.variant as any}
                 size="lg"
