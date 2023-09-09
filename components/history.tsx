@@ -1,18 +1,18 @@
-import { useRouter } from 'next/navigation';
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
+import { fadeIn } from "@/constants";
 import { ArrowRight } from "@/icons/arrowRight";
 import { motion, useAnimation } from "framer-motion";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { fadeIn } from '@/constants';
 
 export const History = () => {
   const [hoveredButton, setHoveredButton] = useState(null);
 
-  const route = useRouter()
+  const route = useRouter();
 
   const { ref, inView } = useInView({ threshold: 0.1 });
   const animationLR = useAnimation();
@@ -85,23 +85,18 @@ export const History = () => {
     {
       text: "ДЕТАЛЬНІШЕ",
       variant: "outline",
-      route: '/about',
+      route: "/about",
       color: hoveredButton === 0 ? "#FFFFFF" : "#000000",
     },
     {
       text: "КНИГА ВІДГУКІВ",
       variant: "default",
-      route: '/testimonials',
+      route: "/testimonials",
       color: hoveredButton === 1 ? "#000000" : "#FFFFFF",
     },
   ];
   return (
-    <motion.section
-      initial="initial"
-      animate="animate"
-      variants={fadeIn}
-      ref={ref} className="relative h-full pb-[56px] w-full max-w-[1930px]"
-    >
+    <motion.section initial="initial" animate="animate" variants={fadeIn} ref={ref} className="relative h-full pb-[56px] w-full max-w-[1930px]">
       <span className="bg-bg block absolute top-0 left-0 right-0 bottom-0 w-full h-[1094px] object-cover bg-no-repeat" />
       <Container className=" justify-between items-start relative ">
         <div className="w-full max-w-[60%] py-24">

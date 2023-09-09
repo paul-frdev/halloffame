@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export const useTranslations = ( string: string ) => {
+export const useTranslations = (string: string) => {
   return (
     <div>
       <p>{string}</p>
     </div>
-  )
-}
+  );
+};

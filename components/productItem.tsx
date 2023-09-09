@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import { Breadcrumbs } from "./breadcrumbs";
 import { SelectForm } from "./forms/selectForm";
 import { SubscribeForm } from "./forms/subscribeForm";
@@ -11,11 +10,12 @@ import { CountButtons } from "./ui/countButtons";
 import { Currency } from "./ui/currency";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
+import { fadeIn } from "@/constants";
 import useProductCart from "@/hooks/useProductCart";
 import { Product } from "@/types";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
-import { fadeIn } from '@/constants';
 
 interface ProductItemProps {
   product: Product | undefined;
@@ -47,12 +47,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   ];
 
   return (
-    <motion.section
-      initial="initial"
-      animate="animate"
-      variants={fadeIn}
-      className="bg-white pt-12 text-black"
-    >
+    <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white pt-12 text-black">
       <Container className=" justify-start items-start flex-col">
         <Breadcrumbs breadcrumbs={breadcrumbs} className="mb-12" />
         <div className="w-full flex justify-start items-start gap-x-24 mb-12">

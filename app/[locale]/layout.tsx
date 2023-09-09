@@ -1,10 +1,10 @@
 import "../globals.css";
-import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
-import { Header } from '@/components/header';
+import { Header } from "@/components/header";
 import { ToastProvider } from "@/providers/toastProvider";
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Hall of Fame",
@@ -15,10 +15,9 @@ interface RootLayoutProps {
   children: React.ReactNode;
   params?: {
     locale: string;
-  }
+  };
 }
 export default async function RootLayout({ children, params }: RootLayoutProps) {
-
   let messages;
   let locale = params?.locale;
 

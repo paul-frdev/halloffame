@@ -20,7 +20,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className, id, isWhite = false }) => {
   const pathname = usePathname();
-  const params = useParams()
+  const params = useParams();
 
   return (
     <div className={cn(`flex justify-start items-center w-full max-w-[800px]`, className)}>

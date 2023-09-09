@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
@@ -7,6 +6,7 @@ import { UpcomingCarousel } from "./upcomingCarousel";
 import { fadeIn, upcomingEvents } from "@/constants";
 import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -15,7 +15,7 @@ export const UpcomingEvents = () => {
   const route = useRouter();
   const pathname = usePathname();
 
-  const isMain = pathname === '/' || pathname === '/en' || pathname === '/es'
+  const isMain = pathname === "/" || pathname === "/en" || pathname === "/es";
 
   const handleMouseEnter = () => {
     setIsHovered(true);

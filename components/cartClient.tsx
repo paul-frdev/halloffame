@@ -1,18 +1,18 @@
 "use client";
 
-import { fadeIn } from '@/constants';
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { CountButtons } from "./ui/countButtons";
 import { NoResults } from "./ui/noResults";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
+import { fadeIn } from "@/constants";
 import useEventCart from "@/hooks/useEventCart";
 import useProductCart from "@/hooks/useProductCart";
 import { Close } from "@/icons/close";
 import { calculateTicketCost } from "@/lib/utils";
 import { UpcomingEvent } from "@/types";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
@@ -21,12 +21,7 @@ export const CartClient = () => {
   const { products, removeProduct, totalQuantity, totalCost, addProductQuantity, subtractProductQuantity } = useProductCart();
 
   return (
-    <motion.section
-      initial="initial"
-      animate="animate"
-      variants={fadeIn}
-      className="bg-white py-12 px-8 text-black h-[80vh]"
-    >
+    <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white py-12 px-8 text-black h-[80vh]">
       <Container className="justify-start flex-col items-start gap-y-8">
         {events.length > 0 ? (
           <div className="flex flex-col justify-start items-start w-full gap-y-12">

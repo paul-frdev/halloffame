@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import { Breadcrumbs } from "./breadcrumbs";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
+import { fadeIn } from "@/constants";
+import { motion } from "framer-motion";
 import React from "react";
-import { fadeIn } from '@/constants';
 
 export const PaymentBackClient = () => {
   const breadcrumbs = [
@@ -15,12 +15,7 @@ export const PaymentBackClient = () => {
   ];
 
   return (
-    <motion.section
-      initial="initial"
-      animate="animate"
-      variants={fadeIn}
-      className="bg-white pt-12 text-black pb-12"
-    >
+    <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white pt-12 text-black pb-12">
       <Container className="flex-col justify-start items-start">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <div className="w-full flex justify-between items-center mt-8 pb-12 border-b border-[#999999]">

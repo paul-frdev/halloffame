@@ -1,16 +1,16 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import { Breadcrumbs } from "./breadcrumbs";
 import { Search } from "./search";
 import { TestimonialItem } from "./testimonialItem";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { UpcomingEvents } from "./upcomingEvents";
+import { fadeIn } from "@/constants";
 import { Testimonial } from "@/types";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
-import { fadeIn } from '@/constants';
 
 interface TestimonialsListProps {
   testimonials: Testimonial[];
@@ -38,12 +38,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
     { label: "Відгуки", url: "/testimonials" },
   ];
   return (
-    <motion.section
-      initial="initial"
-      animate="animate"
-      variants={fadeIn}
-      className="bg-white"
-    >
+    <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white">
       <div className="w-full">
         <Image src="/images/ring.png" alt="image" width={2000} height={660} />
       </div>

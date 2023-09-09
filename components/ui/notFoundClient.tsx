@@ -1,16 +1,16 @@
 "use client";
 
+import { Container } from "./container";
+import { Title } from "./title";
+import { Typography } from "./typography";
 import { NotFound } from "@/icons/notFound";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
-import { Container } from './container';
-import { Title } from './title';
-import { Typography } from './typography';
-import { Button } from 'react-day-picker';
+import { Button } from "react-day-picker";
 
 export const NotFoundClient = () => {
   const router = useRouter();
-  const params = useParams()
+  const params = useParams();
 
   return (
     <Container className="flex flex-col justify-center items-center h-full">

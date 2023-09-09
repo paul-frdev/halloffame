@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
 import SlideImage from "/public//images/slider.png";
 import { cn } from "@/lib/utils";
 import { Slider as SliderType } from "@/types";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
@@ -15,8 +15,7 @@ interface SliderProps {
 }
 
 export const Slider: React.FC<SliderProps> = ({ slides, height = 930 }) => {
-
-  const t = useTranslations('slider')
+  const t = useTranslations("slider");
   return (
     <Carousel
       showThumbs={false}
