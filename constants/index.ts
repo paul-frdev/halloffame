@@ -211,3 +211,15 @@ export const eventsList = [
 ];
 
 export const monthNames = ['Січ', 'Лют', 'Бер', 'Кві', 'Тра', 'Чер', 'Лип', 'Сер', 'Вер', 'Жов', 'Лис', 'Гру'];
+
+export const fadeIn = {
+  initial: {
+    y: 0,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "tween", duration: 0.5, delay: 0.1 },
+  },
+};

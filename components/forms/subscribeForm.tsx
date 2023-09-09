@@ -1,3 +1,4 @@
+import { fadeIn } from '@/constants';
 import { Button } from "../ui/button";
 import { Container } from "../ui/container";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
@@ -9,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { motion } from 'framer-motion';
 
 type SubscribeFormValues = z.infer<typeof formSchema>;
 
@@ -36,7 +38,12 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
     console.log(data);
   };
   return (
-    <section className="h-[294px] w-full bg-black text-white">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="h-[294px] w-full bg-black text-white"
+    >
       <Container className=" justify-between items-center h-full gap-x-24">
         <div className="w-[320px]">
           <Title className="w-full text-2xl font-SFPRegular leading-[33.6px] text-left">Залишайтеся в курсі подій:</Title>
@@ -119,6 +126,6 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
           </form>
         </Form>
       </Container>
-    </section>
+    </motion.section>
   );
 };

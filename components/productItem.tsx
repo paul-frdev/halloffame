@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from 'framer-motion';
 import { Breadcrumbs } from "./breadcrumbs";
 import { SelectForm } from "./forms/selectForm";
 import { SubscribeForm } from "./forms/subscribeForm";
@@ -14,6 +15,7 @@ import useProductCart from "@/hooks/useProductCart";
 import { Product } from "@/types";
 import Link from "next/link";
 import React, { useState } from "react";
+import { fadeIn } from '@/constants';
 
 interface ProductItemProps {
   product: Product | undefined;
@@ -45,7 +47,12 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
   ];
 
   return (
-    <section className="bg-white pt-12 text-black">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="bg-white pt-12 text-black"
+    >
       <Container className=" justify-start items-start flex-col">
         <Breadcrumbs breadcrumbs={breadcrumbs} className="mb-12" />
         <div className="w-full flex justify-start items-start gap-x-24 mb-12">
@@ -103,6 +110,6 @@ export const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
         </div>
       </Container>
       <SubscribeForm />
-    </section>
+    </motion.section>
   );
 };

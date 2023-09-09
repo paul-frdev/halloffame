@@ -7,6 +7,7 @@ import { ArrowRight } from "@/icons/arrowRight";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { fadeIn } from '@/constants';
 
 export const History = () => {
   const [hoveredButton, setHoveredButton] = useState(null);
@@ -95,7 +96,12 @@ export const History = () => {
     },
   ];
   return (
-    <section ref={ref} className="relative h-full pb-[56px] w-full max-w-[1930px]">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      ref={ref} className="relative h-full pb-[56px] w-full max-w-[1930px]"
+    >
       <span className="bg-bg block absolute top-0 left-0 right-0 bottom-0 w-full h-[1094px] object-cover bg-no-repeat" />
       <Container className=" justify-between items-start relative ">
         <div className="w-full max-w-[60%] py-24">
@@ -140,6 +146,6 @@ export const History = () => {
         animate={animationBT}
         className=" bg-boxingBack absolute -top-[200px] right-0 bottom-0 h-[1300px] w-[733px] bg-no-repeat object-cover"
       />
-    </section>
+    </motion.section>
   );
 };

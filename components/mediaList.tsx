@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from 'framer-motion';
 import { Breadcrumbs } from "./breadcrumbs";
 import { MediaPreviewItem } from "./mediaPreviewItem";
 import { Search } from "./search";
@@ -7,6 +8,7 @@ import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Media } from "@/types";
 import React, { useState } from "react";
+import { fadeIn } from '@/constants';
 
 interface MediaListProps {
   mediaList: Media[];
@@ -35,7 +37,12 @@ export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
   ];
 
   return (
-    <section className="bg-white py-12">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="bg-white py-12"
+    >
       <Container className="flex-col justify-start items-start">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <div className="flex justify-between items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]">
@@ -50,6 +57,6 @@ export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
           ))}
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 };

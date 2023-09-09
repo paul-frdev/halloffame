@@ -1,17 +1,17 @@
 "use client";
 
+import { motion } from 'framer-motion';
 import { Activities } from "./activities";
 import { Breadcrumbs } from "./breadcrumbs";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
-import { UpcomingCarousel } from "./upcomingCarousel";
 import { UpcomingEvents } from "./upcomingEvents";
-import { upcomingEvents } from "@/constants";
 import { DateRageIcon } from "@/icons/dateRageIcon";
 import { Media } from "@/types";
 import Image from "next/image";
 import React from "react";
+import { fadeIn } from '@/constants';
 
 interface MediaItem {
   media: Media | undefined;
@@ -23,7 +23,12 @@ export const MediaItem: React.FC<MediaItem> = ({ media }) => {
     { label: `${media?.title.length! >= 20 ? media?.title.slice(0, 20) + "..." : media?.title}`, url: `/media/${media?.id}` },
   ];
   return (
-    <section className="bg-white pt-12 text-black">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="bg-white pt-12 text-black"
+    >
       <Container className="flex-col justify-start items-start">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <div className="w-full flex justify-between items-center mt-12 mb-4">
@@ -53,6 +58,6 @@ export const MediaItem: React.FC<MediaItem> = ({ media }) => {
       <div className="bg-black text-white pb-20">
         <UpcomingEvents />
       </div>
-    </section>
+    </motion.section>
   );
 };

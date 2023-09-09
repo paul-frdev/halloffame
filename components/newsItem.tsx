@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from 'framer-motion';
 import { Activities } from "./activities";
 import { Breadcrumbs } from "./breadcrumbs";
 import { SubscribeForm } from "./forms/subscribeForm";
@@ -11,6 +12,8 @@ import { DateRageIcon } from "@/icons/dateRageIcon";
 import { News } from "@/types";
 import Image from "next/image";
 import React from "react";
+import { fadeIn } from '@/constants';
+
 
 interface NewsItemProps {
   newsItem: News | undefined;
@@ -24,7 +27,12 @@ export const NewsItem: React.FC<NewsItemProps> = ({ newsItem }) => {
   ];
 
   return (
-    <section className="bg-white pt-12 text-black">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="bg-white pt-12 text-black"
+    >
       <Container className="flex-col justify-start items-start">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <div className="w-full flex justify-between items-center mt-12 mb-4">
@@ -49,6 +57,6 @@ export const NewsItem: React.FC<NewsItemProps> = ({ newsItem }) => {
         </div>
       </Container>
       <SubscribeForm />
-    </section>
+    </motion.section>
   );
 };

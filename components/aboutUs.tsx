@@ -1,10 +1,13 @@
 "use client";
 
+import { motion } from 'framer-motion';
 import { Breadcrumbs } from "./breadcrumbs";
 import { Container } from "./ui/container";
 import { Typography } from "./ui/typography";
 import Image from "next/image";
 import React from "react";
+import { fadeIn } from '@/constants';
+
 
 export const AboutUs = () => {
   const breadcrumbs = [
@@ -13,9 +16,14 @@ export const AboutUs = () => {
   ];
 
   return (
-    <section className="bg-white text-black flex flex-col justify-start pb-24">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="bg-white text-black flex flex-col justify-start pb-24"
+    >
       <div className="w-full h-[660px]" >
-        <Image src="/images/about.png" alt="image" width={2100} height={660}/>
+        <Image src="/images/about.png" alt="image" width={2100} height={660} />
       </div>
       <Container className=" justify-start items-start flex-col pt-12">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
@@ -44,6 +52,6 @@ export const AboutUs = () => {
           </Typography>
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 };

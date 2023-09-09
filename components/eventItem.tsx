@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from 'framer-motion';
 import { Breadcrumbs } from "./breadcrumbs";
 import { SelectForm } from "./forms/selectForm";
 import { Button } from "./ui/button";
@@ -15,6 +16,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { fadeIn } from '@/constants';
 
 interface EventItemProps {
   event: UpcomingEvent;
@@ -64,7 +66,12 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
     }
   };
   return (
-    <section className="bg-white py-12">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="bg-white py-12"
+    >
       <Container className="flex-col justify-start items-start">
         <Breadcrumbs breadcrumbs={breadcrumbs} id={event.id} className=" mt-8 text-black mb-12" />
         <div className="text-black flex justify-between w-full items-start gap-x-10">
@@ -152,6 +159,6 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
           </div>
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 };

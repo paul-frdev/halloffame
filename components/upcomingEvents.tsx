@@ -1,9 +1,10 @@
+import { motion } from 'framer-motion';
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
 import { UpcomingCarousel } from "./upcomingCarousel";
-import { upcomingEvents } from "@/constants";
+import { fadeIn, upcomingEvents } from "@/constants";
 import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
@@ -25,7 +26,12 @@ export const UpcomingEvents = () => {
   };
 
   return (
-    <div className={cn(`relative h-[580px] bg-black w-full max-w-[1930px]`, isMain ? "pb-20" : "mb-0")}>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className={cn(`relative h-[580px] bg-black w-full max-w-[1930px]`, isMain ? "pb-20" : "mb-0")}
+    >
       <Container className="justify-between items-start">
         <div className="z-10 w-full max-w-[40%] py-24">
           <Title className="pb-6 border-b-4 border-white mb-20">НАЙБЛИЖЧІ ПОДІЇ</Title>
@@ -50,6 +56,6 @@ export const UpcomingEvents = () => {
           <UpcomingCarousel data={upcomingEvents} />
         </div>
       </Container>
-    </div>
+    </motion.div>
   );
 };
