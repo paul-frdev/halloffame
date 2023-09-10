@@ -41,14 +41,12 @@ html {
   height: 100%;
 }
 body {
+  padding-top: 194px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.fixed-header {
-  padding-top: 184px;
-}
 
 main {
   flex: 1;

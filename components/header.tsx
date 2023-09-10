@@ -5,7 +5,7 @@ import { CartWidget } from "./ui/cartWidget";
 import { Container } from "./ui/container";
 import { LanguageSwitcher } from "./ui/languageSwitcher";
 import { Typography } from "./ui/typography";
-import { mainNav, secondNav } from "@/constants";
+import { fadeIn, mainNav, secondNav } from "@/constants";
 import { Facebook } from "@/icons/facebook";
 import { Instagram } from "@/icons/instagram";
 import { Logo } from "@/icons/logo";
@@ -62,10 +62,8 @@ export const Header = () => {
     const handleScroll = debounce(() => {
       if (window.scrollY > 30) {
         setIsFixed(true);
-        document.body.classList.add("fixed-header");
       } else {
         setIsFixed(false);
-        document.body.classList.remove("fixed-header");
       }
     }, 0);
 
@@ -102,64 +100,66 @@ export const Header = () => {
 
   return (
     <>
-      <motion.div
-        animate={animation}
-        className={cn(
-          `relative z-[14] max-w-[1632px] px-4 m-auto w-full`,
-          isFixed ? " h-auto transition-all duration-300 hidden" : " duration-300 visible transition-all h-[24px]"
-        )}
-      >
-        <div className={cn(`w-full ml-auto max-w-[1360px] h-[98px] flex justify-between items-center`)}>
-          <LanguageSwitcher />
-          <ul className=" relative flex justify-between items-end  gap-x-[60px]">
-            <span className="absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link" />
-            {secondNav.map(item => {
-              const isActive = `/${params.locale}${item.src}` === pathname || `/${params.locale}${item.src}/${params.mediaId}` === pathname;
-
-              return (
-                <li
-                  key={item.id}
-                  className={cn(
-                    `text-lg leading-[20px] font-SFPRegular text-link transition-all duration-300 hover:text-white whitespace-nowrap py-1 `,
-                    isActive ? "border-b border-[#ffffff] text-white" : "border-b border-transparent"
-                  )}
-                >
-                  <Link href={item.src}>{tr(item.title)}</Link>
-                </li>
-              );
-            })}
-            <span className="absolute top-0 right-0 w-[1px] h-[59px] border-l-1 border-link" />
-          </ul>
-          <ul className="flex justify-between items-center gap-x-[20px] w-full max-w-[328px] px-[50px]">
-            {socialMediaData.map(item => (
-              <li className="transition-all duration-300" key={item.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-                <Link href={item.link} style={{ fill: "#000" }}>
-                  {item.social}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          {eventId || productId || pathname === "/cart" ? null : (
-            <Link href="/cart" className="flex justify-start items-start gap-x-[17px]">
-              <Typography className=" inline-block">{tr("Кошик")}</Typography>
-              <CartWidget className="relative" widthNumber={17} heightNumber={17} />
-            </Link>
-          )}
-        </div>
-      </motion.div>
       <header
         className={cn(
-          `h-[174px] transition-[height] sticky top-0 left-0 right-0 duration-300 bg-basic z-[12] pt-4`,
-          isFixed ? " fixed top-0 right-0 left-0 h-[122px]  transition-[height] duration-300" : ""
+          `transition-all fixed top-0 left-0 right-0 duration-300 bg-basic z-[12] pt-8 pb-9`,
+          isFixed ? "pb-4 pt-4" : ""
         )}
       >
-        <Container className={cn(`flex justify-between w-full items-end`, isFixed ? "pb-4" : "pb-9")}>
+        <Container className={cn(`flex justify-between w-full items-end translate-all duration-300`)}>
           <Link href="/" className={cn(`mr-[90px]`, isFixed ? "mt-0" : "-mt-[12px]")}>
             <span className="logo-container">
               <Logo width={150} height={150} />
             </span>
           </Link>
-          <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto`, isFixed ? "gap-y-0" : "gap-y-[30px]")}>
+          <div className={cn(`flex flex-col justify-end items-start gap-y-[30px] w-full ml-auto transition-all duration-300`, isFixed ? "gap-y-0" : "gap-y-[50px]")}>
+            <motion.div
+              animate={animation}
+              className={cn(
+                `relative z-[14] max-w-[1632px] m-auto w-full transition-all duration-300`,
+                isFixed ? " h-auto hidden" : "visible h-[24px]"
+              )}
+            >
+              <div className={cn(`w-full ml-auto max-w-[1360px] flex justify-between items-center`)}>
+                <LanguageSwitcher />
+                <ul className=" relative flex justify-between items-end  gap-x-[60px]">
+                  <span className="absolute top-0 left-0 w-[1px] h-[59px] border-l-1 border-link" />
+                  {secondNav.map(item => {
+                    const isActive = `/${params.locale}${item.src}` === pathname || `/${params.locale}${item.src}/${params.mediaId}` === pathname;
+
+                    return (
+                      <li
+                        key={item.id}
+                        className={cn(
+                          `text-lg leading-[20px] font-SFPRegular text-link transition-all duration-300 hover:text-white whitespace-nowrap py-1 `,
+                          isActive ? "border-b border-[#ffffff] text-white" : "border-b border-transparent"
+                        )}
+                      >
+                        <Link href={item.src}>{tr(item.title)}</Link>
+                      </li>
+                    );
+                  })}
+                  <span className="absolute top-0 right-0 w-[1px] h-[59px] border-l-1 border-link" />
+                </ul>
+                <ul className="flex justify-between items-center gap-x-[20px] w-full max-w-[328px] px-[50px]">
+                  {socialMediaData.map(item => (
+                    <li className="transition-all duration-300" key={item.id} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+                      <Link href={item.link} style={{ fill: "#000" }}>
+                        {item.social}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                {eventId || productId || pathname === "/cart" ? null : (
+                  <Link href="/cart" className="flex justify-start items-start gap-x-[17px]">
+                    <Typography className=" inline-block">{tr("Кошик")}</Typography>
+                    <CartWidget className="relative" widthNumber={17} heightNumber={17} />
+                  </Link>
+                )}
+              </div>
+            </motion.div>
+
+
             <div className={cn(`flex  w-full items-center ml-auto max-w-[1360px]`, isFixed ? "justify-end" : "justify-between")}>
               <ul className="flex justify-between items-start gap-x-[92px]">
                 {mainNav.map(item => {
