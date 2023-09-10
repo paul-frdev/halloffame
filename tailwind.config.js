@@ -91,7 +91,7 @@ module.exports = {
         bg: "url('/images/boxing-back.png')",
         person: "url('/images/person.png')",
         boxingBack: "url('/images/back.png')",
-        upcoming: "url('/images/event-upcoming.png')",
+        upcoming: "url('/images/upcomingEv.png')",
         ali: "url('/images/ali.png')",
         contactBg: "url('/images/contact.png')",
       },

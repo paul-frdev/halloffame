@@ -54,7 +54,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
           <TestimonialItem key={item.id} testimonial={item} />
         ))}
       </Container>
-      <div className="bg-black w-full pb-24">
+      <div className="bg-black w-full">
         <UpcomingEvents />
       </div>
     </motion.section>

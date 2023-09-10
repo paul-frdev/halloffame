@@ -30,7 +30,7 @@ export const UpcomingEvents = () => {
       initial="initial"
       animate="animate"
       variants={fadeIn}
-      className={cn(`relative h-[580px] bg-black w-full max-w-[1930px]`, isMain ? "pb-20" : "mb-0")}
+      className={cn(`relative h-[680px] bg-upcoming object-center bg-no-repeat object-fill w-full max-w-[1930px]`, isMain ? "pb-20" : "mb-0")}
     >
       <Container className="justify-between items-start">
         <div className="z-10 w-full max-w-[40%] py-24">
