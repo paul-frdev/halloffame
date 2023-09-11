@@ -41,12 +41,18 @@ html {
   height: 100%;
 }
 body {
-  padding-top: 194px;
+  padding-top: 113px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #fff !important;
 }
 
+@media screen and(min-width: 1400px) {
+  body {
+    padding-top: 194px;
+  }
+}
 
 main {
   flex: 1;
@@ -70,26 +76,26 @@ main {
     height: 480px;
   }
   @font-face {
-    font-family: "SFProDisplayRegular";
-    src: url("../fonts/SFProDisplay-Regular.ttf") format("ttf");
+    font-family: 'SFProDisplayRegular';
+    src: url('../fonts/SFProDisplay-Regular.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
-    font-family: "SFProDisplaySemibold";
-    src: url("../fonts/SFProDisplay-Semibold.ttf") format("ttf");
+    font-family: 'SFProDisplaySemibold';
+    src: url('../fonts/SFProDisplay-Semibold.ttf') format('ttf');
     font-weight: 500;
     font-style: normal;
   }
   @font-face {
-    font-family: "SFProDisplayBold";
-    src: url("../fonts/SFProDisplay-Bold.ttf") format("ttf");
+    font-family: 'SFProDisplayBold';
+    src: url('../fonts/SFProDisplay-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
   }
   @font-face {
-    font-family: "OswaldBold";
-    src: url("../fonts/Oswald-Bold.ttf") format("ttf");
+    font-family: 'OswaldBold';
+    src: url('../fonts/Oswald-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
   }
