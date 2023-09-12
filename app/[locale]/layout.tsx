@@ -33,8 +33,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
         <ToastProvider />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
-          {/* {children}
-          <Footer /> */}
+          {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

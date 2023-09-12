@@ -45,10 +45,9 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #fff !important;
 }
 
-@media screen and(min-width: 1400px) {
+@media (min-width: 1400px) {
   body {
     padding-top: 194px;
   }

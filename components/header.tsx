@@ -55,6 +55,8 @@ export const Header = () => {
   const [isOpenMobileNav, setIsOpenMobileNav] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
+  console.log(isOpenMobileNav, isExpanded);
+  
   const pathname = usePathname();
   const params = useParams();
   const route = useRouter();
@@ -112,8 +114,8 @@ export const Header = () => {
     <>
       <header
         className={cn(
-          `transition-all fixed top-0 left-0 right-0 duration-300 bg-basic z-[12] pb-0  pt-4 lDesktop:pt-8  lDesktop:pb-9`,
-          isFixed ? "pb-4 pt-4" : ""
+          `transition-all fixed top-0 left-0 right-0 duration-300 bg-basic z-[12] pb-0  pt-4 lDesktop:pt-6  lDesktop:pb-6`,
+          isFixed ? "lDesktop:pb-4 lDesktop:pt-4" : ""
         )}
       >
         <Container className={cn(`flex justify-between w-full items-end lDesktop:items-end translate-all duration-300 h-[80px] lDesktop:h-auto`)}>
@@ -211,14 +213,14 @@ export const Header = () => {
             </div>
           </div>
         </Container>
-        <MobileNav isOpen={isOpenMobileNav} />
+        <MobileNav isOpen={isOpenMobileNav} setIsOpen={setIsOpenMobileNav} />
         <div className='hidden items-start items-center tablet:flex lDesktop:hidden  bg-basic h-auto w-full py-[5px] border-t mt-4 border-white'>
-          <Container className='items-start flex-col justify-start text-white font-oswaldBold mt-2'>
+          <Container className='items-start flex-col justify-start text-white font-oswaldBold my-2'>
             <div className='flex w-[96px] flex justify-between items-center' onClick={() => setIsExpanded(prev => !prev)}>
-              <span className='text-[16px] uppercase pl-6'>Menu</span>
+              <span className='text-[16px] tracking-wider leading-relaxed uppercase pl-6'>Menu</span>
               {!isExpanded ? <AiOutlineDown /> : <AiOutlineUp />}
             </div>
-            <MobileMenu isOpen={isExpanded} />
+            <MobileMenu isOpen={isExpanded} setIsExpanded={setIsExpanded} />
           </Container>
         </div>
       </header>
