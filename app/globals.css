@@ -6,6 +6,10 @@
   width: 10px;
   height: 10px;
 }
+button:focus {
+  outline-style: none;
+  outline: 0;
+}
 
 html {
   scroll-behavior: smooth;

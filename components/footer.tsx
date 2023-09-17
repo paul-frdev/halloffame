@@ -11,9 +11,9 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="h-[387px] bg-gray">
-      <Container className=" justify-between items-start py-12">
-        <div>
+    <footer className=" h-auto desktop:h-[387px] bg-gray">
+      <Container className="justify-between items-start flex-wrap desktop:flex-nowrap  py-12">
+        <div className='order-4 tablet:order-[0]'>
           <Link href="/">
             <Logo width={283} height={282} />
           </Link>
@@ -50,11 +50,11 @@ export const Footer = () => {
             </Link>
           </Typography>
         </div>
-        <div className="pt-3">
+        <div className="pt-3 hidden mobileMap:block">
           <Title className="text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8">
             <span className="pb-1 border-b-[2px] border-white">Як дістатися до нас?</span>
           </Title>
-          <Map />
+            <Map />
         </div>
       </Container>
     </footer>

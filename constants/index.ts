@@ -223,3 +223,4 @@ export const fadeIn = {
     transition: { type: "tween", duration: 0.5, delay: 0.1 },
   },
 };
+
