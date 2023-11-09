@@ -19,7 +19,7 @@ export const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({ product 
       <Link href={`/shop/${product.id}`} className="h-full">
         <div className="flex flex-col justify-between h-full items-center py-8">
           <div className="w-full h-full mb-8">
-            <Image src={product.previewImage} width={200} height={200} alt="preview image" className="w-full" />
+            <Image src={product.images[0].src} width={200} height={200} alt="preview image" className="w-full" />
           </div>
           <div className="mt-auto">
             <Title className="text-[20px] leading-snug tracking-wider font-SFPRegular mb-6">{product.title}</Title>

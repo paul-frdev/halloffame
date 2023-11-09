@@ -23,6 +23,21 @@ html {
 .custom-prev-arrow,
 .custom-next-arrow {
   cursor: pointer;
+  z-index: 2;
+}
+
+.marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 .main-tool-bar {
@@ -71,6 +86,45 @@ main {
 
 .container-card:hover .arrow-icon {
   transform: scale(1.5);
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: rgba(110, 109, 109, 0.2);
+}
+
+.swiper-pagination-bullet-active {
+  width: 12px;
+  height: 12px;
+  color: #7e7e7f;
+  background: #7e7e7f;
 }
 
 @layer base {

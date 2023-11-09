@@ -47,7 +47,7 @@
   {
     "id": 4,
     "title": "Заголовок",
-    "description": "      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad atque vel et. Aspernatur recusandae provident officia! Dolor fugiat pariatur, corrupti, adipisci quidem iusto dolorum amet cumque reprehenderit a sunt obcaecati!",
     "src": "/images/event.png",
     "date": "23-08-22",
     "time": ["11:00", "12:00", "14:00", "16:00", "20:00"],

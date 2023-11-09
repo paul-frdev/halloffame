@@ -1,7 +1,8 @@
 "use client";
 
 import { ContactForm } from "./forms/contactForm";
-import { Map } from "./map";
+import { locations } from './map/config';
+import { GoogleMap } from "./map/googleMap";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
@@ -31,7 +32,7 @@ export const ContactClient = () => {
                 <a href="mailto:380123456789">ubhov.kyiv@gmail.com</a>
               </Typography>
             </div>
-            <Map isContact={true} />
+            <GoogleMap isContact={true} locations={locations} mapId="map_id" useClusters  />
           </div>
           <ContactForm />
         </div>

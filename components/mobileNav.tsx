@@ -30,7 +30,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
         variants={{
           hide: {
             opacity: 0,
-            y: "-800%",
+            y: "-1134%",
             transition: {
               type: "spring",
               bounce: 0.1,

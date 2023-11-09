@@ -7,7 +7,6 @@
     "discount": "0.05",
     "isDiscount": true,
     "category": "boxing gloves",
-    "previewImage": "/images/23.png",
     "images": [
       {
         "id": 1,
@@ -39,7 +38,6 @@
     "discount": "0.05",
     "isDiscount": true,
     "category": "boxing gloves",
-    "previewImage": "/images/23.png",
     "images": [
       {
         "id": 1,
@@ -71,7 +69,6 @@
     "discount": "0.05",
     "isDiscount": false,
     "category": "boxing gloves",
-    "previewImage": "/images/23.png",
     "images": [
       {
         "id": 1,
@@ -103,7 +100,6 @@
     "discount": "0.05",
     "isDiscount": true,
     "category": "boxing gloves",
-    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
@@ -135,7 +131,6 @@
     "discount": "0.05",
     "isDiscount": false,
     "category": "boxing gloves",
-    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
@@ -167,7 +162,6 @@
     "discount": "0.05",
     "isDiscount": true,
     "category": "boxing gloves",
-    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
@@ -199,7 +193,6 @@
     "discount": "0.05",
     "isDiscount": true,
     "category": "Boxing gloves",
-    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
@@ -231,7 +224,6 @@
     "discount": "0.05",
     "isDiscount": true,
     "category": "Boxing gloves",
-    "previewImage": "/images/leone.jpeg",
     "images": [
       {
         "id": 1,
@@ -263,7 +255,6 @@
     "discount": "0.05",
     "isDiscount": false,
     "category": "T-shirts",
-    "previewImage": "/images/1.jpeg",
     "images": [
       {
         "id": 1,
@@ -295,7 +286,6 @@
     "discount": "0.05",
     "isDiscount": false,
     "category": "T-shirts",
-    "previewImage": "/images/1.jpeg",
     "images": [
       {
         "id": 1,
@@ -327,7 +317,6 @@
     "discount": "0.05",
     "isDiscount": false,
     "category": "T-shirts",
-    "previewImage": "/images/1.jpeg",
     "images": [
       {
         "id": 1,
@@ -359,7 +348,6 @@
     "discount": "0.05",
     "isDiscount": false,
     "category": "T-shirts",
-    "previewImage": "/images/1.jpeg",
     "images": [
       {
         "id": 1,
@@ -391,7 +379,6 @@
     "discount": "0.05",
     "isDiscount": false,
     "category": "T-shirts",
-    "previewImage": "/images/23.png",
     "images": [
       {
         "id": 1,

@@ -6,8 +6,14 @@ import { Slider as SliderType } from "@/types";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 
 interface SliderProps {
   slides?: SliderType[];
@@ -16,19 +22,25 @@ interface SliderProps {
 
 export const Slider: React.FC<SliderProps> = ({ slides, height = 930 }) => {
   const t = useTranslations("slider");
+
+
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index: number, className: string) {
+      return `<span class=${className}></span>`;
+    },
+  };
+
   return (
-    <Carousel
-      showThumbs={false}
-      showArrows={false}
-      showStatus={false}
-      infiniteLoop={false}
-      autoPlay={true}
-      interval={5000}
-      transitionTime={500}
-      stopOnHover={true}
+    <Swiper
+      pagination={pagination}
+      modules={[Pagination]}
+      autoplay
+      loop
+      className="mySwiper"
     >
       {slides?.map((slide: any) => (
-        <div key={slide.id} className="relative">
+        <SwiperSlide key={slide.id} className="relative">
           <Image src={SlideImage} alt={slide.title} height={height} style={{ height: height }} />
           <span
             className={cn(
@@ -38,8 +50,8 @@ export const Slider: React.FC<SliderProps> = ({ slides, height = 930 }) => {
           >
             {t(slide.title)}
           </span>
-        </div>
+        </SwiperSlide>
       ))}
-    </Carousel>
+    </Swiper>
   );
 };

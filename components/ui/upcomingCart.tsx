@@ -37,7 +37,7 @@ export const UpcomingCart: React.FC<UpcomingCartProps> = ({ event }) => {
                   <ArrowRight color="#fff" />
                 </span>
               </Button>
-              <Typography className="pr-2">{event.description}</Typography>
+              <Typography className="pr-2 text-left">{event.description}</Typography>
             </div>
           </div>
         </div>

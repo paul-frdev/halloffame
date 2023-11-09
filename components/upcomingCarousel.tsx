@@ -4,7 +4,8 @@ import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
 import { Event } from "@/types";
 import { useState } from "react";
-import SwiperCore, { Navigation } from "swiper";
+import SwiperCore from "swiper";
+import { Navigation } from 'swiper/modules'
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -48,6 +49,7 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
   const handleNextClick = () => {
     setActiveSlideIndex(prevIndex => prevIndex + 1);
   };
+
   return (
     <div className="relative">
       <Swiper
@@ -56,8 +58,8 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
           nextEl: ".custom-next-arrow",
         }}
         slidesPerView={2}
-        spaceBetween={150}
-        slidesOffsetBefore={60}
+        spaceBetween={20}
+        slidesOffsetBefore={50}
         speed={500}
         grabCursor={true}
         onSlideChange={swiper => setActiveSlideIndex(swiper.activeIndex)}

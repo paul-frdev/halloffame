@@ -1,6 +1,7 @@
 "use client";
 
-import { Map } from "./map";
+import { locations } from './map/config';
+import { GoogleMap } from "./map/googleMap";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
@@ -54,7 +55,7 @@ export const Footer = () => {
           <Title className="text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8">
             <span className="pb-1 border-b-[2px] border-white">Як дістатися до нас?</span>
           </Title>
-            <Map />
+            <GoogleMap locations={locations} mapId="map_id" />
         </div>
       </Container>
     </footer>
