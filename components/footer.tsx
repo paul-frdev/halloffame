@@ -51,7 +51,7 @@ export const Footer = () => {
             </Link>
           </Typography>
         </div>
-        <div className="pt-3 hidden mobileMap:block">
+        <div className="pt-3 hidden [@media(min-width:1150px)]:block">
           <Title className="text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8">
             <span className="pb-1 border-b-[2px] border-white">Як дістатися до нас?</span>
           </Title>

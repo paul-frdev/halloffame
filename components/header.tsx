@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "./ui/button";
 import { CartWidget } from "./ui/cartWidget";
 import { Container } from "./ui/container";
 import { LanguageSwitcher } from "./ui/languageSwitcher";
@@ -24,7 +23,7 @@ import { TfiClose } from 'react-icons/tfi'
 import { MobileMenu } from './mobileMenu';
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
 import { MobileNav } from './mobileNav';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 export const socialMediaData = [
   {
@@ -103,7 +102,7 @@ export const Header = () => {
         )}
       >
         <Container className={cn(`flex justify-between w-full items-end lDesktop:items-end translate-all duration-300 h-[80px] lDesktop:h-auto`)}>
-          <Link href="/" className={cn(` mr-[40px] desktop:mr-[90px] pt-[10px]`, isFixed ? "mt-0" : "lDesktop:-mt-[12px]")}>
+          <Link href="/" className={cn(` [@media(max-width:340px)]:mr-[15px] mr-[40px] desktop:mr-[90px] pt-[10px]`, isFixed ? "mt-0" : "lDesktop:-mt-[12px]")}>
             <span className="logo-container">
               <Logo width={!isBigScreen ? 90 : 150} height={!isBigScreen ? 90 : 150} />
             </span>
@@ -173,7 +172,7 @@ export const Header = () => {
                   );
                 })}
               </ul>
-              <div className="w-full ml-auto flex justify-end items-end mr-8 tablet:mr-0">
+              <div className="w-full ml-auto flex justify-end items-end mr-4 tablet:mr-0">
                 {eventId || productId || pathname === "/cart" ? (
                   <Link href="/cart" className="relative">
                     <CartWidget width={35} height={35} className="mr-8 pr-1" />
@@ -181,7 +180,7 @@ export const Header = () => {
                 ) : (
                   <Link
                     href='/events'
-                    className="bg-white hover:bg-blue  text-basic transition-all duration-300 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-[14px]  tablet:text-lg desktop:text-2xl uppercase font-oswaldBold h-[40px] tablet:h-[50px] desktop:h-[69px] w-full max-w-[200px] tablet:max-w-[220px] desktop:max-w-[305px]"
+                    className="bg-white hover:bg-blue  text-basic transition-all duration-300 inline-flex items-center justify-center rounded-md font-medium ring-offset-background hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-[12px]  tablet:text-lg desktop:text-2xl uppercase font-oswaldBold h-[40px] tablet:h-[50px] desktop:h-[69px] w-full max-w-[200px] tablet:max-w-[220px] desktop:max-w-[305px] mobile:text-sm"
                   >
                     {tr("Замовити квиток")}
                   </Link>

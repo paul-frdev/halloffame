@@ -44,7 +44,7 @@ export const Slider: React.FC<SliderProps> = ({ slides, height = 930 }) => {
           <Image src={SlideImage} alt={slide.title} height={height} style={{ height: height }} />
           <span
             className={cn(
-              ` absolute text-[64px] font-SFPSemibold leading-normal top-[40%] left-0`,
+              ` absolute text-[45px] tablet:text-[64px] font-SFPSemibold leading-normal top-[40%] left-0`,
               height < 930 ? " inline-block top-[30%] w-[95%] mx-auto" : "top-[40%] w-full"
             )}
           >

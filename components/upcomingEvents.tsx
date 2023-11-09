@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
-import { UpcomingCarousel } from "./upcomingCarousel";
+import { UpcomingCarousel } from "./swipper/upcomingCarousel";
 import { fadeIn, upcomingEvents } from "@/constants";
 import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
@@ -30,12 +30,12 @@ export const UpcomingEvents = () => {
       initial="initial"
       animate="animate"
       variants={fadeIn}
-      className={cn(`relative h-[680px] bg-upcoming object-center bg-no-repeat object-fill w-full max-w-[1930px]`, isMain ? "pb-20" : "mb-0")}
+      className={cn(`relative h-full smallTablet:h-[680px] bg-upcoming object-center bg-no-repeat object-fill w-full max-w-[1930px]`, isMain ? "pb-20" : "mb-0")}
     >
-      <Container className="justify-between items-start">
-        <div className="z-10 w-full max-w-[40%] py-24">
-          <Title className="pb-6 border-b-4 border-white mb-20">НАЙБЛИЖЧІ ПОДІЇ</Title>
-          <Typography className="w-full max-w-[80%] text-2xl font-SFPRegular mb-12">Наші заходи порадують шанувальників та фанатів боксу</Typography>
+      <Container className=" [@media(max-width:732px)]:flex-col justify-between items-start">
+        <div className="z-10 w-full smallTablet:max-w-[40%] pt-12 pb-0 smallTablet:py-24">
+          <Title className="text-3xl mobile:text-5xl tablet:text-6xl border-b-4 pb-3 smallTablet:pb-6 border-white mb-8 smallTablet:mb-20">НАЙБЛИЖЧІ ПОДІЇ</Title>
+          <Typography className="w-full smallTablet:max-w-[80%] text-2xl font-SFPRegular mb-12">Наші заходи порадують шанувальників та фанатів боксу</Typography>
           {pathname === "/" ? (
             <Button
               className="flex justify-center items-center gap-x-4 text-2xl leading-[33.6px]"
@@ -52,7 +52,7 @@ export const UpcomingEvents = () => {
             </Button>
           ) : null}
         </div>
-        <div className="absolute top-0 right-0 w-[55%]  py-20">
+        <div className="block smallTablet:absolute top-0 right-0 w-full smallTablet:w-[55%]  py-20">
           <UpcomingCarousel data={upcomingEvents} />
         </div>
       </Container>

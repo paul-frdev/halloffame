@@ -1,5 +1,5 @@
-import { Button } from "./ui/button";
-import { UpcomingCart } from "./ui/upcomingCart";
+import { Button } from "../ui/button";
+import { UpcomingCart } from "../ui/upcomingCart";
 import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
 import { Event } from "@/types";
@@ -7,6 +7,7 @@ import { useState } from "react";
 import SwiperCore from "swiper";
 import { Navigation } from 'swiper/modules'
 import "swiper/css";
+import "./styles.css"
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -57,9 +58,23 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
           prevEl: ".custom-prev-arrow",
           nextEl: ".custom-next-arrow",
         }}
-        slidesPerView={2}
-        spaceBetween={20}
-        slidesOffsetBefore={50}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            slidesOffsetBefore: 0,
+          },
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            slidesOffsetBefore: 0,
+          },
+          1200: {
+            slidesPerView: 2,
+            spaceBetween: 50,
+            slidesOffsetBefore: 50
+          },
+        }}
         speed={500}
         grabCursor={true}
         onSlideChange={swiper => setActiveSlideIndex(swiper.activeIndex)}
@@ -72,7 +87,7 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
         ))}
       </Swiper>
       <CustomNextArrow
-        className=" hover:bg-transparent bg-transparent absolute top-[40%] left-[50%] z-[11]  w-[150px] h-[150px] border-[2px] border-white rounded-full"
+        className="hidden smallTablet:flex hover:bg-transparent bg-transparent absolute -bottom-[59px] desktop:top-[40%] left-[50%] z-[11]  w-[150px] h-[150px] border-[2px] border-white rounded-full"
         icon={<ArrowRight color="#2451CE" width={50} height={50} />}
         onClick={handleNextClick}
       />

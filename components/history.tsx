@@ -4,10 +4,12 @@ import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
 import { fadeIn } from "@/constants";
 import { ArrowRight } from "@/icons/arrowRight";
+import { cn } from '@/lib/utils';
 import { motion, useAnimation } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useMediaQuery } from 'react-responsive';
 
 export const History = () => {
   const [hoveredButton, setHoveredButton] = useState(null);
@@ -20,6 +22,8 @@ export const History = () => {
   const animationRL = useAnimation();
   const animationTB = useAnimation();
   const pathAnimation = useAnimation();
+
+  const isMob = useMediaQuery({query: '(max-width: 416px)'})
 
   useEffect(() => {
     if (inView) {
@@ -97,14 +101,14 @@ export const History = () => {
   ];
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} ref={ref} className="relative h-full pb-[56px] w-full max-w-[1930px]">
-      <span className="bg-bg block absolute top-0 left-0 right-0 bottom-0 w-full h-[1094px] object-cover bg-no-repeat" />
+      <span className="bg-bg block absolute top-0 left-0 right-0 bottom-0 w-full smallTablet:h-[1005px] isShowAllElems:h-[1094px] object-cover bg-no-repeat" />
       <Container className=" justify-between items-start relative ">
-        <div className="w-full max-w-[60%] py-24">
-          <Title animate={animationLR} className="pb-6 border-b-4 border-white mb-6">
+        <div className="w-full max-w-full isShowAllElems:max-w-[60%] pt-12 pb-0 smallTablet:py-24">
+          <Title animate={animationLR} className="text-3xl mobile:text-5xl tablet:text-6xl pb-6 border-b-4 border-white mb-6">
             ІСТОРІЯ УКРАЇНСЬКОГО БОКСУ
             <br />В ОДНОМУ МІСЦІ...
           </Title>
-          <Typography animate={animationLR} className="w-full max-w-[80%] text-2xl font-SFPRegular mb-12">
+          <Typography animate={animationLR} className="w-full text-justify smallTablet:text-left max-w-full smallTablet:max-w-[70%] isShowAllElems:max-w-[80%] text-2xl font-SFPRegular mb-12">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique sed sed ullamcorper tellus risus tortor. Nisi, vitae sit dictumst
             tincidunt. Arcu eu massa ut arcu praesent arcu duis amet. Nunc sed et et, ipsum. Quam ornare viverra tincidunt etiam nisi, ullamcorper
             quis morbi malesuada. Diam lectus aliquam amet, justo quam orci, et consequat. Phasellus elementum sodales lacus in vivamus curabitur
@@ -115,14 +119,14 @@ export const History = () => {
             aliquet nec in at. Nulla nec ipsum at suspendisse nunc. Adipiscing aenean fermentum vitae id et dolor eu. Pretim mattis ipsum, malesuada
             cursus risus, at.
           </Typography>
-          <motion.div animate={animationBT} className="w-[70%] flex justify-between items-center">
+          <motion.div animate={animationBT} className=" w-full smallTablet:w-[70%] flex justify-start gap-x-4 lDesktop:justify-between items-center">
             {buttons.map((button, index) => (
               <Button
                 key={index}
                 onClick={() => route.push(button.route)}
-                className="flex justify-center items-center gap-x-4 text-2xl leading-[33.6px]"
+                className={cn(`flex justify-center items-center gap-x-4 text-[16px] lDesktop:text-2xl leading-[33.6px]`, index === 1 && isMob ? 'hidden' : 'flex')}
                 variant={button.variant as any}
-                size="lg"
+                size="md"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -134,12 +138,12 @@ export const History = () => {
         </div>
         <motion.span
           animate={animationRL}
-          className=" z-[1] bg-person absolute right-[276px] bottom-[-56px] h-[635px] w-[526px] bg-no-repeat object-cover"
+          className="hidden smallTablet:block z-[1] bg-person absolute right-[0] isShowAllElems:right-[276px] bottom-[-56px] h-[635px] w-[350px] isShowAllElems:w-[526px] bg-no-repeat object-cover"
         />
       </Container>
       <motion.span
         animate={animationBT}
-        className=" bg-boxingBack absolute -top-[200px] right-0 bottom-0 h-[1300px] w-[733px] bg-no-repeat object-cover"
+        className="hidden isShowAllElems:block bg-boxingBack absolute -top-[200px] right-0 bottom-0 h-[1300px] w-[733px] bg-no-repeat object-cover"
       />
     </motion.section>
   );

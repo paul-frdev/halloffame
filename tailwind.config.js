@@ -5,10 +5,12 @@ module.exports = {
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   theme: {
     screens: {
-      mobile: "410",
+      mobile: "410px",
       mobileMap: "420px",
+      smallTablet: "731px",
       tablet: "985px",
       desktop: "1200px",
+      isShowAllElems: "1310px",
       lDesktop: "1400px",
       ...defaultTheme.screens,
     },
