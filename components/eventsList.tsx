@@ -2,16 +2,16 @@
 
 import { PreviewEventCart } from "./previewEventCart";
 import { Container } from "./ui/container";
-import { UpcomingEvent } from "@/types";
+import { Event } from "@/types";
 import React from "react";
 
 interface EventsListProps {
-  eventsList: UpcomingEvent[];
+  eventsList: Event[];
 }
 export const EventsList: React.FC<EventsListProps> = ({ eventsList }) => {
   return (
-    <Container className="w-full max-w-[1300] m-auto justify-center items-center flex-wrap gap-x-20 gap-y-10">
-      {eventsList?.map(event => <PreviewEventCart key={event.id} event={event} />)}
+    <Container className="w-full max-w-[1300] m-auto grid grid-cols-1 justify-center items-center tablet:grid-cols-2 tablet:gap-x-10 gap-y-10">
+      {eventsList?.map(event => <PreviewEventCart key={event.event_id} event={event} />)}
     </Container>
   );
 };

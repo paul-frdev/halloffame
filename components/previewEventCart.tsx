@@ -2,21 +2,28 @@
 
 import { monthNames } from "@/constants";
 import { ArrowRight } from "@/icons/arrowRight";
-import { UpcomingEvent } from "@/types";
+import { Event } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useMediaQuery } from 'react-responsive';
 
 interface EventCartProps {
-  event: UpcomingEvent | undefined;
+  event: Event | undefined;
 }
 export const PreviewEventCart: React.FC<EventCartProps> = ({ event }) => {
-  const monthIndex = event?.date.getMonth() as any;
+  const EventDate = new Date(event?.event_date as string)
+  
+  const eventDescription = event?.descriptiontext.replace(/<\/?[a-zA-Z]+>/gi, '')
+  const monthIndex = EventDate.getMonth();
+  const getDay = EventDate.getDate();
+  const isTabletScreen = useMediaQuery({ query: '(min-width: 985px)' })
+  
   return (
-    <div className="w-[585px] h-[502px] container-card  shadow rounded-md hover:shadow-lg transition-all duration-200 cursor-pointer text-black">
-      <Link href={`/events/${event?.id}`}>
-        <div className="w-[585px] h-[238px]">
-          <Image src={event?.src as any} alt="image-event" width={585} className="h-[238px] object-cover object-top" height={238} />
+    <div className=" w-full tablet:max-w-[785px] h-full container-card  shadow rounded-md hover:shadow-lg transition-all duration-200 cursor-pointer text-black">
+      <Link href={`/events/${event?.event_id}`}>
+        <div className=" w-full tablet:max-w-[785px] h-[238px]">
+          <Image src={event?.images[0].url as any} alt="image-event" width={isTabletScreen ? 785 : 1000} className="h-[238px] object-cover object-top" height={238} />
         </div>
         <div className="p-9 flex h-[52%] justify-between items-center">
           <div className="flex flex-col justify-center items-center h-full w-[20%] border-r border-[#e8edf0] p-4 pr-4">
@@ -24,18 +31,18 @@ export const PreviewEventCart: React.FC<EventCartProps> = ({ event }) => {
               <span className="absolute -top-[7px] -left-[25px] text-2xl font-oswaldBold font-extrabold text-[#007ac7]">
                 {monthNames[monthIndex]}
               </span>
-              <span className="text-[4.5625rem] font-SFPSemibold">{event?.date.getDay()}</span>
+              <span className="text-[4.5625rem] font-SFPSemibold">{getDay}</span>
             </div>
           </div>
           <div className="flex flex-col justify-start items-start h-full pl-8">
             <div className="inline-flex items-center justify-start w-full text-3xl font-SFPBold mb-8 mt-4">
-              <span> {event?.title}</span>
+              <span className='text-[24px] font-semibold'> {event?.title.length! > 30 ? event?.title.slice(0, 35) + '...' : event?.title}</span>
               <div className="pl-4 inline arrow-icon">
                 <ArrowRight color="#ef090d" width={24} height={24} />
               </div>
             </div>
-            <p className="text-2xl font-SFPSemibold">
-              {event?.description!.length! > 100 ? event?.description.slice(100) + "..." : event?.description}
+            <p className="text-[20px] text-justify font-SFPSemibold">
+              {eventDescription!.length! > 100 ? eventDescription?.slice(0, 200) + "..." : eventDescription}
             </p>
           </div>
         </div>

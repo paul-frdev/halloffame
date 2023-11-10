@@ -3,7 +3,7 @@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { UpcomingEvent } from "@/types";
+import { Event } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,7 @@ const FormSchema = z.object({
 });
 
 interface SelectFormProps {
-  event?: UpcomingEvent;
+  event?: Event;
   productColors?: string[] | undefined;
   productSizes?: string[] | undefined;
   color?: string;
@@ -82,7 +82,7 @@ export function SelectForm({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className={cn(`border-none focus:ring-0`)}>
-                    {event?.time.map(item => (
+                    {event?.event_timeslots.map(item => (
                       <SelectItem key={item} value={item}>
                         {item}
                       </SelectItem>

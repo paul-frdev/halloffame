@@ -1,10 +1,19 @@
 export type Language = 'en' | 'uk' | 'sp';
 
 export type Event = {
-  id: number;
-  src: string;
+  event_id: number;
   title: string;
-  description: string;
+  descriptiontext: string;
+  event_date: string;
+  event_timeslots: string[],
+  images: {url: string; public_id: string}[];
+  location: string;
+  adult_price: string;
+  child_price: string;
+  adult_quantity_tickets: number;
+  children_quantity_tickets: number;
+  ticket_images?:{url: string; public_id: string} | {url: string; public_id: string}[];
+
 };
 
 export type Subscribe = {
@@ -24,15 +33,6 @@ export type Location = {
   street: string;
 };
 
-export interface UpcomingEvent extends Event {
-  date: Date;
-  time: string[];
-  price: string[];
-  location: Location[];
-  selectedTime?: string;
-  forAdults?: number;
-  forChildren?: number;
-}
 
 export type ImageProduct = {
   id: number;

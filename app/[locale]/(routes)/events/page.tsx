@@ -1,19 +1,13 @@
-import eventList from "@/app/events.json";
 import { EventsClient } from "@/components/eventsClient";
 import React from "react";
+import { publishedEvents } from '@/requests/events';
 
-const EventsPage = () => {
-  const formattedEvents = eventList.map(event => ({
-    id: event.id,
-    title: event.title,
-    description: event.description,
-    src: event.src,
-    date: new Date(),
-    time: event.time,
-    location: event.location,
-    price: event.price,
-  }));
-  return <EventsClient events={formattedEvents} />;
+
+const EventsPage = async () => {
+
+  const getPublishedEvents = await publishedEvents();
+
+  return <EventsClient events={getPublishedEvents} />;
 };
 
 export default EventsPage;

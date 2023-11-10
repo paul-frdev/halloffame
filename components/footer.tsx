@@ -12,7 +12,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className=" h-auto desktop:h-[387px] bg-gray">
+    <footer className=" h-auto bg-gray">
       <Container className="justify-between items-start flex-wrap desktop:flex-nowrap  py-12">
         <div className='order-4 tablet:order-[0]'>
           <Link href="/">

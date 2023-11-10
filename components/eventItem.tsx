@@ -8,10 +8,10 @@ import { ButtonRight } from "./ui/buttonRight";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
-import { fadeIn } from "@/constants";
+import { fadeIn, monthNames } from "@/constants";
 import useEventCart from "@/hooks/useEventCart";
 import { calculateTicketCost, cn } from "@/lib/utils";
-import { UpcomingEvent } from "@/types";
+import { Event } from "@/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -19,7 +19,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 interface EventItemProps {
-  event: UpcomingEvent;
+  event: Event;
 }
 export const EventItem: React.FC<EventItemProps> = ({ event }) => {
   const [quantityForAdults, setQuantityForAdults] = useState(0);
@@ -34,14 +34,18 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
   const breadcrumbs = [
     { label: "Головна", url: "/" },
     { label: "Події", url: "/events" },
-    { label: `${event?.title!.length > 20 ? event?.title!.slice(20) + "..." : event?.title!}`, url: `/events/${event.id}` },
+    { label: `${event?.title!.length > 20 ? event?.title!.slice(0, 30) + "..." : event?.title!}`, url: `/events/${event.event_id}` },
   ];
 
-  const currentLocation = event.location.map(item => item.street);
-
   useEffect(() => {
-    setTotalPrice(calculateTicketCost(quantityForAdults, quantityForChildren, event.price));
-  }, [quantityForAdults, quantityForChildren]);
+    setTotalPrice(calculateTicketCost(quantityForAdults, quantityForChildren, event.adult_price, event.child_price));
+  }, [event, quantityForChildren, quantityForAdults]);
+
+  const EventDate = new Date(event?.event_date as string)
+  
+  const eventDescription = event?.descriptiontext.replace(/<\/?[a-zA-Z]+>/gi, '')
+  const monthIndex = EventDate.getMonth();
+  const getDay = EventDate.getDate();
 
   const handleOrderTickets = async () => {
     if (selectFormTrigger) {
@@ -68,15 +72,15 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white py-12">
       <Container className="flex-col justify-start items-start">
-        <Breadcrumbs breadcrumbs={breadcrumbs} id={event.id} className=" mt-8 text-black mb-12" />
+        <Breadcrumbs breadcrumbs={breadcrumbs} id={event.event_id} className=" mt-8 text-black mb-12" />
         <div className="text-black flex justify-between w-full items-start gap-x-10">
           {/* timeline */}
           <div className="flex flex-col justify-start items-start">
-            <Title className="mb-12">Про подію</Title>
+            <Title className="text-3xl mobile:text-lg tablet:text-2xl mb-12">Про подію</Title>
             <div className="mb-12">
               <Typography className="text-2xl font-oswaldBold mb-4">Дата:</Typography>
               <Typography className="text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black">
-                {`${event.date.getMonth()}.${event.date.getDate()}.${event.date.getFullYear()}`}
+                {`${monthNames[monthIndex]}.${getDay}.${EventDate.getFullYear()}`}
               </Typography>
             </div>
             <div className="mb-12">
@@ -84,11 +88,11 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
             </div>
             <div className="mb-12">
               <Typography className="text-2xl font-oswaldBold mb-4">Локація / Адреса:</Typography>
-              <p className="text-2xl font-SFPRegular mb-4 pb-4 border-b w-[310px] border-black">{currentLocation}</p>
+              <p className="text-2xl font-SFPRegular mb-4 pb-4 border-b w-[310px] border-black">{event.location}</p>
             </div>
             <div className="mb-4">
               <Typography className="text-2xl font-oswaldBold mb-4">Ціна:</Typography>
-              <Typography className="text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black">{event.price[0]} ₴</Typography>
+              <Typography className="text-2xl font-SFPRegular mb-4 pb-4 border-b  w-[310px] border-black">{event.adult_price} ₴</Typography>
             </div>
             <div
               className={cn(
@@ -110,10 +114,10 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
           </div>
           {/* description */}
           <div className="w-full ml-8">
-            <Title className="mb-12">{event.title}</Title>
+            <Title className="text-3xl mobile:text-4xl tablet:text-5xl mb-12">{event.title}</Title>
             <div className="w-full mb-12">
               <Image
-                src={event.src}
+                src={event.images[0].url}
                 alt="image"
                 className=" w-full object-cover object-top "
                 style={{ maxWidth: 1200, height: 374, width: "100%" }}
@@ -121,11 +125,11 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
                 height={374}
               />
             </div>
-            <Typography className="text-2xl font-SFPRegular leading-[33.6px] pb-12 w-full border-b border-black">{event.description}</Typography>
+            <Typography className="text-2xl font-SFPRegular leading-[33.6px] pb-12 w-full border-b border-black">{eventDescription}</Typography>
             <div className="flex justify-between items-center w-full max-w-[60%] py-12">
               <Typography className="text-2xl font-SFPBold">Ціна :</Typography>
-              <Typography className="text-lg font-SFPRegular">Для взрослых - {event.price[0]} грн.</Typography>
-              <Typography className="text-lg font-SFPRegular">Для детей - {event.price[1]} грн.</Typography>
+              <Typography className="text-lg font-SFPRegular">Для взрослых - {event.adult_price} грн.</Typography>
+              <Typography className="text-lg font-SFPRegular">Для детей - {event.child_price} грн.</Typography>
             </div>
             <div className="py-12 border-t border-black flex justify-between w-full items-center">
               <Typography className="text-2xl font-SFPBold uppercase">Оберіть кількість квитків:</Typography>
