@@ -1,13 +1,13 @@
 import { EventsClient } from "@/components/eventsClient";
 import React from "react";
-import { publishedEvents } from '@/requests/events';
+import { getPublishedEvents } from '@/requests/events';
 
 
 const EventsPage = async () => {
 
-  const getPublishedEvents = await publishedEvents();
+  const publishedEvents = await getPublishedEvents();
 
-  return <EventsClient events={getPublishedEvents} />;
+  return <EventsClient events={publishedEvents} />;
 };
 
 export default EventsPage;

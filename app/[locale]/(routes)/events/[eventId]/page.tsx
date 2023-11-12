@@ -1,6 +1,6 @@
 import eventList from "@/app/events.json";
 import { EventItem } from "@/components/eventItem";
-import { publishedEventId } from '@/requests/events';
+import { getPublishedEventId } from '@/requests/events';
 import React from "react";
 
 export async function generateStaticParams() {
@@ -11,9 +11,9 @@ export async function generateStaticParams() {
 
 const EventPage = async ({ params: { eventId } }: { params: { eventId: string } }) => {
 
-  const getEventById = await publishedEventId(eventId)
+  const eventById = await getPublishedEventId(eventId)
 
-  return <EventItem event={getEventById} />;
+  return <EventItem event={eventById} />;
 };
 
 export default EventPage;

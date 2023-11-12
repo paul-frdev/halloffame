@@ -1,8 +1,7 @@
 "use client";
 
 import { ContactForm } from "./forms/contactForm";
-import { locations } from './map/config';
-import { GoogleMap } from "./map/googleMap";
+import Map from './map/map';
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
@@ -14,9 +13,9 @@ export const ContactClient = () => {
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="relative w-full h-[824px] text-white pt-12">
       <span className="absolute -z-[1] bg-contactBg top-0 left-0 w-full h-[824px] bottom-0 right-0 bg-no-repeat object-cover object-center" />
-      <Container className=" justify-start items-start flex-col">
+      <Container className=" justify-start items-start flex-col w-full">
         <div className="mt-12 flex justify-between items-start w-full">
-          <div>
+          <div className='w-full'>
             <Title className="text-[48px] mb-12">Наші контакти</Title>
             <Typography className="text-2xl mb-12">Зал Слави Українського Боксу</Typography>
             <div className="text-2xl font-SFPRegular mb-4">
@@ -32,7 +31,7 @@ export const ContactClient = () => {
                 <a href="mailto:380123456789">ubhov.kyiv@gmail.com</a>
               </Typography>
             </div>
-            <GoogleMap isContact={true} locations={locations} mapId="map_id" useClusters  />
+            <Map containerStyle={{width: '100%', maxWidth: '600px', height: '400px'}} zoom={16} />
           </div>
           <ContactForm />
         </div>

@@ -1,7 +1,6 @@
 "use client";
 
-import { locations } from './map/config';
-import { GoogleMap } from "./map/googleMap";
+import { Status } from '@googlemaps/react-wrapper';
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
@@ -9,6 +8,9 @@ import { footerNav } from "@/constants";
 import { Logo } from "@/icons/logo";
 import Link from "next/link";
 import React from "react";
+import Map from './map/map';
+// import Map from './map/googleMap';
+
 
 export const Footer = () => {
   return (
@@ -40,7 +42,7 @@ export const Footer = () => {
             <br />
             <span className="mb-3 inline-block">Тел: +380 (97) 390-39-49</span>
             <br />
-            <span className="mb-3 inline-block">Години роботи: Вт. - Зб. 11:00 – 18:00</span>
+            <span className="mb-3 inline-block">Години роботи: Вт. - Сб. 11:00 – 18:00</span>
             <br />
             <Link className="mb-3 inline-block" href="mailto:ubhov.kyiv@gmail.com">
               Email: ubhov.kyiv@gmail.com
@@ -51,11 +53,12 @@ export const Footer = () => {
             </Link>
           </Typography>
         </div>
-        <div className="pt-3 hidden [@media(min-width:1150px)]:block">
+        <div className="pt-3 hidden [@media(min-width:1150px)]:block w-full max-w-[350px] h-full">
           <Title className="text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8">
             <span className="pb-1 border-b-[2px] border-white">Як дістатися до нас?</span>
           </Title>
-            <GoogleMap locations={locations} mapId="map_id" />
+          {/* <Map address='1600 Amphitheatre Parkway, Mountain View, CA' style={{ width: '100%', height: '250px' }} /> */}
+          <Map zoom={15}/>
         </div>
       </Container>
     </footer>
