@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import Map from './map/map';
 
 interface EventItemProps {
   event: Event;
@@ -27,6 +28,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
   const [onSelectedValue, setOnSelectedValue] = useState<string | undefined>("");
   const [selectFormTrigger, setSelectFormTrigger] = useState<any>(null);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [locationCoordinates, setLocationCoordinates] = useState({ lat: 0, lng: 0 });
 
   const route = useRouter();
   const { addItem } = useEventCart();
@@ -38,11 +40,27 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
   ];
 
   useEffect(() => {
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(event.location)}&key=${apiKey}`;
+
+    fetch(geocodingUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        const location = data.results[0].geometry.location;
+        setLocationCoordinates({ lat: location.lat, lng: location.lng });
+      })
+      .catch((error) => {
+        console.error('Error fetching location coordinates:', error);
+      });
+  }, [event.location]);
+
+
+  useEffect(() => {
     setTotalPrice(calculateTicketCost(quantityForAdults, quantityForChildren, event.adult_price, event.child_price));
   }, [event, quantityForChildren, quantityForAdults]);
 
   const EventDate = new Date(event?.event_date as string)
-  
+
   const eventDescription = event?.descriptiontext.replace(/<\/?[a-zA-Z]+>/gi, '')
   const monthIndex = EventDate.getMonth();
   const getDay = EventDate.getDate();
@@ -103,7 +121,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
               <Typography className="text-2xl font-SFPBold uppercase">Загальна вартість :</Typography>
               <Typography className="font-SFPRegular text-black text-2xl">{totalPrice.toFixed(0)} грн</Typography>
             </div>
-            <div className="w-[310px] flex justify-center items-center">
+            <div className="w-[310px] flex justify-center items-center mb-12">
               <Button
                 onClick={handleOrderTickets}
                 className="w-[303px] h-[60px] text-2xl leading-[33.6px] text-white bg-black border border-transparent hover:border-black transition-colors duration-300"
@@ -111,6 +129,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
                 Замовити квитки
               </Button>
             </div>
+            <Map headline='Дізнатися маршут до події' title={event.location} center={locationCoordinates} containerStyle={{height: '300px', width: '100%'}} />
           </div>
           {/* description */}
           <div className="w-full ml-8">

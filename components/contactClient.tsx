@@ -31,7 +31,7 @@ export const ContactClient = () => {
                 <a href="mailto:380123456789">ubhov.kyiv@gmail.com</a>
               </Typography>
             </div>
-            <Map containerStyle={{width: '100%', maxWidth: '600px', height: '400px'}} zoom={16} />
+            <Map containerStyle={{width: '100%', maxWidth: '600px', height: '370px'}} zoom={16} />
           </div>
           <ContactForm />
         </div>

@@ -13,6 +13,10 @@ import Map from './map/map';
 
 
 export const Footer = () => {
+
+  const getDirections = () => {
+    
+  }
   return (
     <footer className=" h-auto bg-gray">
       <Container className="justify-between items-start flex-wrap desktop:flex-nowrap  py-12">
@@ -53,12 +57,11 @@ export const Footer = () => {
             </Link>
           </Typography>
         </div>
-        <div className="pt-3 hidden [@media(min-width:1150px)]:block w-full max-w-[350px] h-full">
-          <Title className="text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8">
+        <div className="pt-3  h-full hidden [@media(min-width:1150px)]:block w-[350px] h-[150px]">
+          <Title onClick={getDirections} className="text-[24px] leading-[33.6px] font-SFPRegular text-left mb-8">
             <span className="pb-1 border-b-[2px] border-white">Як дістатися до нас?</span>
           </Title>
-          {/* <Map address='1600 Amphitheatre Parkway, Mountain View, CA' style={{ width: '100%', height: '250px' }} /> */}
-          <Map zoom={15}/>
+          <Map zoom={15} handleGetDirections={getDirections} isFooter containerStyle={{ height: '200px' }} />
         </div>
       </Container>
     </footer>

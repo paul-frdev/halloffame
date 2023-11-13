@@ -7,10 +7,11 @@ interface TitleProps {
   className?: string;
   variants?: Variants;
   animate?: any;
+  onClick?: () => void;
 }
-export const Title: React.FC<TitleProps> = ({ children, className, variants, animate }) => {
+export const Title: React.FC<TitleProps> = ({ children, onClick, className, variants, animate }) => {
   return (
-    <motion.h2 variants={variants} animate={animate} className={cn(`font-oswaldBold leading-normal`, className)}>
+    <motion.h2 variants={variants} onClick={onClick} animate={animate} className={cn(`font-oswaldBold leading-normal`, className)}>
       {children}
     </motion.h2>
   );
