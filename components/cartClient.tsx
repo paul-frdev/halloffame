@@ -11,12 +11,12 @@ import useEventCart from "@/hooks/useEventCart";
 import useProductCart from "@/hooks/useProductCart";
 import { Close } from "@/icons/close";
 import { calculateTicketCost } from "@/lib/utils";
-import { UpcomingEvent } from "@/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import { EventForm } from './forms/eventForm';
 import { ProductForm } from './forms/productForm';
+import { Event } from '@/types';
 
 export const CartClient = () => {
   const { events, removeItem } = useEventCart();
@@ -28,13 +28,13 @@ export const CartClient = () => {
         {events.length > 0 ? (
           <>
             <div className="flex flex-col justify-start items-start w-full gap-y-12 border-b border-[#999999] pb-10">
-              {events?.map((event: UpcomingEvent) => {
-                const currentLocation = event.location.map(location => location.street);
-                const totalPrice = calculateTicketCost(event.forAdults, event.forChildren, event.price);
+              {events?.map((event: Event) => {
+                const currentLocation = event.location_address
+                const totalPrice = calculateTicketCost(event.forAdults, event.forChildren, event.adult_price, event.child_price);
                 return (
-                  <div key={event.id} className="w-full h-full flex justify-start items-start mr-auto">
+                  <div key={event.event_id} className="w-full h-full flex justify-start items-start mr-auto">
                     <div className="mr-16">
-                      <Image src={event.src} alt="image" width={200} height={200} />
+                      <Image src={event.images[0].url} alt="image" width={200} height={200} />
                     </div>
                     <div className="flex flex-col justify-center mr-16">
                       <Title className="text-2xl text-black font-oswaldBold uppercase">Назва події</Title>
@@ -46,8 +46,8 @@ export const CartClient = () => {
                     </div>
                     <div className="mr-16">
                       <Title className="text-2xl text-black font-oswaldBold uppercase">Ціна</Title>
-                      <Typography className="text-lg text-black font-SFPSemibold">Для дорослих : {event.price[0]}</Typography>
-                      <Typography className="text-lg text-black font-SFPSemibold">Для дітей : {event.price[1]}</Typography>
+                      <Typography className="text-lg text-black font-SFPSemibold">Для дорослих : {event.adult_price}</Typography>
+                      <Typography className="text-lg text-black font-SFPSemibold">Для дітей : {event.child_price}</Typography>
                     </div>
                     <div className="mr-16">
                       <Title className="text-2xl text-black font-oswaldBold uppercase">кількість</Title>
@@ -64,7 +64,7 @@ export const CartClient = () => {
                     </div>
                     <div className="flex justify-center items-center h-full">
                       <Button
-                        onClick={() => removeItem(event.id.toString())}
+                        onClick={() => removeItem(event.event_id.toString())}
                         variant="outline"
                         className="bg-transparent hover:bg-transparent hover:text-black hover:border hover:border-black border-transparent px-2 hover:"
                       >

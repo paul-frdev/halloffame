@@ -41,7 +41,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
 
   useEffect(() => {
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(event.location)}&key=${apiKey}`;
+    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(event.location_address)}&key=${apiKey}`;
 
     fetch(geocodingUrl)
       .then((response) => response.json())
@@ -52,7 +52,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
       .catch((error) => {
         console.error('Error fetching location coordinates:', error);
       });
-  }, [event.location]);
+  }, [event.location_address]);
 
 
   useEffect(() => {
@@ -106,7 +106,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
             </div>
             <div className="mb-12">
               <Typography className="text-2xl font-oswaldBold mb-4">Локація / Адреса:</Typography>
-              <p className="text-2xl font-SFPRegular mb-4 pb-4 border-b w-[310px] border-black">{event.location}</p>
+              <p className="text-2xl font-SFPRegular mb-4 pb-4 border-b w-[310px] border-black">{event.location_address}</p>
             </div>
             <div className="mb-4">
               <Typography className="text-2xl font-oswaldBold mb-4">Ціна:</Typography>
@@ -129,7 +129,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
                 Замовити квитки
               </Button>
             </div>
-            <Map headline='Дізнатися маршут до події' title={event.location} center={locationCoordinates} containerStyle={{height: '300px', width: '100%'}} />
+            <Map headline='Дізнатися маршут до події' title={event.location_address} center={locationCoordinates} containerStyle={{height: '300px', width: '100%'}} />
           </div>
           {/* description */}
           <div className="w-full ml-8">
@@ -147,7 +147,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
             <Typography className="text-2xl font-SFPRegular leading-[33.6px] pb-12 w-full border-b border-black">{eventDescription}</Typography>
             <div className="flex justify-between items-center w-full max-w-[60%] py-12">
               <Typography className="text-2xl font-SFPBold">Ціна :</Typography>
-              <Typography className="text-lg font-SFPRegular">Для взрослых - {event.adult_price} грн.</Typography>
+              <Typography className="text-lg font-SFPRegular">Для дорослих - {event.adult_price} грн.</Typography>
               <Typography className="text-lg font-SFPRegular">Для детей - {event.child_price} грн.</Typography>
             </div>
             <div className="py-12 border-t border-black flex justify-between w-full items-center">

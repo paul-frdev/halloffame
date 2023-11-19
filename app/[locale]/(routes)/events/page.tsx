@@ -7,6 +7,9 @@ const EventsPage = async () => {
 
   const publishedEvents = await getPublishedEvents();
 
+  console.log('publishedEvents', publishedEvents);
+  
+
   return <EventsClient events={publishedEvents} />;
 };
 

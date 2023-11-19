@@ -82,7 +82,7 @@ export function SelectForm({
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className={cn(`border-none focus:ring-0`)}>
-                    {event?.event_timeslots.map(item => (
+                    {event?.options.map(item => (
                       <SelectItem key={item} value={item}>
                         {item}
                       </SelectItem>

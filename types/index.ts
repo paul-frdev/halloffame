@@ -5,15 +5,17 @@ export type Event = {
   title: string;
   descriptiontext: string;
   event_date: string;
-  event_timeslots: string[],
+  options: string[],
   images: {url: string; public_id: string}[];
-  location: string;
+  location_address: string;
   adult_price: string;
   child_price: string;
   adult_quantity_tickets: number;
   children_quantity_tickets: number;
   ticket_images?:{url: string; public_id: string} | {url: string; public_id: string}[];
-
+  selectedTime?: string;
+  forAdults?: number;
+  forChildren?: number;
 };
 
 export type Subscribe = {

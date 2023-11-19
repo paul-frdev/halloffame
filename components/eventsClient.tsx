@@ -1,6 +1,5 @@
 "use client";
 
-import axios from 'axios';
 import { Breadcrumbs } from "./breadcrumbs";
 import { EventsList } from "./eventsList";
 import { CalendarForm } from "./forms/calendarForm";
@@ -10,7 +9,7 @@ import { Title } from "./ui/title";
 import { fadeIn } from "@/constants";
 import { Event } from "@/types";
 import { motion } from "framer-motion";
-import React, { useEffect } from "react";
+import React from "react";
 
 interface EventsClientProps {
   events: Event[];
@@ -20,6 +19,9 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
     { label: "Головна", url: "/" },
     { label: "Події", url: `/events` },
   ];
+
+  console.log('events', events);
+  
 
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="relative bg-white">

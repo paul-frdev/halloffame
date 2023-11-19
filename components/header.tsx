@@ -104,7 +104,7 @@ export const Header = () => {
         <Container className={cn(`flex justify-between w-full items-end lDesktop:items-end translate-all duration-300 h-[80px] lDesktop:h-auto`)}>
           <Link href="/" className={cn(` [@media(max-width:340px)]:mr-[15px] mr-[40px] desktop:mr-[90px] pt-[10px]`, isFixed ? "mt-0" : "lDesktop:-mt-[12px]")}>
             <span className="logo-container">
-              <Logo width={!isBigScreen ? 90 : 150} height={!isBigScreen ? 90 : 150} />
+              <Logo width={isBigScreen ? 150 : 90} height={isBigScreen ? 150 : 90} />
             </span>
           </Link>
           <div className={cn(`flex flex-col justify-end items-start w-full ml-auto transition-all duration-300`, isFixed ? "gap-y-0" : " lDesktop:gap-y-[40px]")}>
