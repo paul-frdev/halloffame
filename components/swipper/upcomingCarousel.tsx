@@ -81,7 +81,7 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
         loop={true}
       >
         {data?.map(event => (
-          <SwiperSlide key={event.id}>
+          <SwiperSlide key={event.event_id}>
             <UpcomingCart event={event} />
           </SwiperSlide>
         ))}

@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 
 type MapProps = {
@@ -33,7 +34,6 @@ const Map: React.FC<MapProps> = ({ handleGetDirections, isFooter = false, zoom =
   const router = useRouter();
 
 
-
   const isAboutUs = path === `/${locale}/contacts`
 
   const OPTIONS = {
@@ -41,7 +41,24 @@ const Map: React.FC<MapProps> = ({ handleGetDirections, isFooter = false, zoom =
     maxZoom: 18,
   }
 
+  const onLoad = React.useCallback(function callback(map: any) {
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map: any) {
+    setMap(null)
+  }, [])
+
   const displayDirections = (origin: { lat: number; lng: number }, destination: { lat: number; lng: number }) => {
+
+    if (!window.google || !window.google.maps || !window.google.maps.DirectionsService) {
+      toast.error("Google Maps API or DirectionsService not available");
+      return;
+    }
+
     const directionsService = new window.google.maps.DirectionsService();
 
     directionsService.route(
@@ -95,19 +112,7 @@ const Map: React.FC<MapProps> = ({ handleGetDirections, isFooter = false, zoom =
 
   useEffect(() => {
     getDirections()
-  }, [handleGetDirections])
-
-
-  const onLoad = React.useCallback(function callback(map: any) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map: any) {
-    setMap(null)
-  }, [])
+  }, [isLoaded])
 
 
   return isLoaded ? (

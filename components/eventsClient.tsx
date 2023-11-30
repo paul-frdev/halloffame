@@ -20,8 +20,6 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
     { label: "Події", url: `/events` },
   ];
 
-  console.log('events', events);
-  
 
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="relative bg-white">

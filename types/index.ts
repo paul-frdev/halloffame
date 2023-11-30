@@ -97,3 +97,11 @@ export type Testimonial = {
   author: string;
   dignity: string;
 }
+
+
+export type Contact = {
+  contacts_title: string, 
+  contacts_address: string,
+   contacts_email: string, 
+   contacts_phone: string;
+}

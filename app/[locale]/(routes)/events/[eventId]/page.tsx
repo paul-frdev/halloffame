@@ -1,6 +1,6 @@
 import eventList from "@/app/events.json";
 import { EventItem } from "@/components/eventItem";
-import { getPublishedEventId } from '@/requests/events';
+import { getPublishedEventId } from '@/actions/events';
 import React from "react";
 
 export async function generateStaticParams() {

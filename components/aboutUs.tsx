@@ -8,7 +8,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-export const AboutUs = () => {
+export type AboutUsProps = {
+  about_title?: string;
+  about_description: string
+}
+export const AboutUs: React.FC<AboutUsProps> = ({ about_description }) => {
   const breadcrumbs = [
     { label: "Головна", url: "/" },
     { label: "Про нас", url: "/about" },
@@ -22,28 +26,7 @@ export const AboutUs = () => {
       <Container className=" justify-start items-start flex-col pt-12">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <div className="mt-12 w-full">
-          <Typography className="text-[20px] tracking-wider leading-relaxed mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim convallis molestie gravida fermentum facilisi luctus nam dui. Massa etiam
-            lorem fames morbi id morbi in. Est adipiscing at vitae mattis. Iaculis justo ullamcorper risus mi, egestas pharetra cras odio amet. Vitae
-            ut diam amet diam. Amet tristique adipiscing tincidunt est mattis fermentum ornare accumsan, massa. Et gravida lorem fames leo. Hendrerit
-            phasellus arcu odio sit turpis. Vitae, lacus, vestibulum pellentesque odio id cras.
-          </Typography>
-          <Typography className="text-[20px] tracking-wider leading-relaxed mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim convallis molestie gravida fermentum facilisi luctus nam dui. Massa etiam
-            lorem fames morbi id morbi in. Est adipiscing at vitae mattis. Iaculis justo ullamcorper risus mi, egestas pharetra cras odio amet. Vitae
-            ut diam amet diam. Amet tristique adipiscing tincidunt est mattis fermentum ornare accumsan, massa. Et gravida lorem fames leo. Hendrerit
-            phasellus arcu odio sit turpis. Vitae, lacus, vestibulum pellentesque odio id cras. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Enim convallis molestie gravida fermentum facilisi luctus nam dui. Massa etiam lorem fames morbi id morbi in. Est adipiscing at
-            vitae mattis. Iaculis justo ullamcorper risus mi, egestas pharetra cras odio amet. Vitae ut diam amet diam.
-          </Typography>
-          <Typography className="text-[20px] tracking-wider leading-relaxed mb-8">
-            Amet tristique adipiscing tincidunt est mattis fermentum ornare accumsan, massa. Et gravida lorem fames leo. Hendrerit phasellus arcu odio
-            sit turpis. Vitae, lacus, vestibulum pellentesque odio id cras. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim convallis
-            molestie gravida fermentum facilisi luctus nam dui. Massa etiam lorem fames morbi id morbi in. Est adipiscing at vitae mattis. Iaculis
-            justo ullamcorper risus mi, egestas pharetra cras odio amet. Vitae ut diam amet diam. Amet tristique adipiscing tincidunt est mattis
-            fermentum ornare accumsan, massa. Et gravida lorem fames leo. Hendrerit phasellus arcu odio sit turpis. Vitae, lacus, vestibulum
-            pellentesque odio id cras.
-          </Typography>
+          <div className="text-[20px] tracking-wider leading-relaxed mb-8" dangerouslySetInnerHTML={{ __html: about_description }} />
         </div>
       </Container>
     </motion.section>

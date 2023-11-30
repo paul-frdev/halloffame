@@ -140,75 +140,32 @@ export const shopSlides = [
 
 export const upcomingEvents = [
   {
-    id: 1,
+    event_id: 1,
     src: '/images/event-image.png',
     title: 'Заголовок',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
-    id: 2,
+    event_id: 2,
     src: '/images/event-second.png',
     title: 'Заголовок',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
-    id: 3,
+    event_id: 3,
     src: '/images/event-image.png',
     title: 'Заголовок',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
-    id: 4,
+    event_id: 4,
     src: '/images/event-second.png',
     title: 'Заголовок',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];
 
-export const eventsList = [
-  {
-    id: 1,
-    src: '/images/event.png',
-    title: 'Заголовок',
-    date: new Date(),
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    id: 2,
-    src: '/images/event.png',
-    title: 'Заголовок',
-    date: new Date(),
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    id: 3,
-    src: '/images/event.png',
-    title: 'Заголовок',
-    date: new Date(),
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    id: 4,
-    src: '/images/event.png',
-    title: 'Заголовок',
-    date: new Date(),
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    id: 5,
-    src: '/images/event.png',
-    title: 'Заголовок',
-    date: new Date(),
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    id: 6,
-    src: '/images/event.png',
-    title: 'Заголовок',
-    date: new Date(),
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-];
+
 
 export const monthNames = ['Січ', 'Лют', 'Бер', 'Кві', 'Тра', 'Чер', 'Лип', 'Сер', 'Вер', 'Жов', 'Лис', 'Гру'];
 

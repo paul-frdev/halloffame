@@ -1,8 +1,10 @@
+import { getRefund } from '@/actions/content';
 import { PaymentBackClient } from "@/components/paymentBackClient";
 import React from "react";
 
-const PaymentBackPage = () => {
-  return <PaymentBackClient />;
+const PaymentBackPage = async () => {
+  const getRefundBack = await getRefund()
+  return <PaymentBackClient refund={getRefundBack} />;
 };
 
 export default PaymentBackPage;
