@@ -1,14 +1,14 @@
 import { Button } from "../ui/button";
 import { UpcomingCart } from "../ui/upcomingCart";
+import "./styles.css";
 import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
 import { Event } from "@/types";
 import { useState } from "react";
 import SwiperCore from "swiper";
-import { Navigation } from 'swiper/modules'
 import "swiper/css";
-import "./styles.css"
 import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 SwiperCore.use([Navigation]);
@@ -72,7 +72,7 @@ export const UpcomingCarousel: React.FC<UpcomingCarouselProps> = ({ data }) => {
           1200: {
             slidesPerView: 2,
             spaceBetween: 50,
-            slidesOffsetBefore: 50
+            slidesOffsetBefore: 50,
           },
         }}
         speed={500}

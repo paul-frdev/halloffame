@@ -1,7 +1,7 @@
 export type Language = 'en' | 'uk' | 'sp';
 
 export type Event = {
-  event_id: number;
+  event_id: string;
   title: string;
   descriptiontext: string;
   event_date: string;
@@ -89,14 +89,28 @@ export type Media = {
   src: string;
 }
 
+export type ImageUrl = {
+  public_id: string;
+    url: string;
+}
+
+export type BaseResponse = {
+  id: string;
+  title: string;
+  description?: string;
+}
 
 export type Testimonial = {
   id: number;
-  src: string;
-  description: string;
+  image: ImageUrl[];
+  desriptiontext: string;
   author: string;
   dignity: string;
 }
+
+export type SlidesProps  = {
+  image: ImageUrl[];
+} & BaseResponse
 
 
 export type Contact = {
@@ -105,3 +119,8 @@ export type Contact = {
    contacts_email: string, 
    contacts_phone: string;
 }
+
+export type Article = {
+ image: ImageUrl[];
+ publish_date: string;
+} & BaseResponse

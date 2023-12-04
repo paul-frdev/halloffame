@@ -15,7 +15,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 .custom-prev-arrow,
 .custom-next-arrow {
   cursor: pointer;
@@ -84,32 +83,97 @@ main {
   transform: scale(1.5);
 }
 
+h1 {
+  font-size: 2em !important;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 1.7em !important;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 1.5em !important;
+  margin-bottom: 16px;
+}
+
+h4 {
+  font-size: 1em !important;
+  margin-bottom: 16px;
+}
+
+h5 {
+  font-size: 0.83em !important;
+  margin-bottom: 16px;
+}
+
+h6 {
+  font-size: 0.67em !important;
+  margin-bottom: 16px;
+}
+
+h1 span {
+  font-size: inherit !important;
+}
+
+h2 span {
+  font-size: inherit !important;
+}
+
+h3 span {
+  font-size: inherit !important;
+}
+
+h4 span {
+  font-size: inherit !important;
+}
+
+h5 span {
+  font-size: inherit !important;
+}
+
+h6 span {
+  font-size: inherit !important;
+}
+p {
+  margin-bottom: 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p span {
+  font-family: SFProDisplayRegular !important;
+  letter-spacing: 0.1px;
+}
+
 @layer base {
   .carousel-slider {
     width: 1300px;
     height: 480px;
   }
   @font-face {
-    font-family: 'SFProDisplayRegular';
-    src: url('../fonts/SFProDisplay-Regular.ttf') format('ttf');
+    font-family: "SFProDisplayRegular";
+    src: url("../fonts/SFProDisplay-Regular.ttf") format("ttf");
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
-    font-family: 'SFProDisplaySemibold';
-    src: url('../fonts/SFProDisplay-Semibold.ttf') format('ttf');
+    font-family: "SFProDisplaySemibold";
+    src: url("../fonts/SFProDisplay-Semibold.ttf") format("ttf");
     font-weight: 500;
     font-style: normal;
   }
   @font-face {
-    font-family: 'SFProDisplayBold';
-    src: url('../fonts/SFProDisplay-Bold.ttf') format('ttf');
+    font-family: "SFProDisplayBold";
+    src: url("../fonts/SFProDisplay-Bold.ttf") format("ttf");
     font-weight: 700;
     font-style: normal;
   }
   @font-face {
-    font-family: 'OswaldBold';
-    src: url('../fonts/Oswald-Bold.ttf') format('ttf');
+    font-family: "OswaldBold";
+    src: url("../fonts/Oswald-Bold.ttf") format("ttf");
     font-weight: 700;
     font-style: normal;
   }

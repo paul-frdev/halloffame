@@ -6,16 +6,16 @@ import { Search } from "./search";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { fadeIn } from "@/constants";
-import { Media } from "@/types";
+import { Article } from "@/types";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 interface MediaListProps {
-  mediaList: Media[];
+  mediaList: Article[];
 }
 export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<Media[]>([]);
+  const [searchResults, setSearchResults] = useState<Article[]>([]);
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -25,7 +25,7 @@ export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
 
   const updateSearchResults = (query: string) => {
     const filteredResults = mediaList.filter(
-      media => media.title.toLowerCase().includes(query.toLowerCase()) || media.description.toLowerCase().includes(query.toLowerCase())
+      media => media.title.toLowerCase().includes(query.toLowerCase()) || media.description?.toLowerCase().includes(query.toLowerCase())
     );
 
     setSearchResults(filteredResults);

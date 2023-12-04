@@ -14,7 +14,7 @@ interface Breadcrumb {
 interface BreadcrumbsProps {
   breadcrumbs: Breadcrumb[];
   className?: string;
-  id?: number;
+  id?: string | number;
   isWhite?: boolean;
 }
 
@@ -31,7 +31,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className
             {index > 0 && <PageRight />}
             <Link
               href={breadcrumb.url}
-              className={cn(`pb-1 border-b-2 mx-6 text-2xl text-[#808080] border-[#808080]`, isActive ? "border-black text-black" : "")}
+              className={cn(
+                `pb-1 border-b-2 first:ml-0 mx-4 text-lg smallTablet:text-2xl text-[#808080] border-[#808080]`,
+                isActive ? "border-black text-black" : ""
+              )}
             >
               {`${breadcrumb.label}`}
             </Link>

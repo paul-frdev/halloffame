@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const ProductForm = () => {
-  return (
-    <div>ProductForm</div>
-  )
-}
+  return <div>ProductForm</div>;
+};

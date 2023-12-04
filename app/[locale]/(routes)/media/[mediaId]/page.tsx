@@ -1,3 +1,4 @@
+import { getMediaArticleId } from "@/actions/articles";
 import mediaList from "@/app/media.json";
 import { MediaItem } from "@/components/mediaItem";
 import React from "react";
@@ -8,9 +9,10 @@ export async function generateStaticParams() {
   }));
 }
 
-const MediaItemPage = ({ params: { mediaId } }: { params: { mediaId: string } }) => {
-  const foundedMediaWithId = mediaList.find(elem => elem.id.toString() === mediaId);
-  return <MediaItem media={foundedMediaWithId} />;
+const MediaItemPage = async ({ params: { mediaId } }: { params: { mediaId: string } }) => {
+  const foundedMediaWithId = await getMediaArticleId(mediaId);
+
+  return <MediaItem article={foundedMediaWithId} />;
 };
 
 export default MediaItemPage;

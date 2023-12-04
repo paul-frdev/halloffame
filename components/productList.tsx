@@ -7,15 +7,15 @@ import { Search } from "./search";
 import { Container } from "./ui/container";
 import { Slider } from "./ui/slider";
 import { Title } from "./ui/title";
-import { shopSlides } from "@/constants";
-import { Product } from "@/types";
+import { Product, SlidesProps } from "@/types";
 import React, { useState } from "react";
 
 interface ProductListProps {
   products: Product[];
   title?: string;
+  slides: SlidesProps[];
 }
-export const ProductList: React.FC<ProductListProps> = ({ products, title }) => {
+export const ProductList: React.FC<ProductListProps> = ({ products, slides }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<Product[]>([]);
 
@@ -39,7 +39,7 @@ export const ProductList: React.FC<ProductListProps> = ({ products, title }) => 
   ];
   return (
     <>
-      <Slider slides={shopSlides} height={660} />
+      <Slider slides={slides} />
       <Container className=" flex-col justify-start items-start text-black py-8">
         <div className="flex w-full justify-between items-center mt-4">
           <Breadcrumbs breadcrumbs={breadcrumbs} />

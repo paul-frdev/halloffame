@@ -2,7 +2,6 @@
 
 import { Breadcrumbs } from "./breadcrumbs";
 import { Container } from "./ui/container";
-import { Typography } from "./ui/typography";
 import { fadeIn } from "@/constants";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -10,8 +9,8 @@ import React from "react";
 
 export type AboutUsProps = {
   about_title?: string;
-  about_description: string
-}
+  about_description: string;
+};
 export const AboutUs: React.FC<AboutUsProps> = ({ about_description }) => {
   const breadcrumbs = [
     { label: "Головна", url: "/" },
@@ -20,7 +19,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ about_description }) => {
 
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white text-black flex flex-col justify-start pb-24">
-      <div className="w-full h-[660px]">
+      <div className="w-full">
         <Image src="/images/about.png" alt="image" width={2100} height={660} />
       </div>
       <Container className=" justify-start items-start flex-col pt-12">

@@ -1,5 +1,7 @@
 "use client";
 
+import { EventForm } from "./forms/eventForm";
+import { ProductForm } from "./forms/productForm";
 import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { CountButtons } from "./ui/countButtons";
@@ -11,12 +13,10 @@ import useEventCart from "@/hooks/useEventCart";
 import useProductCart from "@/hooks/useProductCart";
 import { Close } from "@/icons/close";
 import { calculateTicketCost } from "@/lib/utils";
+import { Event } from "@/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
-import { EventForm } from './forms/eventForm';
-import { ProductForm } from './forms/productForm';
-import { Event } from '@/types';
 
 export const CartClient = () => {
   const { events, removeItem } = useEventCart();
@@ -29,7 +29,7 @@ export const CartClient = () => {
           <>
             <div className="flex flex-col justify-start items-start w-full gap-y-12 border-b border-[#999999] pb-10">
               {events?.map((event: Event) => {
-                const currentLocation = event.location_address
+                const currentLocation = event.location_address;
                 const totalPrice = calculateTicketCost(event.forAdults, event.forChildren, event.adult_price, event.child_price);
                 return (
                   <div key={event.event_id} className="w-full h-full flex justify-start items-start mr-auto">
@@ -51,8 +51,12 @@ export const CartClient = () => {
                     </div>
                     <div className="mr-16">
                       <Title className="text-2xl text-black font-oswaldBold uppercase">кількість</Title>
-                      <Typography className="text-lg text-black font-SFPSemibold">Для дорослих : {event.forAdults ? event.forAdults : "-"}</Typography>
-                      <Typography className="text-lg text-black font-SFPSemibold">Для дітей : {event.forChildren ? event.forChildren : "-"}</Typography>
+                      <Typography className="text-lg text-black font-SFPSemibold">
+                        Для дорослих : {event.forAdults ? event.forAdults : "-"}
+                      </Typography>
+                      <Typography className="text-lg text-black font-SFPSemibold">
+                        Для дітей : {event.forChildren ? event.forChildren : "-"}
+                      </Typography>
                     </div>
                     <div className="mr-16">
                       <Title className="text-2xl text-black font-oswaldBold uppercase">Час</Title>

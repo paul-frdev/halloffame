@@ -20,7 +20,6 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
     { label: "Події", url: `/events` },
   ];
 
-
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="relative bg-white">
       <Container className="flex-col justify-start items-start mb-12">
@@ -29,7 +28,7 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
           <div>
             <Title className="text-3xl mobile:text-5xl tablet:text-6xl text-black font-oswaldBold uppercase">Майбутні події</Title>
           </div>
-          <div className='mt-4 tablet:mt-0'>
+          <div className="mt-4 w-full tablet:mt-0">
             <CalendarForm />
           </div>
         </div>

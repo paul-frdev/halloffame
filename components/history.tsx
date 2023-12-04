@@ -4,12 +4,12 @@ import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
 import { fadeIn } from "@/constants";
 import { ArrowRight } from "@/icons/arrowRight";
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from "react-responsive";
 
 export const History = () => {
   const [hoveredButton, setHoveredButton] = useState(null);
@@ -23,7 +23,7 @@ export const History = () => {
   const animationTB = useAnimation();
   const pathAnimation = useAnimation();
 
-  const isMob = useMediaQuery({query: '(max-width: 416px)'})
+  const isMob = useMediaQuery({ query: "(max-width: 416px)" });
 
   useEffect(() => {
     if (inView) {
@@ -108,7 +108,10 @@ export const History = () => {
             ІСТОРІЯ УКРАЇНСЬКОГО БОКСУ
             <br />В ОДНОМУ МІСЦІ...
           </Title>
-          <Typography animate={animationLR} className="w-full text-justify smallTablet:text-left max-w-full smallTablet:max-w-[70%] isShowAllElems:max-w-[80%] text-2xl font-SFPRegular mb-12">
+          <Typography
+            animate={animationLR}
+            className="w-full text-justify smallTablet:text-left max-w-full smallTablet:max-w-[70%] isShowAllElems:max-w-[80%] text-2xl font-SFPRegular mb-12"
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique sed sed ullamcorper tellus risus tortor. Nisi, vitae sit dictumst
             tincidunt. Arcu eu massa ut arcu praesent arcu duis amet. Nunc sed et et, ipsum. Quam ornare viverra tincidunt etiam nisi, ullamcorper
             quis morbi malesuada. Diam lectus aliquam amet, justo quam orci, et consequat. Phasellus elementum sodales lacus in vivamus curabitur
@@ -124,7 +127,10 @@ export const History = () => {
               <Button
                 key={index}
                 onClick={() => route.push(button.route)}
-                className={cn(`flex justify-center items-center gap-x-4 text-[16px] lDesktop:text-2xl leading-[33.6px]`, index === 1 && isMob ? 'hidden' : 'flex')}
+                className={cn(
+                  `flex justify-center items-center gap-x-4 text-[16px] lDesktop:text-2xl leading-[33.6px]`,
+                  index === 1 && isMob ? "hidden" : "flex"
+                )}
                 variant={button.variant as any}
                 size="md"
                 onMouseEnter={() => handleMouseEnter(index)}

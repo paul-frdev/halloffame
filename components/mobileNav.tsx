@@ -1,14 +1,13 @@
-import { mainNav } from '@/constants';
-import { cn } from '@/lib/utils';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { useParams, usePathname } from 'next/navigation';
-import React from 'react'
-import { MobileMenu } from './mobileMenu';
-import { Typography } from './ui/typography';
-import { CartWidget } from './ui/cartWidget';
-import { motion, MotionConfig } from "framer-motion";
-
+import { MobileMenu } from "./mobileMenu";
+import { CartWidget } from "./ui/cartWidget";
+import { Typography } from "./ui/typography";
+import { mainNav } from "@/constants";
+import { cn } from "@/lib/utils";
+import { MotionConfig, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
+import React from "react";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -50,7 +49,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
           },
         }}
         initial="hide"
-        animate={isOpen ? "show" : 'hide'}
+        animate={isOpen ? "show" : "hide"}
         exit="hide"
         className={cn(
           `w-full z-20  absolute top-[95px] bottom-0 right-0 left-0 flex flex-col justify-start items-center  bg-basic transition-all duration-300`
@@ -77,11 +76,15 @@ export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
           })}
         </ul>
         <MobileMenu isOpen={isOpen} />
-        <Link href='/cart' onClick={() => setIsOpen?.(false)} className='flex tablet:hidden lDesktop:hidden absolute top-[40px] right-[36px] flex justify-start items-start gap-x-[17px]'>
+        <Link
+          href="/cart"
+          onClick={() => setIsOpen?.(false)}
+          className="flex tablet:hidden lDesktop:hidden absolute top-[40px] right-[36px] flex justify-start items-start gap-x-[17px]"
+        >
           <Typography className=" inline-block">{tr("Кошик")}</Typography>
           <CartWidget />
         </Link>
       </motion.div>
     </MotionConfig>
-  )
-}
+  );
+};

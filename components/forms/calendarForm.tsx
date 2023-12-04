@@ -17,7 +17,7 @@ export function CalendarForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
         <FormField
           control={form.control}
           name="dob"
@@ -29,7 +29,7 @@ export function CalendarForm() {
                     <Button
                       variant={"outline"}
                       className={cn(
-                        "w-[340px] pl-3 text-left border border-[#64748b] h-[50px] font-normal hover:bg-transparent hover:text-black",
+                        "max-w-[340px] w-full pl-3 text-left border border-[#64748b] h-[50px] font-normal hover:bg-transparent hover:text-black",
                         !field.value && "text-muted-foreground"
                       )}
                     >

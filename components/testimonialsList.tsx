@@ -28,7 +28,7 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
   const updateSearchResults = (query: string) => {
     const filteredResults = testimonials.filter(
       testimonial =>
-        testimonial.author.toLowerCase().includes(query.toLowerCase()) || testimonial.description.toLowerCase().includes(query.toLowerCase())
+        testimonial.author.toLowerCase().includes(query.toLowerCase()) || testimonial.desriptiontext.toLowerCase().includes(query.toLowerCase())
     );
 
     setSearchResults(filteredResults);

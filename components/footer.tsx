@@ -1,6 +1,6 @@
 "use client";
 
-import { Status } from '@googlemaps/react-wrapper';
+import Map from "./map/map";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
@@ -8,19 +8,15 @@ import { footerNav } from "@/constants";
 import { Logo } from "@/icons/logo";
 import Link from "next/link";
 import React from "react";
-import Map from './map/map';
+
 // import Map from './map/googleMap';
 
-
 export const Footer = () => {
-
-  const getDirections = () => {
-    
-  }
+  const getDirections = () => {};
   return (
     <footer className=" h-auto bg-gray">
       <Container className="justify-between items-start flex-wrap desktop:flex-nowrap  py-12">
-        <div className='order-4 tablet:order-[0]'>
+        <div className="order-4 tablet:order-[0]">
           <Link href="/">
             <Logo width={283} height={282} />
           </Link>
@@ -61,7 +57,7 @@ export const Footer = () => {
           <Title onClick={getDirections} className="text-[24px] cursor-pointer leading-[33.6px] font-SFPRegular text-left mb-8">
             <span className="pb-1 border-b-[2px] border-white">Як дістатися до нас?</span>
           </Title>
-          <Map zoom={15} handleGetDirections={getDirections} isFooter containerStyle={{ height: '200px' }} />
+          <Map zoom={15} handleGetDirections={getDirections} isFooter containerStyle={{ height: "200px" }} />
         </div>
       </Container>
     </footer>

@@ -1,28 +1,22 @@
 "use client";
 
-import SlideImage from "/public//images/slider.png";
+import CustomImage from "./customImage";
 import { cn } from "@/lib/utils";
-import { Slider as SliderType } from "@/types";
+import { SlidesProps } from "@/types";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import React from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface SliderProps {
-  slides?: SliderType[];
+  slides?: SlidesProps[];
   height?: number;
 }
 
 export const Slider: React.FC<SliderProps> = ({ slides, height = 930 }) => {
   const t = useTranslations("slider");
-
 
   const pagination = {
     clickable: true,
@@ -32,23 +26,17 @@ export const Slider: React.FC<SliderProps> = ({ slides, height = 930 }) => {
   };
 
   return (
-    <Swiper
-      pagination={pagination}
-      modules={[Pagination]}
-      autoplay
-      loop
-      className="mySwiper"
-    >
-      {slides?.map((slide: any) => (
+    <Swiper pagination={pagination} modules={[Pagination]} autoplay loop className="mySwiper">
+      {slides?.map((slide: SlidesProps) => (
         <SwiperSlide key={slide.id} className="relative">
-          <Image src={SlideImage} alt={slide.title} height={height} style={{ height: height }} />
+          <CustomImage photoUrl={slide.image?.[0].url} />
           <span
             className={cn(
               ` absolute text-[45px] tablet:text-[64px] font-SFPSemibold leading-normal top-[40%] left-0`,
               height < 930 ? " inline-block top-[30%] w-[95%] mx-auto" : "top-[40%] w-full"
             )}
           >
-            {t(slide.title)}
+            {slide.title}
           </span>
         </SwiperSlide>
       ))}

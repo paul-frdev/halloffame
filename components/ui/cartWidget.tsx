@@ -1,11 +1,11 @@
 "use client";
 
+import ClientOnly from "./clientOnly";
 import useEventCart from "@/hooks/useEventCart";
 import useProductCart from "@/hooks/useProductCart";
 import { Basket } from "@/icons/basket";
 import { cn } from "@/lib/utils";
 import React from "react";
-import ClientOnly from './clientOnly';
 
 interface CartWidgetProps {
   width?: number;

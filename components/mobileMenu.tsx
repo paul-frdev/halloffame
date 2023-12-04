@@ -1,16 +1,15 @@
-import React from 'react'
-import { Container } from './ui/container';
-import Link from 'next/link';
-import { secondNav } from '@/constants';
-import { useTranslations } from 'next-intl';
-import { useParams, usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { socialMediaData } from './header';
-import { LanguageSwitcher } from './ui/languageSwitcher';
-import { CartWidget } from './ui/cartWidget';
-import { Typography } from './ui/typography';
-import { motion, MotionConfig } from "framer-motion";
-
+import { socialMediaData } from "./header";
+import { CartWidget } from "./ui/cartWidget";
+import { Container } from "./ui/container";
+import { LanguageSwitcher } from "./ui/languageSwitcher";
+import { Typography } from "./ui/typography";
+import { secondNav } from "@/constants";
+import { cn } from "@/lib/utils";
+import { MotionConfig, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
+import React from "react";
 
 interface MobileMenuProps {
   isOpen?: boolean;
@@ -47,10 +46,16 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsExpanded })
           },
         }}
         initial="hide"
-        animate={isOpen ? "show" : 'hide'}
+        animate={isOpen ? "show" : "hide"}
         exit="hide"
-        className={cn(`w-full`)}>
-        <Container className={cn(`flex items-start flex-col justify-start text-white font-oswaldBold bg-basic pt-4 pb-6 relative `, isOpen ? 'visible' : 'hidden')}>
+        className={cn(`w-full`)}
+      >
+        <Container
+          className={cn(
+            `flex items-start flex-col justify-start text-white font-oswaldBold bg-basic pt-4 pb-6 relative `,
+            isOpen ? "visible" : "hidden"
+          )}
+        >
           <ul className=" relative flex flex-col justify-start items-start text-white w-full  gap-y-[20px] pb-9 pt-4 px-2">
             {secondNav.map(item => {
               const isActive = `/${params.locale}${item.src}` === pathname || `/${params.locale}${item.src}/${params.mediaId}` === pathname;
@@ -69,7 +74,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsExpanded })
               );
             })}
           </ul>
-          <div className='flex w-[350px] justify-between items-start'>
+          <div className="flex w-[350px] justify-between items-start">
             <ul className="flex  justify-start items-start gap-x-[20px] w-full max-w-[328px] pb-4 pl-2">
               {socialMediaData.map(item => (
                 <li className="transition-all duration-300" key={item.id}>
@@ -81,12 +86,16 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsExpanded })
             </ul>
             <LanguageSwitcher />
           </div>
-          <Link href='/cart' onClick={() => setIsExpanded?.(false)} className='hidden tablet:flex lDesktop:hidden absolute top-0 right-0 flex justify-start items-start gap-x-[17px]'>
+          <Link
+            href="/cart"
+            onClick={() => setIsExpanded?.(false)}
+            className="hidden tablet:flex lDesktop:hidden absolute top-0 right-0 flex justify-start items-start gap-x-[17px]"
+          >
             <Typography className="inline-block">{tr("Кошик")}</Typography>
             <CartWidget />
           </Link>
         </Container>
       </motion.div>
     </MotionConfig>
-  )
-}
+  );
+};

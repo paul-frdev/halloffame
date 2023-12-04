@@ -65,23 +65,23 @@ export function SelectForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full w-2/3 space-y-6">
         <FormField
           control={form.control}
           name="time"
           render={({ field }) => (
-            <FormItem className={cn(`border-none`, event ? "w-[310px]" : "w-[600px]")}>
-              <FormLabel className={cn(`text-2xl font-oswaldBold inline-block `, event ? "mb-1" : "mb-4 text-[#acacac] uppercase")}>
+            <FormItem className={cn(`border-none`, event ? " w-full max-w-[650px]" : "w-[600px]")}>
+              <FormLabel className={cn(`text-2xl font-oswaldBold inline-block `, event ? "mb-1 w-full" : "mb-4 text-[#acacac] uppercase")}>
                 {label}
               </FormLabel>
               {event ? (
                 <Select onValueChange={handleValueChange}>
-                  <FormControl className={form.formState.errors.time && "border-b-2 border-error"}>
+                  <FormControl className={form.formState.errors.time && " w-full border-b-2 border-error"}>
                     <SelectTrigger>
                       <SelectValue placeholder={selectedValue} />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent className={cn(`border-none focus:ring-0`)}>
+                  <SelectContent className={cn(`w-full border-none focus:ring-0`)}>
                     {event?.options.map(item => (
                       <SelectItem key={item} value={item}>
                         {item}

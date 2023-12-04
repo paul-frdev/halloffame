@@ -38,7 +38,12 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
     console.log(data);
   };
   return (
-    <motion.section initial="initial" animate="animate" variants={fadeIn} className="h-[294px] pt-8 [@media(max-width:822px)]:pb-12 [@media(max-width:822px)]:h-full w-full bg-black text-white">
+    <motion.section
+      initial="initial"
+      animate="animate"
+      variants={fadeIn}
+      className="h-[294px] pt-8 [@media(max-width:822px)]:pb-12 [@media(max-width:822px)]:h-full w-full bg-black text-white"
+    >
       <Container className=" [@media(max-width:822px)]:flex-col justify-between items-center h-full [@media(max-width:822px)]:gap-y-12 gap-x-8 desktop:gap-x-24">
         <div className=" w-full max-w-[250px] [@media(max-width:822px)]:max-w-full">
           <Title className="w-full !text-4xl font-SFPRegular leading-[33.6px] text-left">Залишайтеся в курсі подій:</Title>
@@ -49,7 +54,7 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem className='mobileMap:mr-4 relative w-full mb-4 mobileMap:mb-0'>
+                <FormItem className="mobileMap:mr-4 relative w-full mb-4 mobileMap:mb-0">
                   <FormLabel>
                     <label
                       className={cn(
@@ -79,7 +84,7 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className='w-full mb-4 mobileMap:mb-0'>
+                <FormItem className="w-full mb-4 mobileMap:mb-0">
                   <FormLabel>
                     <label
                       className={cn(
@@ -121,5 +126,3 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
     </motion.section>
   );
 };
-
-

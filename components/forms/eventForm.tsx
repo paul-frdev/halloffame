@@ -1,11 +1,7 @@
-'use client'
-import React from 'react'
+"use client";
 
+import React from "react";
 
 export const EventForm = () => {
-
-  
-  return (
-    <div>EventForm</div>
-  )
-}
+  return <div>EventForm</div>;
+};

@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "./button";
-import { Arrow } from "@/icons/arrow";
 import React from "react";
+import { FaChevronRight } from "react-icons/fa6";
 
 interface ButtonRightProps {
   quantity?: number;
@@ -16,7 +16,7 @@ export const ButtonRight: React.FC<ButtonRightProps> = ({ quantity, setQuantity 
       variant="outline"
       className="hover:bg-transparent border-none px-2"
     >
-      <Arrow fill={quantity === 5 ? "#999999" : "#000"} />
+      <FaChevronRight fill={quantity === 5 ? "#999999" : "#000"} />
     </Button>
   );
 };
