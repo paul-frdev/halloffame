@@ -18,7 +18,7 @@ import { gsap } from "gsap";
 import debounce from "lodash.debounce";
 import { useTranslations } from "next-intl";
 import Link from "next-intl/link";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { SlMenu } from "react-icons/sl";
@@ -55,7 +55,6 @@ export const Header = () => {
 
   const pathname = usePathname();
   const params = useParams();
-  const route = useRouter();
   const tr = useTranslations("header");
 
   const isBigScreen = useMediaQuery({ query: "(min-width: 1400px)" });
@@ -106,7 +105,7 @@ export const Header = () => {
             className={cn(` [@media(max-width:340px)]:mr-[15px] mr-[40px] desktop:mr-[90px] pt-[10px]`, isFixed ? "mt-0" : "lDesktop:-mt-[12px]")}
           >
             <span className="logo-container">
-              <Logo width={150} height={150} />
+              <Logo />
             </span>
           </Link>
           <div

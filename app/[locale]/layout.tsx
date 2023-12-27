@@ -29,7 +29,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 
   return (
     <html lang={locale}>
-      <body className="font-SFPRegular bg-basic text-white">
+      <body className="font-SFPRegular bg-basic text-white transition-all duration-300 min-h-screen">
         <ToastProvider />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />

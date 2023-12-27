@@ -39,19 +39,19 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialData }) => {
     console.log(data);
   };
   return (
-    <div className="h-[294px] w-full max-w-[750px] bg-transparent text-white">
+    <div className="h-full tablet:h-[294px] w-full max-w-[750px] bg-transparent text-white">
       <Container className=" flex-col justify-start items-start h-full gap-y-14">
         <div className="w-full">
           <Title className="w-full text-2xl font-SFPRegular leading-[33.6px] text-left">КОНТАКТНА ФОРМА</Title>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex flex-col justify-start items-start">
-            <div className="mb-12 relative">
+            <div className="mb-12 relative w-full">
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className='w-full'>
                     <FormLabel>
                       <label
                         className={cn(
@@ -66,7 +66,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialData }) => {
                     <FormControl>
                       <Input
                         className={cn(
-                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[500px] h-[50px]`,
+                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-full max-w-[500px] h-[50px]`,
                           form.formState.errors.name && "border-b-errorInput focus:border-b-errorInput "
                         )}
                         disabled={loading}
@@ -78,7 +78,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialData }) => {
                 )}
               />
             </div>
-            <div className="mb-12 relative">
+            <div className="mb-12 relative w-full">
               <FormField
                 control={form.control}
                 name="email"
@@ -98,7 +98,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialData }) => {
                     <FormControl>
                       <Input
                         className={cn(
-                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[500px] h-[50px]`,
+                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white  w-full max-w-[500px] h-[50px]`,
                           form.formState.errors.email && "border-b-errorInput focus:border-b-errorInput focus-visible:border-b-errorInput"
                         )}
                         disabled={loading}
@@ -110,7 +110,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialData }) => {
                 )}
               />
             </div>
-            <div className="mb-28 relative">
+            <div className="mb-28 relative w-full">
               <FormField
                 control={form.control}
                 name="text"
@@ -130,7 +130,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ initialData }) => {
                     <FormControl>
                       <Textarea
                         className={cn(
-                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white w-[600px] h-[50px]`,
+                          ` bg-transparent text-lg font-SFPRegular tracking-wider leading-relaxed !border-b-[1px] border-t-[0px] border-l-[0px] border-r-[0px] rounded-none border-white  w-full max-w-[600px] h-[50px]`,
                           form.formState.errors.text && "border-b-errorInput focus:border-b-errorInput focus-visible:border-b-errorInput"
                         )}
                         disabled={loading}

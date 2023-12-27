@@ -12,12 +12,11 @@ interface SearchProps {
 }
 export const Search: React.FC<SearchProps> = ({ searchQuery, handleSearchInputChange, className }) => {
   return (
-    <div className="w-full max-w-[800px]">
+    <div className={cn(`w-full max-w-[800px]`, className)}>
       <div className="w-full relative">
         <Input
           className={cn(
             `w-full max-w-[800px] h-[60px] bg-[#E9E9E9] rounded-md placeholder:text-lg text-[20px] leading-snug tracking-wider`,
-            className
           )}
           type="text"
           value={searchQuery}

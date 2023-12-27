@@ -5,7 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils";
 import { Event } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -39,17 +39,26 @@ export function SelectForm({
   setColor,
   setSize,
 }: SelectFormProps) {
+
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
   const { trigger, setValue } = form;
 
+  useEffect(() => {
+    setTrigger?.(() => trigger);
+  }, [trigger, setTrigger]);
+
+
+
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
     onSelectedValue?.(data.time);
   };
 
   const handleValueChange = async (selected: string) => {
+
     setValue("time", selected);
     await trigger("time");
     onSubmit({ time: selected });
@@ -57,15 +66,11 @@ export function SelectForm({
     setSize?.(selected);
   };
 
-  useEffect(() => {
-    setTrigger?.(() => trigger);
-  }, [trigger, setTrigger]);
-
   const label = event ? `Виберіть зручний час:` : productColors ? `Колір` : productSizes ? "Розмір" : "";
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full w-2/3 space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full w-2/3 space-y-6 transition-all duration-300">
         <FormField
           control={form.control}
           name="time"
@@ -81,9 +86,9 @@ export function SelectForm({
                       <SelectValue placeholder={selectedValue} />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent className={cn(`w-full border-none focus:ring-0`)}>
+                  <SelectContent className={cn(`w-full border-none focus:ring-0 transition-all duration-300`)} position='popper'>
                     {event?.options.map(item => (
-                      <SelectItem key={item} value={item}>
+                      <SelectItem key={item} value={item} className='text-[20px] cursor-pointer'>
                         {item}
                       </SelectItem>
                     ))}
@@ -96,9 +101,9 @@ export function SelectForm({
                       <SelectValue placeholder={selectedValue} />
                     </SelectTrigger>
                   </FormControl>
-                  <SelectContent className={cn(`border-none focus:ring-0`)}>
+                  <SelectContent className={cn(`border-none focus:ring-0`)} position='popper'>
                     {productColors?.map(item => (
-                      <SelectItem key={item} value={item}>
+                      <SelectItem key={item} value={item} className='text-[20px] cursor-pointer'>
                         {item}
                       </SelectItem>
                     ))}
@@ -113,7 +118,7 @@ export function SelectForm({
                   </FormControl>
                   <SelectContent className={cn(`border-none focus:ring-0`)}>
                     {productSizes?.map(item => (
-                      <SelectItem key={item} value={item}>
+                      <SelectItem key={item} value={item} className='text-[20px] cursor-pointer'>
                         {item}
                       </SelectItem>
                     ))}

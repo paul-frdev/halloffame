@@ -14,7 +14,7 @@ import React from "react";
 export const Footer = () => {
   const getDirections = () => {};
   return (
-    <footer className=" h-auto bg-gray">
+    <footer className=" h-auto bg-gray sticky top-[100vh]">
       <Container className="justify-between items-start flex-wrap desktop:flex-nowrap  py-12">
         <div className="order-4 tablet:order-[0]">
           <Link href="/">

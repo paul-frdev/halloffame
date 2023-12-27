@@ -1,8 +1,8 @@
-import { CartClient } from "@/components/cartClient";
+import { Cart } from "@/components/cart/cart";
 import React from "react";
 
-const Cart = () => {
-  return <CartClient />;
+const CartPage = () => {
+  return <Cart />;
 };
 
-export default Cart;
+export default CartPage;

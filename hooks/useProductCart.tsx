@@ -11,7 +11,7 @@ interface CartStore {
   removeProduct: (id: string) => void;
   addProductQuantity: (data: Product) => void;
   subtractProductQuantity: (data: Product) => void;
-  removeAll: () => void;
+  removeProducts: () => void;
 }
 
 const useProductCart = create(
@@ -97,7 +97,7 @@ const useProductCart = create(
           toast.success("Product removed");
         }
       },
-      removeAll: () => set({ products: [] }),
+      removeProducts: () => set({ products: [] }),
     }),
     {
       name: "product-storage",

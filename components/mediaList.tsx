@@ -40,13 +40,13 @@ export const MediaList: React.FC<MediaListProps> = ({ mediaList }) => {
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white py-12">
       <Container className="flex-col justify-start items-start">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
-        <div className="flex justify-between items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]">
+        <div className="flex flex-col tablet:flex-row justify-between items-start tablet:items-center w-full my-12 pb-12 border-b-[2px] border-[#788191]">
           <div>
             <Title className="text-[48px] text-black font-oswaldBold uppercase">Новини</Title>
           </div>
-          <Search searchQuery={searchQuery} handleSearchInputChange={handleSearchInputChange} />
+          <Search className='-order-1 mb-8 tablet:mb-0 tablet:order-1' searchQuery={searchQuery} handleSearchInputChange={handleSearchInputChange} />
         </div>
-        <div className="w-full flex justify-center flex-col text-black items-center gap-y-6 last-of-type:mb-12">
+        <div className="w-full flex justify-center flex-col text-black items-center gap-y-12 lDesktop:gap-y-6 last-of-type:mb-12">
           {(searchQuery ? searchResults : mediaList).map(media => (
             <MediaPreviewItem key={media.id} mediaItem={media} />
           ))}

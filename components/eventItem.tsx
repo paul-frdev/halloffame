@@ -111,7 +111,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
                 {`${monthNames[monthIndex]}.${getDay}.${EventDate.getFullYear()}`}
               </Typography>
             </div>
-            <div className="mb-12 w-full max-w-[650px]">
+            <div className="mb-12 w-full max-w-[650px] transition-all duration-300">
               <SelectForm event={event} setTrigger={setSelectFormTrigger} onSelectedValue={setOnSelectedValue} selectedValue={onSelectedValue} />
             </div>
             <div className="mb-12 w-full max-w-[650px]">
@@ -124,7 +124,7 @@ export const EventItem: React.FC<EventItemProps> = ({ event }) => {
             </div>
             <div
               className={cn(
-                `border-b mb-8 pb-8 w-full max-w-[650px] border-black flex flex-col justify-start w-full items-start gap-y-4 transition-all duration-300`,
+                `border-b mb-8 pb-8 w-full max-w-[650px] border-black flex-col justify-start w-full items-start gap-y-4 transition-all duration-300`,
                 totalPrice > 0 ? "flex" : "hidden"
               )}
             >

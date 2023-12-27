@@ -28,7 +28,7 @@ export const EventsClient: React.FC<EventsClientProps> = ({ events }) => {
           <div>
             <Title className="text-3xl mobile:text-5xl tablet:text-6xl text-black font-oswaldBold uppercase">Майбутні події</Title>
           </div>
-          <div className="mt-4 w-full tablet:mt-0">
+          <div className="mt-4 w-full max-w-[250px] tablet:mt-0">
             <CalendarForm />
           </div>
         </div>

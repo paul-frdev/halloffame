@@ -4,6 +4,7 @@ import { Breadcrumbs } from "./breadcrumbs";
 import { Search } from "./search";
 import { TestimonialItem } from "./testimonialItem";
 import { Container } from "./ui/container";
+import CustomImage from './ui/customImage';
 import { Title } from "./ui/title";
 import { UpcomingEvents } from "./upcomingEvents";
 import { fadeIn } from "@/constants";
@@ -39,15 +40,15 @@ export const TestimonialsList: React.FC<TestimonialsListProps> = ({ testimonials
   ];
   return (
     <motion.section initial="initial" animate="animate" variants={fadeIn} className="bg-white">
-      <div className="w-full">
-        <Image src="/images/ring.png" alt="image" width={2000} height={660} />
+      <div className="w-full max-w-[1900px] h-full mb-8">
+        <CustomImage height="374px" photoUrl='/images/ring.png' />
       </div>
       <Container className="flex-col justify-start items-start text-black py-8">
-        <div className="flex w-full justify-between items-center mb-12">
+        <div className="flex flex-col mobileMap:flex-row  gap-y-8 mobileMap:gap-y-0 w-full justify-between items-center mb-4 mobileMap:mb-12">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <Search searchQuery={searchQuery} handleSearchInputChange={handleSearchInputChange} />
         </div>
-        <div className="mb-12">
+        <div className=" mb-4 tablet:mb-12">
           <Title className="text-[48px] text-black font-oswaldBold uppercase">Книга відгуків</Title>
         </div>
         {(searchQuery ? searchResults : testimonials).map(item => (
