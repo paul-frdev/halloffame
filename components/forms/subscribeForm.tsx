@@ -1,3 +1,4 @@
+import { useCustomInView } from '@/hooks/useCustomInView';
 import { Button } from "../ui/button";
 import { Container } from "../ui/container";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
@@ -26,6 +27,8 @@ const formSchema = z.object({
 export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => {
   const [loading, setLoading] = useState(false);
 
+  const { ref, animationBT } = useCustomInView()
+
   const form = useForm<SubscribeFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
@@ -39,9 +42,8 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({ initialData }) => 
   };
   return (
     <motion.section
-      initial="initial"
-      animate="animate"
-      variants={fadeIn}
+      animate={animationBT}
+      ref={ref}
       className="h-[294px] pt-8 [@media(max-width:822px)]:pb-12 [@media(max-width:822px)]:h-full w-full bg-black text-white"
     >
       <Container className=" [@media(max-width:822px)]:flex-col justify-between items-center h-full [@media(max-width:822px)]:gap-y-12 gap-x-8 desktop:gap-x-24">

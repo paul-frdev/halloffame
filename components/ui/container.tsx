@@ -1,6 +1,20 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import { AnimationProps, motion } from 'framer-motion';
+import React, { forwardRef } from "react";
 
-export const Container = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  return <div className={cn(`flex justify-center items-center w-full max-w-[1632px] px-4 mx-auto`, className)}>{children}</div>;
-};
+
+interface ContainerProps extends AnimationProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const Container = forwardRef<HTMLDivElement, ContainerProps>(({ children, className, ...props }, ref) => {
+
+  return (
+    <motion.div ref={ref} {...props} className={cn(`flex justify-center items-center w-full max-w-[1632px] px-4 mx-auto`, className)}>
+      {children}
+    </motion.div>
+  );
+});
+
+Container.displayName = 'Container';

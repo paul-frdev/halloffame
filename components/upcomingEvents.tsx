@@ -3,7 +3,8 @@ import { Button } from "./ui/button";
 import { Container } from "./ui/container";
 import { Title } from "./ui/title";
 import { Typography } from "./ui/typography";
-import { fadeIn, upcomingEvents } from "@/constants";
+import { upcomingEvents } from "@/constants";
+import { useCustomInView } from '@/hooks/useCustomInView';
 import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -14,6 +15,8 @@ export const UpcomingEvents = () => {
   const [isHovered, setIsHovered] = useState(false);
   const route = useRouter();
   const pathname = usePathname();
+
+  const { ref, animationBT, animationRL } = useCustomInView()
 
   const isMain = pathname === "/" || pathname === "/en" || pathname === "/es";
 
@@ -26,16 +29,13 @@ export const UpcomingEvents = () => {
   };
 
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      variants={fadeIn}
+    <section
       className={cn(
         `relative h-full smallTablet:h-[680px] bg-upcoming object-center bg-no-repeat object-fill w-full max-w-[1930px]`,
         isMain ? "pb-20" : "mb-0"
       )}
     >
-      <Container className=" [@media(max-width:732px)]:flex-col justify-between items-start">
+      <Container animate={animationBT} ref={ref} className=" [@media(max-width:732px)]:flex-col justify-between items-start">
         <div className="z-10 w-full smallTablet:max-w-[40%] pt-12 pb-0 smallTablet:py-24">
           <Title className="text-3xl mobile:text-5xl tablet:text-6xl border-b-4 pb-3 smallTablet:pb-6 border-white mb-8 smallTablet:mb-20">
             НАЙБЛИЖЧІ ПОДІЇ
@@ -59,10 +59,10 @@ export const UpcomingEvents = () => {
             </Button>
           ) : null}
         </div>
-        <div className="block smallTablet:absolute top-0 right-0 w-full smallTablet:w-[55%]  py-20">
+        <motion.div className="block smallTablet:absolute top-0 right-0 w-full smallTablet:w-[55%]  py-20">
           <UpcomingCarousel data={upcomingEvents} />
-        </div>
+        </motion.div>
       </Container>
-    </motion.div>
+    </section>
   );
 };

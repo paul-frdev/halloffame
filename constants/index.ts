@@ -81,6 +81,54 @@ export const mainNav = [
   },
 ];
 
+export const mobileNav = [
+  {
+    id: 1,
+    title: 'Головна',
+    src: '/',
+  },
+  {
+    id: 2,
+    title: 'Події',
+    src: '/events',
+  },
+  {
+    id: 3,
+    title: 'Новини',
+    src: '/blog/news',
+  },
+  {
+    id: 4,
+    title: 'Магазин',
+    src: '/shop',
+  },
+  {
+    id: 5,
+    title: 'Контакти',
+    src: '/contacts',
+  },
+  {
+    id: 6,
+    title: 'Про нас',
+    src: '/about',
+  },
+  {
+    id: 7,
+    title: 'ЗМІ про нас',
+    src: '/media',
+  },
+  {
+    id: 8,
+    title: 'Книга відгуків',
+    src: '/testimonials',
+  },
+  {
+    id: 9,
+    title: 'Оплата та доставка',
+    src: '/payment-back',
+  },
+]
+
 export const locales = [
   {
     id: 1,

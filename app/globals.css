@@ -55,15 +55,22 @@ html {
   height: 100%;
 }
 body {
-  padding-top: 113px;
+  padding-top: 185px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-@media (min-width: 1400px) {
+
+@media (max-width: 1400px) {
   body {
-    padding-top: 194px;
+    padding-top: 120px;
+  }
+}
+
+@media (max-width: 985px) {
+  body {
+    padding-top: 87px;
   }
 }
 
@@ -168,15 +175,17 @@ p span {
   display: none !important;
 }
 
-.rc-checkbox-checked .rc-checkbox-inner  {
+.rc-checkbox-checked .rc-checkbox-inner {
   background-color: #000 !important;
 }
 
-.rc-checkbox:hover .rc-checkbox-inner, .rc-checkbox-input + .rc-checkbox-inner {
+.rc-checkbox:hover .rc-checkbox-inner,
+.rc-checkbox-input + .rc-checkbox-inner {
   border-color: #000 !important;
 }
 
-.rc-checkbox:hover .rc-checkbox-inner, .rc-checkbox-input:focus + .rc-checkbox-inner {
+.rc-checkbox:hover .rc-checkbox-inner,
+.rc-checkbox-input:focus + .rc-checkbox-inner {
   border-color: #000 !important;
 }
 

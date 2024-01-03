@@ -24,6 +24,8 @@ import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { SlMenu } from "react-icons/sl";
 import { TfiClose } from "react-icons/tfi";
 import { useMediaQuery } from "react-responsive";
+import { Squash as Hamburger } from 'hamburger-react'
+import { SocialMediaLinks } from './ui/socialMediaLinks';
 
 export const socialMediaData = [
   {
@@ -84,25 +86,32 @@ export const Header = () => {
 
   useEffect(() => {
     gsap.to(".logo-container svg", {
-      width: !isFixed && isBigScreen ? 150 : 90,
-      height: !isFixed && isBigScreen ? 150 : 90,
+      width: !isFixed && isBigScreen ? 150 : 70,
+      height: !isFixed && isBigScreen ? 150 : 70,
       duration: !isFixed && isBigScreen ? 0.3 : 0.3,
       ease: "Power4.ease",
     });
   }, [isFixed, isBigScreen]);
 
+
+  const toggleOpenMobileNav = () => {
+    setIsOpenMobileNav(prev => !prev)
+  }
+
+  //logs 
+
   return (
     <>
       <header
         className={cn(
-          `transition-all fixed top-0 left-0 right-0 duration-300 bg-basic z-[12] pb-0  pt-4 lDesktop:pt-6  lDesktop:pb-6`,
+          `transition-all fixed top-0 left-0 right-0 duration-300 bg-basic z-[12] pb-0 lDesktop:pt-6  lDesktop:pb-6`,
           isFixed ? "lDesktop:pb-4 lDesktop:pt-4" : ""
         )}
       >
-        <Container className={cn(`flex justify-between w-full items-end lDesktop:items-end translate-all duration-300 h-[80px] lDesktop:h-auto`)}>
+        <Container className={cn(`flex justify-between w-full items-center lDesktop:items-end translate-all duration-300 h-[80px] lDesktop:h-auto [@media(min-width:1064px)]:gap-x-12`)}>
           <Link
             href="/"
-            className={cn(` [@media(max-width:340px)]:mr-[15px] mr-[40px] desktop:mr-[90px] pt-[10px]`, isFixed ? "mt-0" : "lDesktop:-mt-[12px]")}
+            className={cn(` mr-auto pt-[10px]`, isFixed ? "mt-0" : "lDesktop:-mt-[12px]")}
           >
             <span className="logo-container">
               <Logo />
@@ -110,12 +119,12 @@ export const Header = () => {
           </Link>
           <div
             className={cn(
-              `flex flex-col justify-end items-start w-full ml-auto transition-all duration-300`,
+              `flex w-full max-w-[1200px] lDesktop:max-w-[1289px] flex-col justify-end items-start ml-auto transition-all duration-300`,
               isFixed ? "gap-y-0" : " lDesktop:gap-y-[40px]"
             )}
           >
-            <div className={cn(`z-[14] max-w-[1632px] m-auto w-full transition-all duration-300`, isFixed ? "hidden" : " visible ")}>
-              <div className={cn(`hidden lDesktop:flex w-full ml-auto max-w-[1360px] justify-between items-center`)}>
+            <div className={cn(`z-[14] w-full transition-all duration-300`, isFixed ? "hidden" : " visible ")}>
+              <div className={cn(`hidden lDesktop:flex w-full  justify-between items-center`)}>
                 <LanguageSwitcher />
                 <ul className="flex justify-between items-end  gap-x-[60px]">
                   {secondNav.map(item => {
@@ -134,18 +143,10 @@ export const Header = () => {
                     );
                   })}
                 </ul>
-                <ul className="flex justify-between items-center gap-x-[20px] w-full max-w-[328px] px-[50px]">
-                  {socialMediaData.map(item => (
-                    <li key={item.id}>
-                      <Link href={item.link} style={{ fill: "#000" }}>
-                        {item.social}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <SocialMediaLinks />
                 {eventId || productId || pathname === "/cart" ? null : (
                   <Link href="/cart" className="flex justify-start items-start gap-x-[17px]">
-                    <Typography className=" inline-block">{tr("Кошик")}</Typography>
+                    <Typography className=" inline-block mb-0">{tr("Кошик")}</Typography>
                     <CartWidget className="relative" widthNumber={17} heightNumber={17} />
                   </Link>
                 )}
@@ -154,8 +155,7 @@ export const Header = () => {
 
             <div
               className={cn(
-                `flex  w-full items-start  tablet:items-center ml-auto max-w-[1360px] pb-[15px] desktop:pb-0`,
-                isFixed ? "justify-end" : "justify-between"
+                `flex  w-full gap-x-2 tablet:gap-x-12 items-center ml-auto justify-end lDesktop:justify-between`,
               )}
             >
               <ul className=" hidden tablet:flex justify-between items-start gap-x-[35px] desktop:gap-x-[50px] lDesktop:gap-x-[92px]">
@@ -177,7 +177,7 @@ export const Header = () => {
                   );
                 })}
               </ul>
-              <div className="w-full ml-auto flex justify-end items-end mr-4 tablet:mr-0">
+              <div className="flex justify-end items-end">
                 {eventId || productId || pathname === "/cart" ? (
                   <Link href="/cart" className="relative">
                     <CartWidget width={35} height={35} className="mr-8 pr-1" />
@@ -185,30 +185,28 @@ export const Header = () => {
                 ) : (
                   <Link
                     href="/events"
-                    className="bg-white hover:bg-blue  text-basic transition-all duration-300 inline-flex items-center justify-center rounded-md font-medium ring-offset-background hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-[12px]  tablet:text-lg desktop:text-2xl uppercase font-oswaldBold h-[40px] tablet:h-[50px] desktop:h-[69px] w-full max-w-[200px] tablet:max-w-[220px] desktop:max-w-[305px] mobile:text-sm"
+                    className="bg-white hover:bg-blue  text-basic transition-all px-4 lDesktop:px-12 duration-300 inline-flex items-center justify-center rounded-md font-medium ring-offset-background hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-[12px]  tablet:text-lg lDesktop::text-2xl uppercase font-oswaldBold h-[40px] tablet:h-[50px] lDesktop:h-[69px] w-full max-w-[200px] tablet:max-w-[220px] desktop:max-w-[305px] mobile:text-sm"
                   >
                     {tr("Замовити квиток")}
                   </Link>
                 )}
               </div>
-              <div className="block tablet:hidden pt-[1px]" onClick={() => setIsOpenMobileNav(prev => !prev)}>
-                {isOpenMobileNav ? <TfiClose size={35} /> : <SlMenu size={35} />}
+              <div className="block tablet:hidden pt-[1px]">
+                <Hamburger toggled={isOpenMobileNav} toggle={toggleOpenMobileNav} size={40} color='#fff' />
               </div>
             </div>
           </div>
         </Container>
-        <AnimatePresence>
-          <MobileNav isOpen={isOpenMobileNav} setIsOpen={setIsOpenMobileNav} />
-        </AnimatePresence>
-        <div className="hidden items-start items-center tablet:flex lDesktop:hidden  bg-basic h-auto w-full py-[5px] border-t mt-4 border-white">
-          <Container className="items-start flex-col justify-start text-white font-oswaldBold my-2">
-            <div className="flex w-[96px] flex justify-between items-center" onClick={() => setIsExpanded(prev => !prev)}>
-              <span className="text-[16px] tracking-wider leading-relaxed uppercase pl-6">Menu</span>
-              {!isExpanded ? <AiOutlineDown /> : <AiOutlineUp />}
+        <MobileNav isOpen={isOpenMobileNav} setIsOpen={setIsOpenMobileNav} />
+        <div className="hidden items-start items-center tablet:flex lDesktop:hidden  bg-basic h-auto w-full py-[5px] border-t mt-2 border-white">
+          <Container className="items-start flex-col justify-start text-white font-oswaldBold py-2">
+            <div className="w-full" onClick={() => setIsExpanded(prev => !prev)}>
+              <div className='flex w-[96px] justify-between items-center'>
+                <span className="text-[16px] tracking-wider leading-relaxed uppercase pl-6">Menu</span>
+                {!isExpanded ? <AiOutlineDown /> : <AiOutlineUp />}
+              </div>
             </div>
-            <AnimatePresence>
-              <MobileMenu isOpen={isExpanded} setIsExpanded={setIsExpanded} />
-            </AnimatePresence>
+            <MobileMenu isOpen={isExpanded} setIsExpanded={setIsExpanded} />
           </Container>
         </div>
       </header>

@@ -1,15 +1,14 @@
-import { socialMediaData } from "./header";
 import { CartWidget } from "./ui/cartWidget";
-import { Container } from "./ui/container";
 import { LanguageSwitcher } from "./ui/languageSwitcher";
 import { Typography } from "./ui/typography";
 import { secondNav } from "@/constants";
 import { cn } from "@/lib/utils";
-import { MotionConfig, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React from "react";
+import { SocialMediaLinks } from './ui/socialMediaLinks';
 
 interface MobileMenuProps {
   isOpen?: boolean;
@@ -21,71 +20,55 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsExpanded })
   const params = useParams();
 
   return (
-    <MotionConfig>
-      <motion.div
-        variants={{
-          hide: {
-            opacity: 0,
-            y: "0",
-            transition: {
-              type: "spring",
-              bounce: 0.1,
-              when: "afterChildren",
-              staggerChildren: 0.25,
-            },
-          },
-          show: {
-            opacity: 1,
-            x: "0%",
-            transition: {
-              type: "spring",
-              bounce: 0.1,
-              when: "beforeChildren",
-              staggerChildren: 0.25,
-            },
-          },
-        }}
-        initial="hide"
-        animate={isOpen ? "show" : "hide"}
-        exit="hide"
-        className={cn(`w-full`)}
-      >
-        <Container
-          className={cn(
-            `flex items-start flex-col justify-start text-white font-oswaldBold bg-basic pt-4 pb-6 relative `,
-            isOpen ? "visible" : "hidden"
-          )}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className={cn(`w-full relative mb-3`)}
         >
-          <ul className=" relative flex flex-col justify-start items-start text-white w-full  gap-y-[20px] pb-9 pt-4 px-2">
-            {secondNav.map(item => {
+          <ul className=" flex flex-col w-full justify-start items-start gap-y-[20px] py-8 px-6  bg-basic">
+            {secondNav.map((item, index) => {
               const isActive = `/${params.locale}${item.src}` === pathname || `/${params.locale}${item.src}/${params.mediaId}` === pathname;
 
               return (
-                <li
+                <motion.li
                   key={item.id}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                    delay: 0.1 + index / 10,
+                  }}
                   className={cn(
-                    `text-[20px] leading-[20px] font-SFPRegular transition-all duration-300  whitespace-nowrap py-1 text-link tablet:text-white `,
+                    `text-[20px] leading-[20px] font-SFPRegular  whitespace-nowrap py-1 text-link  `,
                     isActive ? "border-b border-[#ffffff] text-white " : "border-b border-transparent"
                   )}
                   onClick={() => setIsExpanded?.(false)}
                 >
                   <Link href={item.src}>{tr(item.title)}</Link>
-                </li>
+                </motion.li>
               );
             })}
           </ul>
-          <div className="flex w-[350px] justify-between items-start">
-            <ul className="flex  justify-start items-start gap-x-[20px] w-full max-w-[328px] pb-4 pl-2">
-              {socialMediaData.map(item => (
-                <li className="transition-all duration-300" key={item.id}>
-                  <Link href={item.link} style={{ fill: "#000" }}>
-                    {item.social}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 35,
+              delay: 0.5,
+            }}
+            className="flex w-full pl-6 justify-start items-baseline gap-y-2"
+          >
             <LanguageSwitcher />
-          </div>
+            <SocialMediaLinks />
+          </motion.div>
           <Link
             href="/cart"
             onClick={() => setIsExpanded?.(false)}
@@ -94,8 +77,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, setIsExpanded })
             <Typography className="inline-block">{tr("Кошик")}</Typography>
             <CartWidget />
           </Link>
-        </Container>
-      </motion.div>
-    </MotionConfig>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

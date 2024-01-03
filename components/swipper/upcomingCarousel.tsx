@@ -5,6 +5,7 @@ import { ArrowRight } from "@/icons/arrowRight";
 import { cn } from "@/lib/utils";
 import { Event } from "@/types";
 import { useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 import SwiperCore from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
